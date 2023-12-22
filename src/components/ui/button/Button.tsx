@@ -8,7 +8,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 // @ TODO, GET RID OF THE ARBITRARY PADDING VALUE OF 14PX
 // @ TODO, CHECK THE PADDING OF THE SM VARIANT
 const buttonVariants = cva(
-  'w-full p-[14px] font-semibold leading-[140%] rounded-lg flex gap-2 items-center justify-center',
+  'w-full p-[14px] text-sm font-semibold leading-[140%] rounded-lg flex gap-2 items-center justify-center',
   {
     variants: {
       variant: {
@@ -37,7 +37,7 @@ interface ButtonProps
 }
 
 const icons = {
-  add: <Add className='w-5 h-5' />,
+  add: <Add className='h-5 w-5' />,
 };
 
 export const Button = (props: ButtonProps) => {
