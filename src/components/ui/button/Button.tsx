@@ -40,7 +40,7 @@ const icons = {
   add: <Add className='h-5 w-5' />,
 };
 
-export const Button = (props: ButtonProps) => {
+export const Button: React.FC<ButtonProps> = (props) => {
   const { children, className, variant, size, icon, ...restOfProps } = props;
 
   return (
