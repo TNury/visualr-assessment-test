@@ -17,14 +17,14 @@ const config: Config = {
       },
       fontSize: {
         'heading-h1': [
-          '1.75rem',
+          '1.75rem', // 28px
           {
             lineHeight: '140%',
             fontWeight: '600',
           },
         ],
         'heading-h2': [
-          '1.25rem',
+          '1.25rem', // 20px
           {
             lineHeight: '140%',
             fontWeight: '600',
@@ -96,6 +96,8 @@ const config: Config = {
       },
       colors: {
         primary: '#EA7C69',
+        'primary-hover-1': '#FE907D',
+        'primary-hover-2': 'rgba(234, 124, 105, 0.16)',
         secondary: '#9288E0',
 
         'text-gray': '#889898',
@@ -106,6 +108,7 @@ const config: Config = {
         'base-dark-line': '#393C49',
         'base-dark-bg-1': '#252836',
         'base-dark-bg-2': '#1F1D2B',
+        'base-dark-bg-2-hover': '#232131',
         'base-form-bg': '#2D303E',
 
         'accents-green': '#50D1AA',
@@ -116,7 +119,7 @@ const config: Config = {
       },
     },
     boxShadow: {
-      primary: '0px 8px 24px 0px rgba(234, 124, 105, 0.30)',
+      primary: '0px 8px 24px 0px rgba(234, 124, 105, 0.30);',
     },
   },
   plugins: [],
