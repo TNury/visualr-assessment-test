@@ -106,10 +106,13 @@ const config: Config = {
 
         'base-bg': '#FAFAFA',
         'base-dark-line': '#393C49',
+        'base-dark-line-2': '#ABBBC2',
         'base-dark-bg-1': '#252836',
         'base-dark-bg-2': '#1F1D2B',
         'base-dark-bg-2-hover': '#232131',
+
         'base-form-bg': '#2D303E',
+        'base-form-bg-hover': '#373A48',
 
         'accents-green': '#50D1AA',
         'accents-red': '#FF7CA3',
