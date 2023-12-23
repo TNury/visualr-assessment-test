@@ -940,7 +940,7 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type MenusQueryVariables = Exact<{ [key: string]: never; }>;
+export type MenusDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MenusQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null }> } | null };
+export type MenusDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null }> } | null };

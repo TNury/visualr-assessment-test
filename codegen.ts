@@ -24,7 +24,7 @@ const config: CodegenConfig = {
   schema: returnSchema(),
   documents: 'src/graphql/queries/*.graphql',
   generates: {
-    './src/types/queries/queries.ts': {
+    './src/types/queries.types.ts': {
       plugins: ['typescript', 'typescript-operations'],
     },
     './src/graphql/queries/generated-query-document-nodes.ts': {

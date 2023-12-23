@@ -1,4 +1,4 @@
-query menus {
+query menusData {
   menus {
     data {
       id

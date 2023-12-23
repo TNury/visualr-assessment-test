@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
-export const Menus = gql`
-    query menus {
+export const MenusData = gql`
+    query menusData {
   menus {
     data {
       id
