@@ -1,5 +1,6 @@
 import { DishesView } from '@vat/components/ui/dishes-view/DishesView';
 import { Header } from '@vat/components/ui/header/Header';
+import { MenuNav } from '@vat/components/ui/header/menu-nav/MenuNav';
 import { OrderPanel } from '@vat/components/ui/order-panel/OrderPanel';
 
 type HomeProps = {
@@ -15,7 +16,9 @@ export const Home: React.FC<HomeProps> = (props) => {
 
   return (
     <main className='flex flex-col gap-6 p-6 pl-[128px] pr-[434px]'>
-      <Header />
+      <Header>
+        <MenuNav activeMenu={activeMenu} />
+      </Header>
       <DishesView activeMenu={activeMenu} />
       <OrderPanel />
     </main>
