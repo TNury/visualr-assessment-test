@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { Add } from '@vat/icons/Add';
 
 // @ TODO, REVIEW THE ARBITRARY VALUES USED HERE
 export const ProductCard = () => {
@@ -23,12 +24,13 @@ export const ProductCard = () => {
           <p className='text-center text-body-base-regular text-white'>
             $ 2.29
           </p>
-          <Button icon='add' variant='text' size='sm'>
+          <Button variant='base' size='sm' className='flex gap-2 items-center justify-center'>
+            <Add className='h-5 w-5' />
             Add to order
           </Button>
         </div>
       </div>
-      <div className='absolute group-hover:bg-base-dark-bg-2-hover bottom-0 left-0 z-10 h-[226px] w-full rounded-2xl bg-base-dark-bg-2' />
+      <div className='group-hover:bg-base-dark-bg-2-hover absolute bottom-0 left-0 z-10 h-[226px] w-full rounded-2xl bg-base-dark-bg-2' />
     </div>
   );
 };

@@ -11,7 +11,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        text: 'bg-transparent text-primary hover:bg-primary-hover-2 active:opacity-70',
+        base: 'bg-transparent text-primary hover:bg-primary-hover-2 active:opacity-70',
         contained:
           'bg-primary text-base-bg shadow-md hover:bg-primary-hover-1 active:opacity-70',
         outlined:
