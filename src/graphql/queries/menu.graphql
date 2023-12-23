@@ -1,9 +1,35 @@
+#import "./fragments.graphql"
+
 query menusData {
   menus {
     data {
       id
       attributes {
         title
+      }
+    }
+  }
+}
+
+query menuById($id: ID!) {
+  menu(id: $id) {
+    data {
+      id
+      attributes {
+        dishes {
+          data {
+            id
+            attributes {
+              media {
+                data {
+                  ...MediaProps
+                }
+              }
+              title
+              price
+            }
+          }
+        }
       }
     }
   }

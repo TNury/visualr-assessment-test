@@ -1,0 +1,6 @@
+fragment MediaProps on UploadFileEntity {
+  id
+  attributes {
+    url
+  }
+}

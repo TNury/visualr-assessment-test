@@ -1,7 +1,18 @@
 import { ErrorProps } from '@vat/types/error.types';
-import { MenusDataQuery } from '@vat/types/queries.types';
+import {
+  MenuByIdQuery,
+  MenuByIdQueryVariables,
+  MenusDataQuery,
+} from '@vat/types/queries.types';
 
 export type GetMenusDataResponse = {
   errors?: ErrorProps[];
   data: MenusDataQuery | null;
+};
+
+export type GetMenuByIdArgs = MenuByIdQueryVariables;
+
+export type GetMenuByIdResponse = {
+  errors?: ErrorProps[];
+  data: MenuByIdQuery | null;
 };

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Link from 'next/link';
+
 import { getMenusData } from '@vat/actions/menu.actions';
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
@@ -20,7 +22,11 @@ export const Header = async () => {
       </div>
       <div className='flex gap-8'>
         {menusData.data.menus.data.map((entry, index) => (
-          <div key={index} className='flex flex-col gap-3' role='button'>
+          <Link
+            href={`/?menu=${entry.id}`}
+            key={index}
+            className='flex flex-col gap-3'
+            role='button'>
             <p
               data-active={index === 0}
               className='text-body-base-semibold text-white data-[active="true"]:text-primary'>
@@ -29,7 +35,7 @@ export const Header = async () => {
             {index === 0 && (
               <div className='h-[3px] w-9 rounded-sm bg-primary' />
             )}
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -65,6 +65,60 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']['input']>;
 };
 
+export type Dish = {
+  __typename?: 'Dish';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  media?: Maybe<UploadFileEntityResponse>;
+  menu?: Maybe<MenuEntityResponse>;
+  price?: Maybe<Scalars['Float']['output']>;
+  publishedAt?: Maybe<Scalars['DateTime']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+export type DishEntity = {
+  __typename?: 'DishEntity';
+  attributes?: Maybe<Dish>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type DishEntityResponse = {
+  __typename?: 'DishEntityResponse';
+  data?: Maybe<DishEntity>;
+};
+
+export type DishEntityResponseCollection = {
+  __typename?: 'DishEntityResponseCollection';
+  data: Array<DishEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type DishFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<DishFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  menu?: InputMaybe<MenuFiltersInput>;
+  not?: InputMaybe<DishFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<DishFiltersInput>>>;
+  price?: InputMaybe<FloatFilterInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type DishInput = {
+  media?: InputMaybe<Scalars['ID']['input']>;
+  menu?: InputMaybe<Scalars['ID']['input']>;
+  price?: InputMaybe<Scalars['Float']['input']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type DishRelationResponseCollection = {
+  __typename?: 'DishRelationResponseCollection';
+  data: Array<DishEntity>;
+};
+
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
   caption?: InputMaybe<Scalars['String']['input']>;
@@ -95,7 +149,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = I18NLocale | Menu | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Dish | I18NLocale | Menu | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -208,9 +262,18 @@ export type JsonFilterInput = {
 export type Menu = {
   __typename?: 'Menu';
   createdAt?: Maybe<Scalars['DateTime']['output']>;
+  dishes?: Maybe<DishRelationResponseCollection>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type MenuDishesArgs = {
+  filters?: InputMaybe<DishFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type MenuEntity = {
@@ -233,6 +296,7 @@ export type MenuEntityResponseCollection = {
 export type MenuFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<MenuFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
+  dishes?: InputMaybe<DishFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<MenuFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<MenuFiltersInput>>>;
@@ -242,6 +306,7 @@ export type MenuFiltersInput = {
 };
 
 export type MenuInput = {
+  dishes?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -250,6 +315,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createDish?: Maybe<DishEntityResponse>;
   createMenu?: Maybe<MenuEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -257,6 +323,7 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteDish?: Maybe<DishEntityResponse>;
   deleteMenu?: Maybe<MenuEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -275,6 +342,7 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateDish?: Maybe<DishEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateMenu?: Maybe<MenuEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
@@ -291,6 +359,11 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
   passwordConfirmation: Scalars['String']['input'];
+};
+
+
+export type MutationCreateDishArgs = {
+  data: DishInput;
 };
 
 
@@ -316,6 +389,11 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput;
+};
+
+
+export type MutationDeleteDishArgs = {
+  id: Scalars['ID']['input'];
 };
 
 
@@ -381,6 +459,12 @@ export type MutationResetPasswordArgs = {
   code: Scalars['String']['input'];
   password: Scalars['String']['input'];
   passwordConfirmation: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateDishArgs = {
+  data: DishInput;
+  id: Scalars['ID']['input'];
 };
 
 
@@ -450,6 +534,8 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  dish?: Maybe<DishEntityResponse>;
+  dishes?: Maybe<DishEntityResponseCollection>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
@@ -463,6 +549,19 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryDishArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type QueryDishesArgs = {
+  filters?: InputMaybe<DishFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
@@ -940,7 +1039,16 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type MediaPropsFragment = { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null };
+
 export type MenusDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MenusDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null } | null }> } | null };
+
+export type MenuByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type MenuByIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
