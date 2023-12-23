@@ -2,6 +2,9 @@ query menusData {
   menus {
     data {
       id
+      attributes {
+        title
+      }
     }
   }
 }

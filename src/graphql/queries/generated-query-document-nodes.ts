@@ -5,6 +5,9 @@ export const MenusData = gql`
   menus {
     data {
       id
+      attributes {
+        title
+      }
     }
   }
 }

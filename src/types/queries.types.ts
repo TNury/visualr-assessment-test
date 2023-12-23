@@ -943,4 +943,4 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type MenusDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MenusDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null }> } | null };
+export type MenusDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null } | null }> } | null };
