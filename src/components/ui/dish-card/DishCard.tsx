@@ -4,7 +4,7 @@ import { Button } from '@vat/components/ui/button/Button';
 import { Add } from '@vat/icons/Add';
 
 // @ TODO, REVIEW THE ARBITRARY VALUES USED HERE
-export const ProductCard = () => {
+export const DishCard = () => {
   return (
     <div className='group relative flex w-full flex-col items-center gap-[10px] px-6 pb-[18px] pt-0'>
       <div className='z-20 flex w-full items-end justify-center'>
@@ -12,7 +12,7 @@ export const ProductCard = () => {
           src='/assets/media/png/product_example.png'
           width={528}
           height={528}
-          alt='Product example'
+          alt='Dish example'
           className='h-[132px] w-[132px] transition-all duration-200 group-hover:-rotate-45 group-hover:scale-110'
         />
       </div>
@@ -24,13 +24,16 @@ export const ProductCard = () => {
           <p className='text-center text-body-base-regular text-white'>
             $ 2.29
           </p>
-          <Button variant='base' size='sm' className='flex gap-2 items-center justify-center'>
+          <Button
+            variant='base'
+            size='sm'
+            className='flex items-center justify-center gap-2'>
             <Add className='h-5 w-5' />
             Add to order
           </Button>
         </div>
       </div>
-      <div className='group-hover:bg-base-dark-bg-2-hover absolute bottom-0 left-0 z-10 h-[226px] w-full rounded-2xl bg-base-dark-bg-2' />
+      <div className='absolute bottom-0 left-0 z-10 h-[226px] w-full rounded-2xl bg-base-dark-bg-2 group-hover:bg-base-dark-bg-2-hover' />
     </div>
   );
 };

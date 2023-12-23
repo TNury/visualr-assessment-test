@@ -1,6 +1,6 @@
+import { DishCard } from '@vat/components/ui/dish-card/DishCard';
 import { Header } from '@vat/components/ui/header/Header';
-import { OrderPanel } from '@vat/components/ui/oder-panel/OrderPanel';
-import { ProductCard } from '@vat/components/ui/product-card/ProductCard';
+import { OrderPanel } from '@vat/components/ui/order-panel/OrderPanel';
 
 // @ TODO, GET RID OF THE ARBITRARY WIDTH VALUE OF 663PX
 export const Home = () => {
@@ -11,7 +11,7 @@ export const Home = () => {
         <h2 className='text-heading-h2 text-white'>Choose Dishes</h2>
         <div className='row-gap grid w-full grid-cols-3 gap-x-7 gap-y-6'>
           {[1, 2, 3, 4, 5, 6].map((entry) => (
-            <ProductCard key={entry} />
+            <DishCard key={entry} />
           ))}
         </div>
       </div>
