@@ -15,7 +15,7 @@ export const Home: React.FC<HomeProps> = (props) => {
   const activeMenu = props.searchParams.menu;
 
   return (
-    <main className='flex flex-col gap-6 p-6 pl-[128px] pr-[434px]'>
+    <main className='flex flex-col pb-6 pl-[128px] pr-[434px]'>
       <Header>
         <MenuNav activeMenu={activeMenu} />
       </Header>
