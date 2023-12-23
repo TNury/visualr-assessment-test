@@ -25,6 +25,7 @@
       "@vat/icons/*": ["src/components/ui/icons/*"],
       "@vat/components/*": ["src/components/*"],
       "@vat/lib/*": ["src/lib/*"],
+      "@vat/graphql/*": ["src/graphql/*"],
       "@vat/services/*": ["src/services/*"],
       "@vat/types/*": ["src/types/*"],
     },
