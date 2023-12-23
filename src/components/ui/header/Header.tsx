@@ -7,7 +7,7 @@ type HeaderProps = {
 // @TODO - CORRECT ARBRITRARY VALUES
 export const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
-    <header className='sticky top-0 z-40 py-6 flex flex-col gap-6 bg-base-dark-bg-1'>
+    <header className='sticky top-0 z-40 flex flex-col gap-6 bg-base-dark-bg-1 py-6'>
       <div className='flex w-full items-center justify-between'>
         <div className='flex w-full flex-col justify-start gap-1'>
           <h1 className='text-heading-h1 text-white'>Jaegar Resto</h1>
