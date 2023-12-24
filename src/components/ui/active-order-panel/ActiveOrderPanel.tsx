@@ -1,16 +1,20 @@
 'use client';
 
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+
 import { Button } from '@vat/components/ui/button/Button';
 
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
 
 import { OrderSummary } from '../order-summary/OrderSummary';
 
-export const OrderSummaryPanel = () => {
+export const ActiveOrderPanel = () => {
   const { orderState, dispatch } = useOrderContext();
+  const activeMenu = useSearchParams().get('menu');
 
   return (
-    <div className='flex h-full flex-col'>
+    <div className='fixed right-0 top-0 z-40 flex h-full w-[410px] flex-col rounded-l-lg bg-base-dark-bg-2'>
       <div className='flex flex-col gap-[42px] p-6'>
         <h1 className='text-heading-h2 text-white'>Order #34562</h1>
         <div className='flex gap-[42px]'>
@@ -21,9 +25,15 @@ export const OrderSummaryPanel = () => {
       </div>
       {orderState.items.length > 0 ? (
         <div className='flex h-full flex-col'>
-          <OrderSummary orderState={orderState} dispatch={dispatch} />
+          <OrderSummary
+            maxHeight={390.4}
+            orderState={orderState}
+            dispatch={dispatch}
+          />
           <div className='mt-[18px] px-6 pb-6'>
-            <Button variant='contained'>Continue to Payment</Button>
+            <Link href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}>
+              <Button variant='contained'>Continue to Payment</Button>
+            </Link>
           </div>
         </div>
       ) : (
