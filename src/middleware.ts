@@ -2,23 +2,14 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
-  const { pathname, search } = request.nextUrl;
+  const { pathname, searchParams } = request.nextUrl;
 
-  if (pathname === '/' && !search.includes('menu')) {
+  const menuId = searchParams.get('menu');
+
+  if (pathname === '/' && !menuId) {
+    console.log('Redirect')
     return NextResponse.redirect(new URL('/?menu=1', request.url));
   }
-
-  // const userSession = request.cookies.get('userSession');
-
-  // const redirectionUrl = process.env.WEBSITE_URL || '/';
-
-  // if (request.nextUrl.pathname === '/' && userSession?.value) {
-  //   return NextResponse.redirect(new URL(redirectionUrl, request.url));
-  // }
-
-  // if (request.nextUrl.pathname !== '/' && !userSession?.value) {
-  //   return NextResponse.redirect(new URL(redirectionUrl, request.url));
-  // }
 
   return NextResponse.next();
 }
