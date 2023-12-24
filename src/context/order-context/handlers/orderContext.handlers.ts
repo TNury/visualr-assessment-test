@@ -1,13 +1,13 @@
 import { deleteCookie, storeCookie } from '@vat/actions/cookies.actions';
 import { DishEntityProps } from '@vat/types/menu.types';
-import { OrderState } from '@vat/types/order.types';
+import { OrderStateProps } from '@vat/types/order.types';
 
 export function handleOrderItemAddition(
-  currentState: OrderState,
+  currentState: OrderStateProps,
   item: DishEntityProps
-): OrderState {
+): OrderStateProps {
   const orderItems = currentState.items;
-  let updatedOrderItems: OrderState['items'];
+  let updatedOrderItems: OrderStateProps['items'];
 
   const itemExists = orderItems.find((orderItem) => orderItem.id === item.id);
 
@@ -43,9 +43,9 @@ export function handleOrderItemAddition(
 }
 
 export function handleOrderItemRemoval(
-  currentState: OrderState,
+  currentState: OrderStateProps,
   id: string
-): OrderState {
+): OrderStateProps {
   const orderItems = currentState.items;
   const updatedOrderItems = orderItems.filter(
     (orderItem) => orderItem.id !== id
@@ -63,10 +63,10 @@ export function handleOrderItemRemoval(
 }
 
 export function handleOrderItemQuantityUpdate(
-  currentState: OrderState,
+  currentState: OrderStateProps,
   id: string,
   quantity: number
-): OrderState {
+): OrderStateProps {
   const orderItems = currentState.items;
   const updatedOrderItems = orderItems.map((orderItem) =>
     orderItem.id === id ? { ...orderItem, quantity } : orderItem
@@ -83,7 +83,7 @@ export function handleOrderItemQuantityUpdate(
   };
 }
 
-export function handleOrderClear(currentState: OrderState): OrderState {
+export function handleOrderClear(currentState: OrderStateProps): OrderStateProps {
   deleteCookie('order');
 
   return {

@@ -1,6 +1,6 @@
 import { DishEntityProps } from '@vat/types/menu.types';
 
-export type OrderItem = {
+export type OrderItemProps = {
   id: string;
   title: string;
   price: number;
@@ -9,17 +9,17 @@ export type OrderItem = {
   media: DishEntityProps['attributes']['media'];
 };
 
-export type OrderState = {
-  items: OrderItem[];
+export type OrderStateProps = {
+  items: OrderItemProps[];
 };
 
-export type OrderAction =
+export type OrderActionProps =
   | { type: 'ADD_ITEM'; item: DishEntityProps }
-  | { type: 'REMOVE_ITEM'; id: 'string' }
-  | { type: 'UPDATE_QUANTITY'; id: 'string'; quantity: number }
+  | { type: 'REMOVE_ITEM'; id: string }
+  | { type: 'UPDATE_QUANTITY'; id: string; quantity: number }
   | { type: 'CLEAR_ORDER' };
 
 export type OrderContextProps = {
-  orderState: OrderState;
-  dispatch: React.Dispatch<OrderAction>;
+  orderState: OrderStateProps;
+  dispatch: React.Dispatch<OrderActionProps>;
 };

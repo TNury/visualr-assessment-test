@@ -9,14 +9,14 @@ import {
   handleOrderItemRemoval,
 } from '@vat/context/order-context/handlers/orderContext.handlers';
 import {
-  OrderAction,
+  OrderActionProps,
   OrderContextProps,
-  OrderState,
+  OrderStateProps,
 } from '@vat/types/order.types';
 
 const OrderContext = createContext<OrderContextProps | undefined>(undefined);
 
-const orderReducer = (state: OrderState, action: OrderAction): OrderState => {
+const orderReducer = (state: OrderStateProps, action: OrderActionProps): OrderStateProps => {
   switch (action.type) {
     case 'ADD_ITEM':
       return handleOrderItemAddition(state, action.item);
@@ -33,7 +33,7 @@ const orderReducer = (state: OrderState, action: OrderAction): OrderState => {
 
 export const OrderProvider: React.FC<{
   children: ReactNode;
-  initialOrderData?: OrderState;
+  initialOrderData?: OrderStateProps;
 }> = ({ children, initialOrderData }) => {
   const [orderState, dispatch] = useReducer(
     orderReducer,
@@ -51,7 +51,7 @@ export const OrderProvider: React.FC<{
   );
 };
 
-export const useOrder = () => {
+export const useOrderContext = () => {
   const context = useContext(OrderContext);
   if (!context) {
     throw new Error('useOrder must be used within a OrderProvider');

@@ -1,10 +1,9 @@
-import { retrieveCookie } from '@vat/actions/cookies.actions';
 import { DishesView } from '@vat/components/ui/dishes-view/DishesView';
 import { Header } from '@vat/components/ui/header/Header';
 import { MenuNav } from '@vat/components/ui/header/menu-nav/MenuNav';
 import { OrderPanel } from '@vat/components/ui/order-panel/OrderPanel';
-import { OrderProvider } from '@vat/context/order-context/OrderContext';
-import { OrderState } from '@vat/types/order.types';
+
+import { RootProvider } from '@vat/context/RootProvider';
 
 type HomeProps = {
   params: {};
@@ -15,8 +14,6 @@ type HomeProps = {
 
 // @ TODO, GET RID OF THE ARBITRARY WIDTH VALUE OF 663PX
 export const Home: React.FC<HomeProps> = async (props) => {
-  const activeOrder: OrderState = await retrieveCookie('order');
-
   const activeMenu = props.searchParams.menu;
 
   return (
@@ -24,10 +21,10 @@ export const Home: React.FC<HomeProps> = async (props) => {
       <Header>
         <MenuNav activeMenu={activeMenu} />
       </Header>
-      <OrderProvider initialOrderData={activeOrder}>
+      <RootProvider>
         <DishesView activeMenu={activeMenu} />
         <OrderPanel />
-      </OrderProvider>
+      </RootProvider>
     </main>
   );
 };
