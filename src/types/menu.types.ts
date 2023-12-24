@@ -16,3 +16,6 @@ export type GetMenuByIdResponse = {
   errors?: ErrorProps[];
   data: MenuByIdQuery | null;
 };
+
+export type DishEntityProps =
+  MenuByIdQuery['menu']['data']['attributes']['dishes']['data'][0];

@@ -27,6 +27,7 @@
       "@vat/lib/*": ["src/lib/*"],
       "@vat/graphql/*": ["src/graphql/*"],
       "@vat/services/*": ["src/services/*"],
+      "@vat/context/*": ["src/context/*"],
       "@vat/types/*": ["src/types/*"],
     },
   },
