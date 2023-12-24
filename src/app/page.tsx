@@ -1,7 +1,7 @@
 import { DishesView } from '@vat/components/ui/dishes-view/DishesView';
 import { Header } from '@vat/components/ui/header/Header';
 import { MenuNav } from '@vat/components/ui/header/menu-nav/MenuNav';
-import { OrderPanel } from '@vat/components/ui/order-panel/OrderPanel';
+import { OrderDrawer } from '@vat/components/ui/order-drawer/OrderDrawer';
 
 import { RootProvider } from '@vat/context/RootProvider';
 
@@ -23,7 +23,7 @@ export const Home: React.FC<HomeProps> = async (props) => {
       </Header>
       <RootProvider>
         <DishesView activeMenu={activeMenu} />
-        <OrderPanel />
+        <OrderDrawer />
       </RootProvider>
     </main>
   );
