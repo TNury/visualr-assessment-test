@@ -33,8 +33,6 @@ const navLinks = [
 export const SidebarMenu = () => {
   const pathname = usePathname();
 
-  console.log(pathname);
-
   return (
     <div className='flex flex-col pl-3 pr-0'>
       {navLinks.map((entry, index) => (
