@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 function returnSchema() {
-  const apiURL = process.env.cmsUrl;
+  const apiURL = process.env.NEXT_PUBLIC_cmsUrl;
   const schemaURL = `${apiURL}/graphql`;
 
   let schema = {};

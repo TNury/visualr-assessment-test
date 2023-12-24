@@ -1,7 +1,8 @@
-import { MediaProps } from '@vat/types/media.types';
 import { twMerge } from 'tailwind-merge';
 
 import { type ClassValue, clsx } from 'clsx';
+
+import { MediaProps } from '@vat/types/media.types';
 
 /**
  * Merges class names using the `clsx` and `tailwind-merge` libraries.
@@ -15,6 +16,10 @@ export function cn(...inputs: ClassValue[]) {
 export function returnMediaProps(imageProps: MediaProps) {
   return {
     ...imageProps.attributes,
-    src: `${process.env.cmsUrl}${imageProps.attributes.url}`,
+    src: `${process.env.NEXT_PUBLIC_cmsUrl}${imageProps.attributes.url}`,
   };
+}
+
+export function returnFormattedPrice(price: number) {
+  return `$ ${price.toFixed(2)}`;
 }

@@ -1,6 +1,6 @@
 import * as mappedQueriesRaw from '@vat/graphql/queries/generated-query-document-nodes';
 
-const apiURL = process.env.cmsUrl;
+const apiURL = process.env.NEXT_PUBLIC_cmsUrl;
 
 async function callAPI(
   queryName: string,
