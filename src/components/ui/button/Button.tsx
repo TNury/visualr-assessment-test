@@ -15,10 +15,10 @@ const buttonVariants = cva(
         contained:
           'bg-primary text-base-bg shadow-md hover:bg-primary-hover-1 active:opacity-70',
         outlined:
-          'bg-transparent border text-primary rounded-lg border-primary active:opacity-70',
+          'bg-transparent border text-primary rounded-lg border-primary hover:bg-primary-hover-2 active:opacity-70',
       },
       size: {
-        default: 'h-fit',
+        default: 'h-12',
         sm: 'h-8',
       },
     },

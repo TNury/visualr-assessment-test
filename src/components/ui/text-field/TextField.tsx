@@ -1,6 +1,7 @@
 'use client';
 
 import { Search } from '@vat/icons/Search';
+
 import { cn } from '@vat/lib/utils';
 
 const icons = {
@@ -27,10 +28,10 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
         {...restOfProps}
         data-has-icon={Boolean(icon)}
         className={cn(
-          'hover:bg-base-form-bg-hover focus:border-base-dark-line-2 cursor-pointer rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-text-lighter caret-white outline-none placeholder:text-text-gray focus:bg-base-dark-bg-2 data-[has-icon="true"]:pl-[42px]',
+          'h-12 cursor-pointer rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-sm leading-[140%] text-text-lighter caret-white outline-none placeholder:text-text-gray hover:bg-base-form-bg-hover focus:border-base-dark-line-2 focus:bg-base-dark-bg-2 data-[has-icon="true"]:pl-[42px]',
           className
         )}
-        placeholder='Search for food, coffe, etc...'
+        placeholder={props.placeholder}
       />
     </div>
   );
