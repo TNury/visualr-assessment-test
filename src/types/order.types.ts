@@ -17,6 +17,7 @@ export type OrderActionProps =
   | { type: 'ADD_ITEM'; item: DishEntityProps }
   | { type: 'REMOVE_ITEM'; id: string }
   | { type: 'UPDATE_QUANTITY'; id: string; quantity: number }
+  | { type: 'UPDATE_NOTES'; id: string; notes: string }
   | { type: 'CLEAR_ORDER' };
 
 export type OrderContextProps = {

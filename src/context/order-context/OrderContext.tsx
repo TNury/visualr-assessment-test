@@ -5,9 +5,11 @@ import { ReactNode, createContext, useContext, useReducer } from 'react';
 import {
   handleOrderClear,
   handleOrderItemAddition,
+  handleOrderItemNotesUpdate,
   handleOrderItemQuantityUpdate,
   handleOrderItemRemoval,
 } from '@vat/context/order-context/handlers/orderContext.handlers';
+
 import {
   OrderActionProps,
   OrderContextProps,
@@ -16,7 +18,10 @@ import {
 
 const OrderContext = createContext<OrderContextProps | undefined>(undefined);
 
-const orderReducer = (state: OrderStateProps, action: OrderActionProps): OrderStateProps => {
+const orderReducer = (
+  state: OrderStateProps,
+  action: OrderActionProps
+): OrderStateProps => {
   switch (action.type) {
     case 'ADD_ITEM':
       return handleOrderItemAddition(state, action.item);
@@ -24,6 +29,8 @@ const orderReducer = (state: OrderStateProps, action: OrderActionProps): OrderSt
       return handleOrderItemRemoval(state, action.id);
     case 'UPDATE_QUANTITY':
       return handleOrderItemQuantityUpdate(state, action.id, action.quantity);
+    case 'UPDATE_NOTES':
+      return handleOrderItemNotesUpdate(state, action.id, action.notes);
     case 'CLEAR_ORDER':
       return handleOrderClear(state);
     default:

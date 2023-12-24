@@ -32,6 +32,11 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
     dispatch({ type: 'UPDATE_QUANTITY', id: orderItem.id, quantity });
   };
 
+  const handleNotesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const notes = e.target.value;
+    dispatch({ type: 'UPDATE_NOTES', id: orderItem.id, notes });
+  };
+
   const handleRemoveClick = () => {
     dispatch({ type: 'REMOVE_ITEM', id: orderItem.id });
   };
@@ -69,7 +74,7 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
           value={orderItem.notes}
           placeholder='Order Note...'
           className='w-full'
-          onChange={() => null}
+          onChange={handleNotesChange}
           wrapperProps={{ className: 'flex-1' }}
         />
         <Button

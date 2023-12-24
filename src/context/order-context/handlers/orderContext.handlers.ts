@@ -1,6 +1,13 @@
+import _ from 'lodash';
+
 import { deleteCookie, storeCookie } from '@vat/actions/cookies.actions';
+
 import { DishEntityProps } from '@vat/types/menu.types';
 import { OrderStateProps } from '@vat/types/order.types';
+
+function debouncedStoreCookie(key: string, value: OrderStateProps): void {
+  _.debounce(storeCookie, 2000)(key, value);
+}
 
 export function handleOrderItemAddition(
   currentState: OrderStateProps,
@@ -31,7 +38,7 @@ export function handleOrderItemAddition(
     ];
   }
 
-  storeCookie('order', {
+  debouncedStoreCookie('order', {
     ...currentState,
     items: updatedOrderItems,
   });
@@ -72,7 +79,7 @@ export function handleOrderItemQuantityUpdate(
     orderItem.id === id ? { ...orderItem, quantity } : orderItem
   );
 
-  storeCookie('order', {
+  debouncedStoreCookie('order', {
     ...currentState,
     items: updatedOrderItems,
   });
@@ -83,7 +90,30 @@ export function handleOrderItemQuantityUpdate(
   };
 }
 
-export function handleOrderClear(currentState: OrderStateProps): OrderStateProps {
+export function handleOrderItemNotesUpdate(
+  currentState: OrderStateProps,
+  id: string,
+  notes: string
+): OrderStateProps {
+  const orderItems = currentState.items;
+  const updatedOrderItems = orderItems.map((orderItem) =>
+    orderItem.id === id ? { ...orderItem, notes } : orderItem
+  );
+
+  debouncedStoreCookie('order', {
+    ...currentState,
+    items: updatedOrderItems,
+  });
+
+  return {
+    ...currentState,
+    items: updatedOrderItems,
+  };
+}
+
+export function handleOrderClear(
+  currentState: OrderStateProps
+): OrderStateProps {
   deleteCookie('order');
 
   return {
