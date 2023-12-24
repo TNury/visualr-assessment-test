@@ -9,7 +9,7 @@ import { OrderSummary } from '@vat/components/ui/order-summary/OrderSummary';
 
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
 
-export const OrderConfirmationSummaryPanel = () => {
+export const OrderSummaryPanel = () => {
   const { orderState, dispatch } = useOrderContext();
 
   return (
