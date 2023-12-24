@@ -1,12 +1,12 @@
 import Image from 'next/image';
 
-import { Button } from '@vat/components/ui/button/Button';
-import { Add } from '@vat/icons/Add';
 import { returnMediaProps } from '@vat/lib/utils';
-import { GetMenuByIdResponse } from '@vat/types/menu.types';
+import { DishEntityProps } from '@vat/types/menu.types';
 
-type DishCardProps = {
-  dishProps: GetMenuByIdResponse['data']['menu']['data']['attributes']['dishes']['data'][0];
+import { AddToOrderButton } from './add-to-order-button/AddToOrderButton';
+
+export type DishCardProps = {
+  dishProps: DishEntityProps;
 };
 
 // @ TODO, REVIEW THE ARBITRARY VALUES USED HERE
@@ -30,13 +30,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
           <p className='text-center text-body-base-regular text-white'>
             $ 2.29
           </p>
-          <Button
-            variant='base'
-            size='sm'
-            className='flex items-center justify-center gap-2'>
-            <Add className='h-5 w-5' />
-            Add to order
-          </Button>
+          <AddToOrderButton dishProps={dishProps} />
         </div>
       </div>
       <div className='absolute bottom-0 left-0 z-10 h-[226px] w-full rounded-2xl bg-base-dark-bg-2 group-hover:bg-base-dark-bg-2-hover' />
