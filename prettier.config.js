@@ -26,6 +26,7 @@ module.exports = {
     '^@vat/actions',
     '^@vat/lib',
     '^@vat/types',
+    '^@vat/styles',
     '^[src/]',
     '^[./]',
   ],
