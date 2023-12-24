@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ children }) => {
             Tuesday 2 Feb, 2021
           </p>
         </div>
-        <TextField icon='search' />
+        <TextField icon='search' placeholder='Search for food, coffe, etc...' />
       </div>
       {children}
     </header>
