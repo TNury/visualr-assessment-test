@@ -14,6 +14,8 @@ const buttonVariants = cva(
         base: 'bg-transparent text-primary hover:bg-primary-hover-2 active:opacity-70',
         contained:
           'bg-primary text-base-bg shadow-md hover:bg-primary-hover-1 active:opacity-70',
+        'contained-secondary':
+          'bg-primary text-base-bg hover:bg-primary-hover-1 active:opacity-70',
         outlined:
           'bg-transparent border text-primary rounded-lg border-primary hover:bg-primary-hover-2 active:opacity-70',
       },
