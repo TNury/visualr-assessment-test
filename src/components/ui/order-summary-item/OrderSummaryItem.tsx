@@ -30,17 +30,32 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
 
     const quantity = parseInt(value);
 
-    if (quantity === 0 || Number.isNaN(quantity)) {
+    if (Number.isNaN(quantity)) {
       dispatch({
         type: 'UPDATE_QUANTITY',
         id: orderItem.id,
-        quantity: 1,
+        quantity: 0,
       });
 
       return;
     }
 
     dispatch({ type: 'UPDATE_QUANTITY', id: orderItem.id, quantity });
+  };
+
+  const handleQuantityOnBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '');
+
+    const quantity = parseInt(value);
+
+    if (quantity === 0) {
+      dispatch({
+        type: 'REMOVE_ITEM',
+        id: orderItem.id,
+      });
+
+      return;
+    }
   };
 
   const handleNotesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +90,7 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
           className='w-12 text-center'
           wrapperProps={{ className: 'ml-auto' }}
           onChange={handleQuantityChange}
+          onBlur={handleQuantityOnBlur}
         />
         <p className='min-w-12 text-right text-body-lg-medium text-white'>
           {returnFormattedPrice(orderItem.price * orderItem.quantity)}
