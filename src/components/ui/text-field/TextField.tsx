@@ -10,25 +10,29 @@ const icons = {
 
 interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+  label?: string;
   icon?: 'search';
 }
 
 // @TODO - CORRECT ARBRITRARY VALUES
 export const TextField: React.FC<TextFieldProps> = (props) => {
-  const { wrapperProps, className, size, icon, ...restOfProps } = props;
+  const { wrapperProps, className, size, icon, label, ...restOfProps } = props;
   const { className: wrapperClassName, ...restOfWrapperProps } =
     wrapperProps || {};
 
   return (
     <div
-      className={cn('relative flex items-center', wrapperClassName)}
+      className={cn('relative flex justify-center flex-col gap-2', wrapperClassName)}
       {...restOfWrapperProps}>
       {icon ? icons['search'] : null}
+      {label && (
+        <label className='text-body-base-medium text-white'>{label}</label>
+      )}
       <input
         {...restOfProps}
         data-has-icon={Boolean(icon)}
         className={cn(
-          'h-12 cursor-pointer rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-sm leading-[140%] text-text-lighter caret-white outline-none placeholder:text-text-gray hover:bg-base-form-bg-hover focus:border-base-dark-line-2 focus:bg-base-dark-bg-2 data-[has-icon="true"]:pl-[42px]',
+          'h-12 rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-sm leading-[140%] text-text-lighter caret-white outline-none placeholder:text-text-gray hover:bg-base-form-bg-hover focus:border-base-dark-line-2 focus:bg-base-dark-bg-2 data-[has-icon="true"]:pl-[42px]',
           className
         )}
         placeholder={props.placeholder}
