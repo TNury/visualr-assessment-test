@@ -1,8 +1,8 @@
 'use client';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { useOrderContext } from '@vat/context/order-context/OrderContext';
 import { Add } from '@vat/icons/Add';
-import { useOrder } from '@vat/context/order-context/OrderContext';
 import { DishEntityProps } from '@vat/types/menu.types';
 
 type AddToOrderButtonProps = {
@@ -12,7 +12,7 @@ type AddToOrderButtonProps = {
 export const AddToOrderButton: React.FC<AddToOrderButtonProps> = ({
   dishProps,
 }) => {
-  const { dispatch } = useOrder();
+  const { dispatch } = useOrderContext();
 
   const handleAddToCart = () => {
     dispatch({ type: 'ADD_ITEM', item: dishProps });
