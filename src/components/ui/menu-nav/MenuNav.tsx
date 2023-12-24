@@ -16,7 +16,7 @@ export const MenuNav: React.FC<MenuNavProps> = async ({ activeMenu }) => {
           data-active={entry.id === activeMenu}
           href={`/?menu=${entry.id}`}
           key={index}
-          className='flex flex-col gap-3 z-10'
+          className='z-10 flex flex-col gap-3'
           role='button'>
           <span
             data-active={entry.id === activeMenu}
@@ -28,7 +28,7 @@ export const MenuNav: React.FC<MenuNavProps> = async ({ activeMenu }) => {
           )}
         </Link>
       ))}
-      <hr className='bottom-[1.1px] left-0 absolute w-full border-base-dark-line' />
+      <hr className='absolute bottom-[1.1px] left-0 w-full border-base-dark-line' />
     </nav>
   );
 };
