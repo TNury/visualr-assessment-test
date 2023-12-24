@@ -1,5 +1,6 @@
-import { getMenuById } from '@vat/actions/menu.actions';
 import { DishCard } from '@vat/components/ui/dish-card/DishCard';
+
+import { getMenuById } from '@vat/actions/menu.actions';
 
 type DishesViewProps = {
   activeMenu: string;
