@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
-import { returnMediaProps } from '@vat/lib/utils';
+import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
+
 import { DishEntityProps } from '@vat/types/menu.types';
 
 import { AddToOrderButton } from './add-to-order-button/AddToOrderButton';
@@ -28,7 +29,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
         </p>
         <div className='flex flex-col gap-1'>
           <p className='text-center text-body-base-regular text-white'>
-            $ 2.29
+            {returnFormattedPrice(dishProps.attributes.price)}
           </p>
           <AddToOrderButton dishProps={dishProps} />
         </div>
