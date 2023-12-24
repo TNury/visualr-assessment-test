@@ -10,7 +10,7 @@ export const OrderSubtotals: React.FC<OrderSubtotalsProps> = ({
   orderState,
 }) => {
   return (
-    <div className='flex flex-col gap-4 p-6'>
+    <div className='mx-6 flex flex-col gap-4 border-t border-base-dark-line py-6'>
       <div className='flex justify-between'>
         <p className='text-body-base-regular text-text-light'>Discount</p>
         <p className='min-w-12 text-right text-body-lg-medium text-white'>

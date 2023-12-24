@@ -14,7 +14,7 @@ export const OrderSummaryPanel = () => {
 
   return (
     <div className='flex h-full w-[410px] flex-col'>
-      <div className='flex flex-col gap-4 p-6'>
+      <div className='flex flex-col gap-4 py-6 mx-6 border-b border-base-dark-line'>
         <Link href='/' className='w-fit'>
           <Back className='text-white' />
         </Link>

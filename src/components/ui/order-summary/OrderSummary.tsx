@@ -19,7 +19,6 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
   return (
     <div className='flex h-full flex-col'>
       <div className='flex h-full flex-col'>
-        <hr className='mx-6 border-base-dark-line' />
         <div
           style={{
             maxHeight: `${maxHeight}px`,
@@ -32,7 +31,6 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
           ))}
         </div>
 
-        <hr className='mx-6 border-base-dark-line' />
         <OrderSubtotals orderState={orderState} />
       </div>
     </div>

@@ -28,7 +28,7 @@ export const MenuNav: React.FC<MenuNavProps> = async ({ activeMenu }) => {
           )}
         </Link>
       ))}
-      <hr className='absolute bottom-[1.1px] left-0 w-full border-base-dark-line' />
+      <div className='absolute bottom-[1.1px] left-0 h-[1px] w-full bg-base-dark-line' />
     </nav>
   );
 };
