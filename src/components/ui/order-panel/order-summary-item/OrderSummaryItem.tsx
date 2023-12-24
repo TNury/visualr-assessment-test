@@ -29,6 +29,17 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
     const value = e.target.value.replace(/\D/g, '');
 
     const quantity = parseInt(value);
+
+    if (quantity === 0 || Number.isNaN(quantity)) {
+      dispatch({
+        type: 'UPDATE_QUANTITY',
+        id: orderItem.id,
+        quantity: 1,
+      });
+
+      return;
+    }
+
     dispatch({ type: 'UPDATE_QUANTITY', id: orderItem.id, quantity });
   };
 
