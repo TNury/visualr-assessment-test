@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Button } from '@vat/components/ui/button/Button';
 import { Background } from '@vat/icons/Background';
 import { Dashboard } from '@vat/icons/Dashboard';
 import { Home } from '@vat/icons/Home';
 import { Settings } from '@vat/icons/Settings';
+
+import { Button } from '@vat/components/ui/button/Button';
 
 const icons = {
   home: <Home className='z-10 h-6 w-6' />,
@@ -50,37 +51,6 @@ export const SidebarMenu = () => {
           </Button>
         </Link>
       ))}
-      {/* <Link
-        href='/'
-        className='relative -mr-[1px] flex items-center justify-center pr-0'>
-        <Background className='text-base-dark-bg-1' />
-        <Button
-          variant='contained'
-          className='absolute left-3 z-10 flex h-14 w-14 items-center justify-center'>
-          <Home className='z-10 h-6 w-6' />
-        </Button>
-      </Link>
-
-      <Link
-        href='/'
-        className='relative -mr-[1px] flex items-center justify-center pr-0'>
-        <Background className='text-base-dark-bg-1 opacity-0' />
-        <Button
-          variant='base'
-          className='absolute left-3 z-10 flex h-14 w-14 items-center justify-center'>
-          <Dashboard className='z-10 h-6 w-6 text-primary' />
-        </Button>
-      </Link>
-      <Link
-        href='/settings'
-        className='relative -mr-[1px] flex items-center justify-center pr-0'>
-        <Background className='text-base-dark-bg-1 opacity-0' />
-        <Button
-          variant='base'
-          className='absolute left-3 z-10 flex h-14 w-14 items-center justify-center'>
-          <Settings className='z-10 h-6 w-6 text-primary' />
-        </Button>
-      </Link> */}
     </div>
   );
 };
