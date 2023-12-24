@@ -104,6 +104,8 @@ const config: Config = {
         'text-light': '#ABBBC2',
         'text-lighter': '#E0E6E9',
 
+        'base-overlay': '#000000B2',
+
         'base-bg': '#FAFAFA',
         'base-dark-line': '#393C49',
         'base-dark-line-2': '#ABBBC2',
