@@ -18,6 +18,11 @@ import {
 
 const OrderContext = createContext<OrderContextProps | undefined>(undefined);
 
+const INITIAL_ORDER_STATE: OrderStateProps = {
+  items: [],
+  subtotal: 0,
+};
+
 const orderReducer = (
   state: OrderStateProps,
   action: OrderActionProps
@@ -44,11 +49,7 @@ export const OrderProvider: React.FC<{
 }> = ({ children, initialOrderData }) => {
   const [orderState, dispatch] = useReducer(
     orderReducer,
-    initialOrderData
-      ? initialOrderData
-      : {
-          items: [],
-        }
+    initialOrderData ? initialOrderData : INITIAL_ORDER_STATE
   );
 
   return (

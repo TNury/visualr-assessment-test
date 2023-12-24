@@ -11,6 +11,7 @@ export type OrderItemProps = {
 
 export type OrderStateProps = {
   items: OrderItemProps[];
+  subtotal: number;
 };
 
 export type OrderActionProps =

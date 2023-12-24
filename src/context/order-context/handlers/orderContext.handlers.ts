@@ -9,6 +9,12 @@ function debouncedStoreCookie(key: string, value: OrderStateProps): void {
   _.debounce(storeCookie, 2000)(key, value);
 }
 
+function returnOrderTotal(orderItems: OrderStateProps['items']): number {
+  return orderItems.reduce((acc, curr) => {
+    return acc + curr.price * curr.quantity;
+  }, 0);
+}
+
 export function handleOrderItemAddition(
   currentState: OrderStateProps,
   item: DishEntityProps
@@ -38,15 +44,15 @@ export function handleOrderItemAddition(
     ];
   }
 
-  debouncedStoreCookie('order', {
+  const updatedOrderState = {
     ...currentState,
     items: updatedOrderItems,
-  });
-
-  return {
-    ...currentState,
-    items: updatedOrderItems,
+    subtotal: returnOrderTotal(updatedOrderItems),
   };
+
+  debouncedStoreCookie('order', updatedOrderState);
+
+  return updatedOrderState;
 }
 
 export function handleOrderItemRemoval(
@@ -58,15 +64,15 @@ export function handleOrderItemRemoval(
     (orderItem) => orderItem.id !== id
   );
 
-  storeCookie('order', {
+  const updatedOrderState = {
     ...currentState,
     items: updatedOrderItems,
-  });
-
-  return {
-    ...currentState,
-    items: updatedOrderItems,
+    subtotal: returnOrderTotal(updatedOrderItems),
   };
+
+  debouncedStoreCookie('order', updatedOrderState);
+
+  return updatedOrderState;
 }
 
 export function handleOrderItemQuantityUpdate(
@@ -79,15 +85,15 @@ export function handleOrderItemQuantityUpdate(
     orderItem.id === id ? { ...orderItem, quantity } : orderItem
   );
 
-  debouncedStoreCookie('order', {
+  const updatedOrderState = {
     ...currentState,
     items: updatedOrderItems,
-  });
-
-  return {
-    ...currentState,
-    items: updatedOrderItems,
+    subtotal: returnOrderTotal(updatedOrderItems),
   };
+
+  debouncedStoreCookie('order', updatedOrderState);
+
+  return updatedOrderState;
 }
 
 export function handleOrderItemNotesUpdate(
@@ -100,15 +106,14 @@ export function handleOrderItemNotesUpdate(
     orderItem.id === id ? { ...orderItem, notes } : orderItem
   );
 
-  debouncedStoreCookie('order', {
-    ...currentState,
-    items: updatedOrderItems,
-  });
-
-  return {
+  const updatedOrderState = {
     ...currentState,
     items: updatedOrderItems,
   };
+
+  debouncedStoreCookie('order', updatedOrderState);
+
+  return updatedOrderState;
 }
 
 export function handleOrderClear(
