@@ -4,7 +4,7 @@ import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
 
 import { DishEntityProps } from '@vat/types/menu.types';
 
-import { AddToOrderButton } from './add-to-order-button/AddToOrderButton';
+import { AddToOrderButton } from '../add-to-order-button/AddToOrderButton';
 
 export type DishCardProps = {
   dishProps: DishEntityProps;

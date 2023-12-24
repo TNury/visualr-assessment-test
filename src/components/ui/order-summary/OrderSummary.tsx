@@ -1,7 +1,7 @@
 'use client';
 
-import { OrderSubtotals } from '@vat/components/ui/order-drawer/order-subtotals/OrderSubtotals';
-import { OrderSummaryItem } from '@vat/components/ui/order-drawer/order-summary-item/OrderSummaryItem';
+import { OrderSubtotals } from '@vat/components/ui/order-subtotals/OrderSubtotals';
+import { OrderSummaryItem } from '@vat/components/ui/order-summary-item/OrderSummaryItem';
 
 import { OrderStateProps } from '@vat/types/order.types';
 

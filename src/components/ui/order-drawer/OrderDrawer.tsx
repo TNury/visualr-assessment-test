@@ -1,4 +1,4 @@
-import { OrderSummaryPanel } from '@vat/components/ui/order-drawer/order-summary-panel/OrderSummaryPanel';
+import { OrderSummaryPanel } from '@vat/components/ui/order-summary-panel/OrderSummaryPanel';
 
 // @TODO - Make order number dynamic
 export const OrderDrawer = () => {

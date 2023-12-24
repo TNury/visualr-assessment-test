@@ -1,6 +1,6 @@
 import { DishesView } from '@vat/components/ui/dishes-view/DishesView';
 import { Header } from '@vat/components/ui/header/Header';
-import { MenuNav } from '@vat/components/ui/header/menu-nav/MenuNav';
+import { MenuNav } from '@vat/components/ui/menu-nav/MenuNav';
 import { OrderDrawer } from '@vat/components/ui/order-drawer/OrderDrawer';
 
 import { RootProvider } from '@vat/context/RootProvider';
