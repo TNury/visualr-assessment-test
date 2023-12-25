@@ -7,7 +7,6 @@ export async function middleware(request: NextRequest) {
   const menuId = searchParams.get('menu');
 
   if (pathname === '/' && !menuId) {
-    console.log('Redirect')
     return NextResponse.redirect(new URL('/?menu=1', request.url));
   }
 
