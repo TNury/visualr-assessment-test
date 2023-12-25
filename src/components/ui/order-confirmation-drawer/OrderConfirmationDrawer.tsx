@@ -1,73 +1,42 @@
 'use client';
 
-import { useEffect } from 'react';
-
-import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
+import { Drawer } from '@vat/components/ui/drawer/Drawer';
 import { OrderPaymentPanel } from '@vat/components/ui/order-payment-panel/OrderPaymentPanel';
 import { OrderSummaryPanel } from '@vat/components/ui/order-summary-panel/OrderSummaryPanel';
-
-type OrderConfirmationDrawerProps = {
-  open: boolean;
-};
 
 const stripePromise = loadStripe(
   'pk_test_51JDDw8FcRQWdCUNX8vvnirOihRxh6yftU5OYL6ZAM4gR6BijUFs8uxXlZKqxw7aYqXMoJwAWIYaifWtylafwFb3Q00pZS0KQny'
 );
 
 // @TODO - Make order number dynamic
-const OrderConfirmationDrawer: React.FC<OrderConfirmationDrawerProps> = ({
-  open,
-}) => {
-  useEffect(() => {
-    const bodyRef = document.querySelector('body');
-
-    if (open) {
-      bodyRef.classList.add('overflow-hidden');
-    }
-
-    return () => {
-      bodyRef.classList.remove('overflow-hidden');
-    };
-  }, [open]);
-
-  if (!open) return null;
+export const OrderConfirmationDrawer = () => {
+  const openConfirmationDrawer =
+    useSearchParams().get('openConfirmationDrawer') === 'true';
 
   return (
-    <div className='bg-base-overlay fixed right-0 top-0 z-50 flex h-screen w-screen flex-col items-end rounded-l-lg'>
-      <Link href='/' scroll={false}>
-        <div className='absolute inset-0 -z-10' />
-      </Link>
-      <div className='z-60 h-screen w-fit'>
-        <Elements
-          stripe={stripePromise}
-          options={{
-            fonts: [
-              {
-                cssSrc:
-                  'https://fonts.googleapis.com/css2?family=Barlow&display=swap',
-              },
-            ],
-          }}>
-          <div className='flex h-full w-fit rounded-l-2xl bg-base-dark-bg-2'>
-            <div className='w-fit border-r border-base-dark-line'>
-              <OrderSummaryPanel />
-            </div>
-            <OrderPaymentPanel />
+    <Drawer open={openConfirmationDrawer}>
+      <Elements
+        stripe={stripePromise}
+        options={{
+          fonts: [
+            {
+              cssSrc:
+                'https://fonts.googleapis.com/css2?family=Barlow&display=swap',
+            },
+          ],
+        }}>
+        <div className='flex h-full w-fit rounded-l-2xl bg-base-dark-bg-2'>
+          <div className='w-fit border-r border-base-dark-line'>
+            <OrderSummaryPanel />
           </div>
-        </Elements>
-      </div>
-    </div>
+          <OrderPaymentPanel />
+        </div>
+      </Elements>
+    </Drawer>
   );
 };
-
-const OrderConfirmationDrawerWithElements: React.FC<
-  OrderConfirmationDrawerProps
-> = ({ open }) => {
-  return <OrderConfirmationDrawer open={open} />;
-};
-
-export default OrderConfirmationDrawerWithElements;
