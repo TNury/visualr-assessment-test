@@ -23,15 +23,17 @@ export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
           className='h-[132px] w-[132px] transition-all duration-200 group-hover:-rotate-45 group-hover:scale-110'
         />
       </div>
-      <div className='z-20 flex flex-col gap-2'>
+      <div className='z-20 flex h-full flex-col gap-2'>
         <p className='max-w-36 text-center text-body-base-medium text-white'>
           {dishProps.attributes.title}
         </p>
-        <div className='flex flex-col gap-1'>
+        <div className='flex h-full flex-col gap-1'>
           <p className='text-center text-body-base-regular text-white'>
             {returnFormattedPrice(dishProps.attributes.price)}
           </p>
-          <AddToOrderButton dishProps={dishProps} />
+          <div className='mt-auto'>
+            <AddToOrderButton dishProps={dishProps} />
+          </div>
         </div>
       </div>
       <div className='absolute bottom-0 left-0 z-10 h-[226px] w-full rounded-2xl bg-base-dark-bg-2 group-hover:bg-base-dark-bg-2-hover' />
