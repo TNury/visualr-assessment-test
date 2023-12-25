@@ -2,8 +2,6 @@
 
 import { useEffect } from 'react';
 
-import ReactDOM from 'react-dom';
-
 import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
 
 import { cn } from '@vat/lib/utils';
@@ -41,10 +39,9 @@ export const Snackbar = () => {
 
   if (!severity) return null;
 
-  return ReactDOM.createPortal(
+  return (
     <div className={cn(snackbarVariants({ variant: severity }))}>
       <p className='text-body-lg-medium'>{message}</p>
-    </div>,
-    document.getElementsByTagName('body')[0]
+    </div>
   );
 };

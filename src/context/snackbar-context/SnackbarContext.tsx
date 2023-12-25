@@ -9,8 +9,8 @@ import {
 } from '@vat/types/snackbar.types';
 
 const initialState: SnackbarStateProps = {
-  severity: 'success',
-  message: 'Hey',
+  severity: undefined,
+  message: '',
 };
 
 const reducer = (
