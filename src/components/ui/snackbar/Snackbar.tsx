@@ -1,19 +1,19 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { cn } from '@vat/lib/utils';
 
 import { type VariantProps, cva } from 'class-variance-authority';
 
 const snackbarVariants = cva(
-  'fixed rounded-lg bottom-4 animate-fade-in left-4 border border-black p-[14px] text-white',
+  'fixed rounded-lg bottom-4 animate-fade-in left-4 p-[14px] text-white',
   {
     variants: {
       variant: {
         default: 'bg-blue-500',
-        error: 'bg-accents-red',
-        success: 'bg-green-500',
+        error: 'bg-accents-bg-red text-accents-red',
+        success: 'bg-accents-bg-green text-accents-green',
         warning: 'bg-yellow-500',
       },
     },
