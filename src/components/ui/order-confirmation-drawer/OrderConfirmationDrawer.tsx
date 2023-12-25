@@ -38,7 +38,7 @@ const OrderConfirmationDrawer: React.FC<OrderConfirmationDrawerProps> = ({
 
   return (
     <div className='bg-base-overlay fixed right-0 top-0 z-50 flex h-screen w-screen flex-col items-end rounded-l-lg'>
-      <Link href='/'>
+      <Link href='/' scroll={false}>
         <div className='absolute inset-0 -z-10' />
       </Link>
       <div className='z-60 h-screen w-fit'>

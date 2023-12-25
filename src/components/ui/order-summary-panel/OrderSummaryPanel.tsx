@@ -15,7 +15,7 @@ export const OrderSummaryPanel = () => {
   return (
     <div className='flex h-full w-[410px] flex-col'>
       <div className='mx-6 flex flex-col gap-4 border-b border-base-dark-line py-6'>
-        <Link href='/' className='w-fit'>
+        <Link href='/' scroll={false} className='w-fit'>
           <Back className='text-white' />
         </Link>
         <div className='flex items-center justify-between'>
@@ -25,7 +25,7 @@ export const OrderSummaryPanel = () => {
               Order ID #34562
             </p>
           </div>
-          <Link href='/'>
+          <Link href='/' scroll={false}>
             <Button variant='contained-secondary' className='w-fit'>
               <Add className='h-5 w-5' />
             </Button>

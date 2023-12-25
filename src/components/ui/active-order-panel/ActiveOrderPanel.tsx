@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '@vat/components/ui/button/Button';
 
@@ -32,7 +32,9 @@ export const ActiveOrderPanel = () => {
           />
 
           <div className='mt-auto px-6 pb-6 pt-[18px]'>
-            <Link href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}>
+            <Link
+              href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}
+              scroll={false}>
               <Button variant='contained'>Continue to Payment</Button>
             </Link>
           </div>
