@@ -18,7 +18,6 @@ module.exports = {
     '^next',
     '<THIRD_PARTY_MODULES>',
     '^clsx$',
-    '^@vat/services',
     '^@vat/icons',
     '^@vat/components',
     '^@vat/context',
