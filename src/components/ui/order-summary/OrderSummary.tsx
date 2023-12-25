@@ -21,9 +21,9 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
       <div className='flex h-full flex-col'>
         <div
           style={{
-            maxHeight: `${maxHeight}px`,
+            maxHeight: `calc(100vh - ${maxHeight}px)`,
           }}
-          className='flex flex-1 flex-col gap-6 overflow-auto overscroll-contain px-6'>
+          className='flex flex-col gap-6 overflow-auto overscroll-contain px-6'>
           {orderState.items.map((orderItem, index) => (
             <div key={index} className='w-full first:pt-6 last:pb-6'>
               <OrderSummaryItem dispatch={dispatch} orderItem={orderItem} />
