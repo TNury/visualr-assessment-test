@@ -10,12 +10,12 @@ const baseOptions:
   | StripeCardCvcElementOptions = {
   classes: {
     focus: 'border-base-dark-line-2 !bg-base-dark-bg-2',
-    invalid: 'border-red-500',
+    invalid: 'border-accents-red',
     base: 'h-12 rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-sm leading-[140%] text-text-lighter caret-white outline-none hover:bg-base-form-bg-hover',
   },
   style: {
     invalid: {
-      color: '#ef4444',
+      color: '#FF7CA3',
     },
     base: {
       color: 'white',
