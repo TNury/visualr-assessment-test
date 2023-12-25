@@ -1,4 +1,4 @@
-import { TextField } from '@vat/components/ui/text-field/TextField';
+import { MenuSearchField } from '@vat/components/ui/menu-search-field/MenuSearchField';
 
 type HeaderProps = {
   children?: React.ReactNode;
@@ -15,7 +15,7 @@ export const Header: React.FC<HeaderProps> = ({ children }) => {
             Tuesday 2 Feb, 2021
           </p>
         </div>
-        <TextField icon='search' placeholder='Search for food, coffe, etc...' />
+        <MenuSearchField />
       </div>
       {children}
     </header>

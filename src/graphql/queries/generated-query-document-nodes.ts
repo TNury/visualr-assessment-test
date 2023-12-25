@@ -44,6 +44,24 @@ export const MenuById = gql`
   }
 }
     ${MediaProps}`;
+export const DishesBySearchString = gql`
+    query dishesBySearchString($searchString: String!) {
+  dishes(filters: {title: {contains: $searchString}}) {
+    data {
+      id
+      attributes {
+        media {
+          data {
+            ...MediaProps
+          }
+        }
+        title
+        price
+      }
+    }
+  }
+}
+    ${MediaProps}`;
 export const CreateOrder = gql`
     mutation createOrder($data: OrderInput!) {
   createOrder(data: $data) {

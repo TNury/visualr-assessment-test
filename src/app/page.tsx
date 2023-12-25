@@ -16,13 +16,16 @@ type HomeProps = {
   searchParams: {
     menu: string;
     openConfirmationDrawer?: 'true';
+    search: string;
   };
 };
 
 // @ TODO, GET RID OF THE ARBITRARY WIDTH VALUE OF 663PX
 const Home: React.FC<HomeProps> = async (props) => {
   const activeMenu = props.searchParams.menu;
+  const searchQuery = props.searchParams.search;
   const activeOrder: OrderStateProps = await retrieveCookie('order');
+
   const totalOrdersLengthResponse = await getTotalOrdersLength();
   const totalOrdersLength = totalOrdersLengthResponse.data.orders.data[0]?.id;
 
@@ -36,7 +39,7 @@ const Home: React.FC<HomeProps> = async (props) => {
         initialOrderId={
           totalOrdersLength ? String(Number(totalOrdersLength) + 1) : '1'
         }>
-        <DishesView activeMenu={activeMenu} />
+        <DishesView searchQuery={searchQuery} activeMenu={activeMenu} />
         <ActiveOrderPanel />
         <OrderConfirmationDrawer />
       </OrderProvider>
