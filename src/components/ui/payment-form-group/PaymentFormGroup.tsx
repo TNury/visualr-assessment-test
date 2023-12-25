@@ -13,8 +13,9 @@ export const PaymentFormGroup = () => {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-2'>
-        {availableOptions.map((option) => (
+        {availableOptions.map((option, index) => (
           <PaymentOption
+            key={index}
             active={paymentMethod === option}
             type={option as 'credit-card' | 'paypal' | 'cash'}
             // onClick={() => setPaymentMethod(option)}
