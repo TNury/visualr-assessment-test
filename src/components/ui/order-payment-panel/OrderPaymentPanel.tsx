@@ -38,7 +38,7 @@ export const OrderPaymentPanel = () => {
         <div className='flex flex-col gap-4 overflow-auto px-6 py-4'>
           <h2 className='text-heading-h2 text-white'>Payment Method</h2>
 
-          <PaymentFormGroup />
+          <PaymentFormGroup tableNo={tableNo} />
         </div>
         <div className='mx-6 border-t border-base-dark-line py-4'>
           <TextField
@@ -57,7 +57,7 @@ export const OrderPaymentPanel = () => {
           />
         </div>
       </div>
-      <div className='mt-auto flex gap-2 px-6 pb-6'>
+      <div id='orderPaymentPanelBtns' className='mt-auto flex gap-2 px-6 pb-6'>
         <Link href='/' scroll={false} className='w-full'>
           <Button variant='outlined'>Cancel</Button>
         </Link>

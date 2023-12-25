@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import {
   CardCvcElement,
   CardExpiryElement,
@@ -18,7 +20,11 @@ import {
 
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
+import { createOrder } from '@vat/actions/order.actions';
 import { createPaymentIntent } from '@vat/actions/payment.actions';
+
+import { OrderContextProps } from '@vat/types/order.types';
+import { Enum_Order_Status } from '@vat/types/queries.types';
 
 const baseOptions:
   | StripeCardNumberElementOptions
@@ -58,11 +64,23 @@ const cardCvcElementOptions: StripeCardCvcElementOptions = {
   ...baseOptions,
 };
 
-export const CreditCardForm = () => {
+type CreditCardFormProps = {
+  tableNo: string;
+  orderContext: OrderContextProps;
+};
+
+export const CreditCardForm: React.FC<CreditCardFormProps> = ({
+  orderContext,
+  tableNo,
+}) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [creditCardHolderName, setCreditCardHolderName] = useState('');
+  const router = useRouter();
+
+  const { orderState, dispatch } = orderContext;
+
+  const [cardHolderName, setCardHolderName] = useState('');
   const [errors, setErrors] = useState({
     cardHolderName: '',
     cardNumber: '',
@@ -94,7 +112,21 @@ export const CreditCardForm = () => {
     }
   };
 
+  const toggleSubmitBtns = (disabled: boolean) => {
+    const submitBtnWrapper = document.getElementById('orderPaymentPanelBtns');
+
+    if (disabled) {
+      submitBtnWrapper?.classList.add('opacity-70');
+      submitBtnWrapper?.classList.add('pointer-events-none');
+    } else {
+      submitBtnWrapper?.classList.remove('opacity-70');
+      submitBtnWrapper?.classList.remove('pointer-events-none');
+    }
+  };
+
   const triggerPayment = async () => {
+    toggleSubmitBtns(true);
+
     if (!stripe || !elements) {
       // In case Stripe.js has not yet loaded.
       return;
@@ -108,7 +140,7 @@ export const CreditCardForm = () => {
       return;
     }
 
-    if (!creditCardHolderName) {
+    if (!cardHolderName) {
       setErrors((prev) => ({
         ...prev,
         cardHolderName: 'Card holder name is required.',
@@ -117,7 +149,7 @@ export const CreditCardForm = () => {
       return;
     }
 
-    const paymentIntent = await createPaymentIntent(1000);
+    const paymentIntent = await createPaymentIntent(orderState.subtotal);
 
     const result = await stripe.confirmCardPayment(
       paymentIntent.client_secret,
@@ -125,11 +157,38 @@ export const CreditCardForm = () => {
         payment_method: {
           card: cardNumberElement,
           billing_details: {
-            name: 'John Doe',
+            name: cardHolderName,
           },
         },
       }
     );
+
+    if (result.paymentIntent?.status === 'succeeded') {
+      // The payment has been processed!
+      const orderCreationResponse = await createOrder({
+        data: {
+          owner: cardHolderName,
+          total: orderState.subtotal,
+          dishes: orderState.items.map((item) => item.id),
+          status: Enum_Order_Status.Pending,
+          tableNumber: tableNo,
+        },
+      });
+
+      if (orderCreationResponse.data.createOrder.data.id) {
+        router.push('/', {
+          scroll: false,
+        });
+
+        dispatch({
+          type: 'CLEAR_ORDER',
+        });
+      }
+
+      toggleSubmitBtns(false);
+    } else {
+      toggleSubmitBtns(false);
+    }
   };
 
   return (
@@ -139,10 +198,10 @@ export const CreditCardForm = () => {
           label='Cardholder Name'
           placeholder='John Doe'
           className='w-full'
-          value={creditCardHolderName}
+          value={cardHolderName}
           error={errors.cardHolderName}
           onChange={(e) => {
-            setCreditCardHolderName(e.target.value);
+            setCardHolderName(e.target.value);
 
             if (errors['cardHolderName']) {
               setErrors((prev) => ({

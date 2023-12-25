@@ -5,10 +5,19 @@ import { useState } from 'react';
 import { CreditCardForm } from '@vat/components/ui/credit-card-form/CreditCardForm';
 import { PaymentOption } from '@vat/components/ui/payment-option/PaymentOption';
 
+import { useOrderContext } from '@vat/context/order-context/OrderContext';
+
 const availableOptions = ['credit-card', 'paypal', 'cash'];
 
-export const PaymentFormGroup = () => {
+type PaymentFormGroupProps = {
+  tableNo: string;
+};
+
+export const PaymentFormGroup: React.FC<PaymentFormGroupProps> = ({
+  tableNo,
+}) => {
   const [paymentMethod, setPaymentMethod] = useState('credit-card');
+  const orderContext = useOrderContext();
 
   return (
     <div className='flex flex-col gap-4'>
@@ -22,7 +31,7 @@ export const PaymentFormGroup = () => {
           />
         ))}
       </div>
-      <CreditCardForm />
+      <CreditCardForm orderContext={orderContext} tableNo={tableNo} />
     </div>
   );
 };

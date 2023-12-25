@@ -7,7 +7,7 @@ import { type VariantProps, cva } from 'class-variance-authority';
 // @ TODO, GET RID OF THE ARBITRARY PADDING VALUE OF 14PX
 // @ TODO, CHECK THE PADDING OF THE SM VARIANT
 const buttonVariants = cva(
-  'w-full p-[14px] text-sm font-semibold leading-[140%] rounded-lg',
+  'w-full p-[14px] text-sm font-semibold leading-[140%] rounded-lg disabled:opacity-70 disabled:pointer-events-none',
   {
     variants: {
       variant: {
