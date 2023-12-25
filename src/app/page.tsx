@@ -33,7 +33,9 @@ const Home: React.FC<HomeProps> = async (props) => {
       </Header>
       <OrderProvider
         initialOrderData={activeOrder}
-        initialOrderId={totalOrdersLength ? totalOrdersLength : '1'}>
+        initialOrderId={
+          totalOrdersLength ? String(Number(totalOrdersLength) + 1) : '1'
+        }>
         <DishesView activeMenu={activeMenu} />
         <ActiveOrderPanel />
         <OrderConfirmationDrawer />

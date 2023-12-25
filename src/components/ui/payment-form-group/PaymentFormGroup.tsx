@@ -1,26 +1,36 @@
 'use client';
 
-import { useState } from 'react';
-
 import { CreditCardForm } from '@vat/components/ui/credit-card-form/CreditCardForm';
 import { PaymentOption } from '@vat/components/ui/payment-option/PaymentOption';
 
-import { useOrderContext } from '@vat/context/order-context/OrderContext';
-import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
+import { OrderContextProps } from '@vat/types/order.types';
+import { SnackbarContextProps } from '@vat/types/snackbar.types';
 
-const availableOptions = ['credit-card', 'paypal', 'cash'];
+import { PaymentMethodProps } from '../order-payment-panel/OrderPaymentPanel';
+
+const availableOptions: PaymentMethodProps[] = [
+  'credit-card',
+  'paypal',
+  'cash',
+];
 
 type PaymentFormGroupProps = {
+  orderContext: OrderContextProps;
+  snackbarContext: SnackbarContextProps;
+  paymentMethod: PaymentMethodProps;
+  setPaymentMethod: React.Dispatch<
+    React.SetStateAction<'credit-card' | 'paypal' | 'cash'>
+  >;
   tableNo: string;
 };
 
 export const PaymentFormGroup: React.FC<PaymentFormGroupProps> = ({
   tableNo,
+  paymentMethod,
+  setPaymentMethod,
+  orderContext,
+  snackbarContext,
 }) => {
-  const [paymentMethod, setPaymentMethod] = useState('credit-card');
-  const orderContext = useOrderContext();
-  const snackbarContext = useSnackbarContext();
-
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex gap-2'>
@@ -28,16 +38,18 @@ export const PaymentFormGroup: React.FC<PaymentFormGroupProps> = ({
           <PaymentOption
             key={index}
             active={paymentMethod === option}
-            type={option as 'credit-card' | 'paypal' | 'cash'}
-            // onClick={() => setPaymentMethod(option)}
+            type={option}
+            onClick={() => setPaymentMethod(option)}
           />
         ))}
       </div>
-      <CreditCardForm
-        orderContext={orderContext}
-        snackbarContext={snackbarContext}
-        tableNo={tableNo}
-      />
+      {paymentMethod === 'credit-card' && (
+        <CreditCardForm
+          orderContext={orderContext}
+          snackbarContext={snackbarContext}
+          tableNo={tableNo}
+        />
+      )}
     </div>
   );
 };

@@ -1,13 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { OrderSummary } from '@vat/components/ui/order-summary/OrderSummary';
 
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
-
-import { OrderSummary } from '../order-summary/OrderSummary';
 
 export const ActiveOrderPanel = () => {
   const { orderState, dispatch } = useOrderContext();

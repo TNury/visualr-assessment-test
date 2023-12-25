@@ -119,10 +119,13 @@ export function handleOrderItemNotesUpdate(
 export function handleOrderClear(
   currentState: OrderStateProps
 ): OrderStateProps {
-  deleteCookie('order');
-
-  return {
-    ...currentState,
+  const updatedOrderData = {
+    id: String(Number(currentState.id) + 1),
     items: [],
+    subtotal: 0,
   };
+
+  debouncedStoreCookie('order', updatedOrderData);
+
+  return updatedOrderData;
 }

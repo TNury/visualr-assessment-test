@@ -49,6 +49,8 @@ export const OrderProvider: React.FC<{
   initialOrderData?: OrderStateProps;
   initialOrderId: string;
 }> = ({ children, initialOrderData, initialOrderId }) => {
+  console.log('on order provider', initialOrderId);
+
   const [orderState, dispatch] = useReducer(
     orderReducer,
     initialOrderData

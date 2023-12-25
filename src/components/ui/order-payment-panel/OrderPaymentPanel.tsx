@@ -1,28 +1,31 @@
 'use client';
 
-import { useState } from 'react';
-
 import Link from 'next/link';
 
+import { Button } from '@vat/components/ui/button/Button';
 import { PaymentFormGroup } from '@vat/components/ui/payment-form-group/PaymentFormGroup';
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
-import { Button } from '../button/Button';
+import { useOrderContext } from '@vat/context/order-context/OrderContext';
+import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
+
+import { useOrderPaymentPanel } from './useOrderPaymentPanel';
+
+export type PaymentMethodProps = 'credit-card' | 'paypal' | 'cash';
 
 export const OrderPaymentPanel = () => {
-  const [tableNo, setTableNo] = useState('');
-  const [error, setError] = useState('');
+  const orderContext = useOrderContext();
+  const snackbarContext = useSnackbarContext();
 
-  const handleClick = () => {
-    if (!tableNo) {
-      setError('Table number is required.');
-      return;
-    }
-
-    const paymentBtnRef = document.getElementById('creditCardFormBtn');
-
-    paymentBtnRef?.click();
-  };
+  const {
+    tableNo,
+    setTableNo,
+    error,
+    setError,
+    paymentMethod,
+    setPaymentMethod,
+    handleClick,
+  } = useOrderPaymentPanel({ orderContext, snackbarContext });
 
   return (
     <div className='flex h-full w-[410px] flex-col overflow-auto'>
@@ -38,7 +41,13 @@ export const OrderPaymentPanel = () => {
         <div className='flex flex-col gap-4 overflow-auto px-6 py-4'>
           <h2 className='text-heading-h2 text-white'>Payment Method</h2>
 
-          <PaymentFormGroup tableNo={tableNo} />
+          <PaymentFormGroup
+            orderContext={orderContext}
+            snackbarContext={snackbarContext}
+            tableNo={tableNo}
+            paymentMethod={paymentMethod}
+            setPaymentMethod={setPaymentMethod}
+          />
         </div>
         <div className='mx-6 border-t border-base-dark-line py-4'>
           <TextField
