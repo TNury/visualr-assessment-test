@@ -32,6 +32,8 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
     setErrors,
     handleOnChange,
     triggerPayment,
+    snackbarState,
+    setSnackbarState,
   } = useCreditCardForm({ tableNo, orderContext });
 
   return (
@@ -61,7 +63,7 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
             options={cardNumberElementOptions}
           />
           {errors.cardNumber && (
-            <p className='text-body-base-medium text-red-500'>
+            <p className='text-body-base-medium text-accents-red'>
               {errors.cardNumber}
             </p>
           )}
@@ -74,7 +76,7 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
               options={cardExpiryElementOptions}
             />
             {errors.cardExpiry && (
-              <p className='text-body-base-medium text-red-500'>
+              <p className='text-body-base-medium text-accents-red'>
                 {errors.cardExpiry}
               </p>
             )}
@@ -86,7 +88,7 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
               options={cardCvcElementOptions}
             />
             {errors.cardCvc && (
-              <p className='text-body-base-medium text-red-500'>
+              <p className='text-body-base-medium text-accents-red'>
                 {errors.cardCvc}
               </p>
             )}
@@ -98,14 +100,14 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
           onClick={triggerPayment}></button>
       </div>
       <Snackbar
-        variant='error'
-        open={Boolean(errors.request)}
-        message={errors.request}
+        variant={snackbarState.severity as 'success' | 'error'}
+        open={Boolean(snackbarState.severity)}
+        message={snackbarState.message}
         onClose={() => {
-          setErrors((prev) => ({
-            ...prev,
-            request: '',
-          }));
+          setSnackbarState({
+            severity: '',
+            message: '',
+          });
         }}
       />
     </div>

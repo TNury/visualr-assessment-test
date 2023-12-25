@@ -37,7 +37,10 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
     cardNumber: '',
     cardExpiry: '',
     cardCvc: '',
-    request: '',
+  });
+  const [snackbarState, setSnackbarState] = useState({
+    severity: '',
+    message: '',
   });
 
   const handleOnChange = (
@@ -135,21 +138,22 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
         dispatch({
           type: 'CLEAR_ORDER',
         });
+
+        setSnackbarState({
+          severity: 'success',
+          message: 'Your order has been placed.',
+        });
       } else {
-        setErrors((prev) => ({
-          ...prev,
-          request: 'Something went wrong. Please try again.',
-        }));
+        setSnackbarState({
+          severity: 'error',
+          message: 'Something went wrong. Please try again.',
+        });
       }
-
-      toggleSubmitBtns(false);
     } else {
-      toggleSubmitBtns(false);
-
-      setErrors((prev) => ({
-        ...prev,
-        request: 'Something went wrong. Please try again.',
-      }));
+      setSnackbarState({
+        severity: 'error',
+        message: 'Something went wrong. Please try again.',
+      });
     }
   };
 
@@ -160,5 +164,7 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
     setErrors,
     handleOnChange,
     triggerPayment,
+    snackbarState,
+    setSnackbarState,
   };
 };

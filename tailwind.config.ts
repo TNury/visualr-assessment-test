@@ -117,7 +117,9 @@ const config: Config = {
         'base-form-bg-hover': '#373A48',
 
         'accents-green': '#50D1AA',
+        'accents-bg-green': '#6BE2BE3D',
         'accents-red': '#FF7CA3',
+        'accents-bg-red': '#FF64713D',
         'accents-orange': '#FFB572',
         'accents-blue': '#65B0F6',
         'accents-purple': '#9290FE',
