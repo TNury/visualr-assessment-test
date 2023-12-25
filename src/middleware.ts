@@ -5,8 +5,16 @@ export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
   const menuId = searchParams.get('menu');
+  const isOrderConfirmationOpen =
+    searchParams.get('openConfirmationDrawer') === 'true';
+
+  const orderData = request.cookies.get('order')?.value;
 
   if (pathname === '/' && !menuId) {
+    return NextResponse.redirect(new URL('/?menu=1', request.url));
+  }
+
+  if (pathname === '/' && isOrderConfirmationOpen && !orderData) {
     return NextResponse.redirect(new URL('/?menu=1', request.url));
   }
 
