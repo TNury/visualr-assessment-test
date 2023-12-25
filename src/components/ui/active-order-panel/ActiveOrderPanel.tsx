@@ -26,11 +26,12 @@ export const ActiveOrderPanel = () => {
       {orderState.items.length > 0 ? (
         <div className='flex h-full flex-col'>
           <OrderSummary
-            maxHeight={390.4}
+            maxHeight={340.8}
             orderState={orderState}
             dispatch={dispatch}
           />
-          <div className='mt-[18px] px-6 pb-6'>
+
+          <div className='mt-auto px-6 pb-6 pt-[18px]'>
             <Link href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}>
               <Button variant='contained'>Continue to Payment</Button>
             </Link>
