@@ -2,49 +2,49 @@
 
 import { useEffect } from 'react';
 
+import ReactDOM from 'react-dom';
+
+import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
+
 import { cn } from '@vat/lib/utils';
 
-import { type VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 const snackbarVariants = cva(
-  'fixed rounded-lg bottom-4 animate-fade-in left-4 p-[14px] text-white',
+  'fixed rounded-lg z-[99] bottom-4 animate-fade-in left-32 p-[14px] text-white',
   {
     variants: {
       variant: {
-        default: 'bg-blue-500',
+        info: 'bg-blue-500',
         error: 'bg-accents-bg-red text-accents-red',
         success: 'bg-accents-bg-green text-accents-green',
         warning: 'bg-yellow-500',
       },
     },
     defaultVariants: {
-      variant: 'default',
+      variant: 'info',
     },
   }
 );
 
-interface SnackbarProps extends VariantProps<typeof snackbarVariants> {
-  open: boolean;
-  message: string;
-  onClose?: () => void;
-}
-
-export const Snackbar = (props: SnackbarProps) => {
-  const { open, message, variant, onClose } = props;
+export const Snackbar = () => {
+  const { snackbarState, dispatch } = useSnackbarContext();
+  const { severity, message } = snackbarState;
 
   useEffect(() => {
-    if (open && onClose) {
+    if (severity) {
       setTimeout(() => {
-        onClose();
+        dispatch({ type: 'CLEAR_SNACKBAR' });
       }, 5000);
     }
-  }, [open]);
+  }, [severity]);
 
-  return (
-    open && (
-      <div className={cn(snackbarVariants({ variant }))}>
-        <p className='text-body-lg-medium'>{message}</p>
-      </div>
-    )
+  if (!severity) return null;
+
+  return ReactDOM.createPortal(
+    <div className={cn(snackbarVariants({ variant: severity }))}>
+      <p className='text-body-lg-medium'>{message}</p>
+    </div>,
+    document.getElementsByTagName('body')[0]
   );
 };

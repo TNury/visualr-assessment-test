@@ -6,6 +6,7 @@ import { CreditCardForm } from '@vat/components/ui/credit-card-form/CreditCardFo
 import { PaymentOption } from '@vat/components/ui/payment-option/PaymentOption';
 
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
+import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
 
 const availableOptions = ['credit-card', 'paypal', 'cash'];
 
@@ -18,6 +19,7 @@ export const PaymentFormGroup: React.FC<PaymentFormGroupProps> = ({
 }) => {
   const [paymentMethod, setPaymentMethod] = useState('credit-card');
   const orderContext = useOrderContext();
+  const snackbarContext = useSnackbarContext();
 
   return (
     <div className='flex flex-col gap-4'>
@@ -31,7 +33,11 @@ export const PaymentFormGroup: React.FC<PaymentFormGroupProps> = ({
           />
         ))}
       </div>
-      <CreditCardForm orderContext={orderContext} tableNo={tableNo} />
+      <CreditCardForm
+        orderContext={orderContext}
+        snackbarContext={snackbarContext}
+        tableNo={tableNo}
+      />
     </div>
   );
 };

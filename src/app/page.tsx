@@ -4,7 +4,11 @@ import { Header } from '@vat/components/ui/header/Header';
 import { MenuNav } from '@vat/components/ui/menu-nav/MenuNav';
 import { OrderConfirmationDrawer } from '@vat/components/ui/order-confirmation-drawer/OrderConfirmationDrawer';
 
-import { RootProvider } from '@vat/context/RootProvider';
+import { OrderProvider } from '@vat/context/order-context/OrderContext';
+
+import { retrieveCookie } from '@vat/actions/cookies.actions';
+
+import { OrderStateProps } from '@vat/types/order.types';
 
 type HomeProps = {
   params: {};
@@ -17,17 +21,18 @@ type HomeProps = {
 // @ TODO, GET RID OF THE ARBITRARY WIDTH VALUE OF 663PX
 const Home: React.FC<HomeProps> = async (props) => {
   const activeMenu = props.searchParams.menu;
+  const activeOrder: OrderStateProps = await retrieveCookie('order');
 
   return (
     <main className='flex flex-col pb-6 pl-[128px] pr-[434px]'>
       <Header>
         <MenuNav activeMenu={activeMenu} />
       </Header>
-      <RootProvider>
+      <OrderProvider initialOrderData={activeOrder}>
         <DishesView activeMenu={activeMenu} />
         <ActiveOrderPanel />
         <OrderConfirmationDrawer />
-      </RootProvider>
+      </OrderProvider>
     </main>
   );
 };

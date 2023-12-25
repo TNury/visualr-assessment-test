@@ -7,8 +7,8 @@ import {
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
 import { OrderContextProps } from '@vat/types/order.types';
+import { SnackbarContextProps } from '@vat/types/snackbar.types';
 
-import { Snackbar } from '../snackbar/Snackbar';
 import { useCreditCardForm } from './useCreditCardForm';
 import {
   cardCvcElementOptions,
@@ -19,11 +19,13 @@ import {
 type CreditCardFormProps = {
   tableNo: string;
   orderContext: OrderContextProps;
+  snackbarContext: SnackbarContextProps;
 };
 
 export const CreditCardForm: React.FC<CreditCardFormProps> = ({
   orderContext,
   tableNo,
+  snackbarContext,
 }) => {
   const {
     cardHolderName,
@@ -32,9 +34,7 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
     setErrors,
     handleOnChange,
     triggerPayment,
-    snackbarState,
-    setSnackbarState,
-  } = useCreditCardForm({ tableNo, orderContext });
+  } = useCreditCardForm({ tableNo, orderContext, snackbarContext });
 
   return (
     <div className='flex flex-col gap-4'>
@@ -99,17 +99,6 @@ export const CreditCardForm: React.FC<CreditCardFormProps> = ({
           className='hidden'
           onClick={triggerPayment}></button>
       </div>
-      <Snackbar
-        variant={snackbarState.severity as 'success' | 'error'}
-        open={Boolean(snackbarState.severity)}
-        message={snackbarState.message}
-        onClose={() => {
-          setSnackbarState({
-            severity: '',
-            message: '',
-          });
-        }}
-      />
     </div>
   );
 };
