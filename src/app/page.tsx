@@ -7,6 +7,7 @@ import { OrderConfirmationDrawer } from '@vat/components/ui/order-confirmation-d
 import { OrderProvider } from '@vat/context/order-context/OrderContext';
 
 import { retrieveCookie } from '@vat/actions/cookies.actions';
+import { getTotalOrdersLength } from '@vat/actions/order.actions';
 
 import { OrderStateProps } from '@vat/types/order.types';
 
@@ -22,13 +23,16 @@ type HomeProps = {
 const Home: React.FC<HomeProps> = async (props) => {
   const activeMenu = props.searchParams.menu;
   const activeOrder: OrderStateProps = await retrieveCookie('order');
+  const totalOrdersLength = await getTotalOrdersLength();
 
   return (
     <main className='flex flex-col pb-6 pl-[128px] pr-[434px]'>
       <Header>
         <MenuNav activeMenu={activeMenu} />
       </Header>
-      <OrderProvider initialOrderData={activeOrder}>
+      <OrderProvider
+        initialOrderData={activeOrder}
+        initialOrderId={totalOrdersLength.data.orders.data[0].id}>
         <DishesView activeMenu={activeMenu} />
         <ActiveOrderPanel />
         <OrderConfirmationDrawer />

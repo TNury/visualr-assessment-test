@@ -3,6 +3,7 @@ import { DishEntityProps } from '@vat/types/menu.types';
 import {
   CreateOrderMutation,
   CreateOrderMutationVariables,
+  TotalOrdersLengthQuery,
 } from '@vat/types/queries.types';
 
 export type OrderItemProps = {
@@ -15,6 +16,7 @@ export type OrderItemProps = {
 };
 
 export type OrderStateProps = {
+  id: string;
   items: OrderItemProps[];
   subtotal: number;
 };
@@ -36,4 +38,9 @@ export type CreateOrderArgs = CreateOrderMutationVariables;
 export type CreateOrderResponse = {
   errors?: ErrorProps[];
   data?: CreateOrderMutation;
+};
+
+export type GetTotalOrdersLengthResponse = {
+  errors?: ErrorProps[];
+  data?: TotalOrdersLengthQuery;
 };

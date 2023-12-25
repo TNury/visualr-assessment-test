@@ -5,3 +5,11 @@ mutation createOrder($data: OrderInput!) {
     }
   }
 }
+
+query totalOrdersLength {
+  orders(sort: "id:desc", pagination: { limit: 1 }) {
+    data {
+      id
+    }
+  }
+}

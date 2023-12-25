@@ -22,7 +22,7 @@ export const OrderSummaryPanel = () => {
           <div className='flex flex-col gap-2'>
             <h1 className='text-heading-h1 text-white'>Your order</h1>
             <p className='text-body-lg-medium text-text-light'>
-              Order ID #34562
+              {`Order ID #${orderState.id}`}
             </p>
           </div>
           <Link href='/' scroll={false}>

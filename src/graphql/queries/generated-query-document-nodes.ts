@@ -53,3 +53,12 @@ export const CreateOrder = gql`
   }
 }
     `;
+export const TotalOrdersLength = gql`
+    query totalOrdersLength {
+  orders(sort: "id:desc", pagination: {limit: 1}) {
+    data {
+      id
+    }
+  }
+}
+    `;
