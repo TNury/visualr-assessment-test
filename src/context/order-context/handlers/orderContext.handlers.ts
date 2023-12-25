@@ -6,7 +6,7 @@ import { DishEntityProps } from '@vat/types/menu.types';
 import { OrderStateProps } from '@vat/types/order.types';
 
 function debouncedStoreCookie(key: string, value: OrderStateProps): void {
-  _.debounce(storeCookie, 2000)(key, value);
+  _.debounce(storeCookie, 1000)(key, value);
 }
 
 function returnOrderTotal(orderItems: OrderStateProps['items']): number {
