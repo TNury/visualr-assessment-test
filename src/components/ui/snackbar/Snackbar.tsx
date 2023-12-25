@@ -12,7 +12,7 @@ const snackbarVariants = cva(
     variants: {
       variant: {
         default: 'bg-blue-500',
-        error: 'bg-red-500',
+        error: 'bg-accents-red',
         success: 'bg-green-500',
         warning: 'bg-yellow-500',
       },
