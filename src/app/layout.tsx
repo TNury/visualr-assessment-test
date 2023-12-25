@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { Barlow } from 'next/font/google';
 
+import '@vat/styles/globals.css';
+
 import { Sidebar } from '@vat/components/layout/sidebar/Sidebar';
+
 import { cn } from '@vat/lib/utils';
 
-import './globals.css';
-
 const barlow = Barlow({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600'],
   style: 'normal',
   subsets: ['latin'],
 });
