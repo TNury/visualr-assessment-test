@@ -71,7 +71,6 @@ export type Dish = {
   media?: Maybe<UploadFileEntityResponse>;
   menu?: Maybe<MenuEntityResponse>;
   price?: Maybe<Scalars['Float']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -101,7 +100,6 @@ export type DishFiltersInput = {
   not?: InputMaybe<DishFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<DishFiltersInput>>>;
   price?: InputMaybe<FloatFilterInput>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -110,7 +108,6 @@ export type DishInput = {
   media?: InputMaybe<Scalars['ID']['input']>;
   menu?: InputMaybe<Scalars['ID']['input']>;
   price?: InputMaybe<Scalars['Float']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -118,6 +115,12 @@ export type DishRelationResponseCollection = {
   __typename?: 'DishRelationResponseCollection';
   data: Array<DishEntity>;
 };
+
+export enum Enum_Order_Status {
+  Completed = 'Completed',
+  Pending = 'Pending',
+  Preparing = 'Preparing'
+}
 
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']['input']>;
@@ -149,7 +152,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Dish | I18NLocale | Menu | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Dish | I18NLocale | Menu | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -272,7 +275,6 @@ export type Menu = {
 export type MenuDishesArgs = {
   filters?: InputMaybe<DishFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -317,6 +319,7 @@ export type Mutation = {
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
   createDish?: Maybe<DishEntityResponse>;
   createMenu?: Maybe<MenuEntityResponse>;
+  createOrder?: Maybe<OrderEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
@@ -325,6 +328,7 @@ export type Mutation = {
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
   deleteDish?: Maybe<DishEntityResponse>;
   deleteMenu?: Maybe<MenuEntityResponse>;
+  deleteOrder?: Maybe<OrderEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -345,6 +349,7 @@ export type Mutation = {
   updateDish?: Maybe<DishEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
   updateMenu?: Maybe<MenuEntityResponse>;
+  updateOrder?: Maybe<OrderEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -369,6 +374,11 @@ export type MutationCreateDishArgs = {
 
 export type MutationCreateMenuArgs = {
   data: MenuInput;
+};
+
+
+export type MutationCreateOrderArgs = {
+  data: OrderInput;
 };
 
 
@@ -398,6 +408,11 @@ export type MutationDeleteDishArgs = {
 
 
 export type MutationDeleteMenuArgs = {
+  id: Scalars['ID']['input'];
+};
+
+
+export type MutationDeleteOrderArgs = {
   id: Scalars['ID']['input'];
 };
 
@@ -480,6 +495,12 @@ export type MutationUpdateMenuArgs = {
 };
 
 
+export type MutationUpdateOrderArgs = {
+  data: OrderInput;
+  id: Scalars['ID']['input'];
+};
+
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput;
   id: Scalars['ID']['input'];
@@ -512,6 +533,63 @@ export type MutationUploadArgs = {
   refId?: InputMaybe<Scalars['ID']['input']>;
 };
 
+export type Order = {
+  __typename?: 'Order';
+  createdAt?: Maybe<Scalars['DateTime']['output']>;
+  dishes?: Maybe<DishRelationResponseCollection>;
+  owner?: Maybe<Scalars['String']['output']>;
+  status?: Maybe<Enum_Order_Status>;
+  tableNumber?: Maybe<Scalars['String']['output']>;
+  total?: Maybe<Scalars['Float']['output']>;
+  updatedAt?: Maybe<Scalars['DateTime']['output']>;
+};
+
+
+export type OrderDishesArgs = {
+  filters?: InputMaybe<DishFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type OrderEntity = {
+  __typename?: 'OrderEntity';
+  attributes?: Maybe<Order>;
+  id?: Maybe<Scalars['ID']['output']>;
+};
+
+export type OrderEntityResponse = {
+  __typename?: 'OrderEntityResponse';
+  data?: Maybe<OrderEntity>;
+};
+
+export type OrderEntityResponseCollection = {
+  __typename?: 'OrderEntityResponseCollection';
+  data: Array<OrderEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type OrderFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  dishes?: InputMaybe<DishFiltersInput>;
+  id?: InputMaybe<IdFilterInput>;
+  not?: InputMaybe<OrderFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
+  owner?: InputMaybe<StringFilterInput>;
+  status?: InputMaybe<StringFilterInput>;
+  tableNumber?: InputMaybe<StringFilterInput>;
+  total?: InputMaybe<FloatFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type OrderInput = {
+  dishes?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  owner?: InputMaybe<Scalars['String']['input']>;
+  status?: InputMaybe<Enum_Order_Status>;
+  tableNumber?: InputMaybe<Scalars['String']['input']>;
+  total?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type Pagination = {
   __typename?: 'Pagination';
   page: Scalars['Int']['output'];
@@ -541,6 +619,8 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>;
   menu?: Maybe<MenuEntityResponse>;
   menus?: Maybe<MenuEntityResponseCollection>;
+  order?: Maybe<OrderEntityResponse>;
+  orders?: Maybe<OrderEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -560,7 +640,6 @@ export type QueryDishArgs = {
 export type QueryDishesArgs = {
   filters?: InputMaybe<DishFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -586,6 +665,18 @@ export type QueryMenusArgs = {
   filters?: InputMaybe<MenuFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type QueryOrderArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+};
+
+
+export type QueryOrdersArgs = {
+  filters?: InputMaybe<OrderFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -1052,3 +1143,10 @@ export type MenuByIdQueryVariables = Exact<{
 
 
 export type MenuByIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
+
+export type CreateOrderMutationVariables = Exact<{
+  data: OrderInput;
+}>;
+
+
+export type CreateOrderMutation = { __typename?: 'Mutation', createOrder?: { __typename?: 'OrderEntityResponse', data?: { __typename?: 'OrderEntity', id?: string | null } | null } | null };

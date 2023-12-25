@@ -44,3 +44,12 @@ export const MenuById = gql`
   }
 }
     ${MediaProps}`;
+export const CreateOrder = gql`
+    mutation createOrder($data: OrderInput!) {
+  createOrder(data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;

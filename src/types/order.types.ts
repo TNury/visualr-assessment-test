@@ -1,4 +1,9 @@
+import { ErrorProps } from '@vat/types/error.types';
 import { DishEntityProps } from '@vat/types/menu.types';
+import {
+  CreateOrderMutation,
+  CreateOrderMutationVariables,
+} from '@vat/types/queries.types';
 
 export type OrderItemProps = {
   id: string;
@@ -24,4 +29,11 @@ export type OrderActionProps =
 export type OrderContextProps = {
   orderState: OrderStateProps;
   dispatch: React.Dispatch<OrderActionProps>;
+};
+
+export type CreateOrderArgs = CreateOrderMutationVariables;
+
+export type CreateOrderResponse = {
+  errors?: ErrorProps[];
+  data?: CreateOrderMutation;
 };
