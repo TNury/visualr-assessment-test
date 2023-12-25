@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
-import { Button } from '@vat/components/ui/button/Button';
 import { Logout } from '@vat/icons/Logout';
 
-import { SidebarMenu } from './sidebar-menu/SidebarMenu';
+import { SidebarMenu } from '@vat/components/layout/sidebar/sidebar-menu/SidebarMenu';
+import { Button } from '@vat/components/ui/button/Button';
 
 export const Sidebar = () => {
   return (
