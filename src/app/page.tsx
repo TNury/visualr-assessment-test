@@ -15,7 +15,7 @@ type HomeProps = {
 };
 
 // @ TODO, GET RID OF THE ARBITRARY WIDTH VALUE OF 663PX
-export const Home: React.FC<HomeProps> = async (props) => {
+const Home: React.FC<HomeProps> = async (props) => {
   const activeMenu = props.searchParams.menu;
   const openConfirmationDrawer =
     props.searchParams.openConfirmationDrawer === 'true';
