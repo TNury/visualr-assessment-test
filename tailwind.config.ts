@@ -126,6 +126,20 @@ const config: Config = {
     boxShadow: {
       md: '0px 8px 24px rgba(234, 124, 105, 0.32)',
     },
+    animation: {
+      'slide-in-left': 'slideInLeft 200ms ease-in-out',
+      'fade-in': 'fadeIn 200ms ease-in-out',
+    },
+    keyframes: {
+      slideInLeft: {
+        '0%': { transform: 'translateX(100%)' },
+        '100%': { transform: 'translateX(0%)' },
+      },
+      fadeIn: {
+        '0%': { opacity: '0' },
+        '100%': { opacity: '1' },
+      },
+    },
   },
   plugins: [],
 };
