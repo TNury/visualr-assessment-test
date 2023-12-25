@@ -23,7 +23,8 @@ type HomeProps = {
 const Home: React.FC<HomeProps> = async (props) => {
   const activeMenu = props.searchParams.menu;
   const activeOrder: OrderStateProps = await retrieveCookie('order');
-  const totalOrdersLength = await getTotalOrdersLength();
+  const totalOrdersLengthResponse = await getTotalOrdersLength();
+  const totalOrdersLength = totalOrdersLengthResponse.data.orders.data[0]?.id;
 
   return (
     <main className='flex flex-col pb-6 pl-[128px] pr-[434px]'>
@@ -32,7 +33,7 @@ const Home: React.FC<HomeProps> = async (props) => {
       </Header>
       <OrderProvider
         initialOrderData={activeOrder}
-        initialOrderId={totalOrdersLength.data.orders.data[0].id}>
+        initialOrderId={totalOrdersLength ? totalOrdersLength : '1'}>
         <DishesView activeMenu={activeMenu} />
         <ActiveOrderPanel />
         <OrderConfirmationDrawer />

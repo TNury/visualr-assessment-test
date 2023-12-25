@@ -24,7 +24,6 @@ const reducer = (
         message: SnackbarAction.payload.message,
       };
     case 'CLEAR_SNACKBAR':
-      console.log('Was called');
       return {
         severity: undefined,
         message: '',

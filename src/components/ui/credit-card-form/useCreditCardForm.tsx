@@ -153,6 +153,7 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
         }
       }
     } catch (error) {
+      console.log(error);
       dispatchSnackbar({
         type: 'SET_SNACKBAR',
         payload: {
