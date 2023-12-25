@@ -12,7 +12,7 @@ function returnSchema() {
 
   schema[schemaURL] = {
     headers: {
-      Authorization: `${process.env.strapiKey}`,
+      Authorization: `${process.env.NEXT_PUBLIC_strapiKey}`,
     },
   };
 
