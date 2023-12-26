@@ -35,7 +35,7 @@ export const StatisticsHighlight: React.FC<StatisticsHighlightProps> = ({
           <p className='text-body-sm-medium text-accents-red group-data-[negative="false"]:text-accents-green'>
             {percentage}
           </p>
-          <div className='flex h-[18px] w-[18px] items-center justify-center rounded-full bg-accents-bg-red group-data-[negative="false"]:bg-accents-bg-green'>
+          <div className='h-4.5 w-4.5 flex items-center justify-center rounded-full bg-accents-bg-red group-data-[negative="false"]:bg-accents-bg-green'>
             <Arrow className='text-accents-red group-data-[negative="true"]:-rotate-180 group-data-[negative="false"]:text-accents-green' />
           </div>
         </div>

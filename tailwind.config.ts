@@ -8,6 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      width: {
+        '4.5': '1.125rem', // 18px
+      },
+      height: {
+        '4.5': '1.125rem', // 18px
+      },
+      padding: {
+        '4.5': '1.125rem', // 18px
+      },
       screens: {
         xs: '0px',
         sm: '640px',

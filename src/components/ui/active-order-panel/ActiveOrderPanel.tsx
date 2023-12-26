@@ -26,7 +26,7 @@ export const ActiveOrderPanel = () => {
         <div className='grid h-full grid-rows-[1fr,auto] overflow-auto'>
           <OrderSummary orderState={orderState} dispatch={dispatch} />
 
-          <div className='mt-auto px-6 pb-6 pt-[18px]'>
+          <div className='pt-4.5 mt-auto px-6 pb-6'>
             <Link
               href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}
               scroll={false}>
