@@ -23,3 +23,32 @@ export function returnMediaProps(imageProps: MediaProps) {
 export function returnFormattedPrice(price: number) {
   return `$ ${price.toFixed(2)}`;
 }
+
+export function getTodayAtMidnight() {
+  const currentDate = new Date();
+
+  // Add the specified number of days to the current date
+  const targetDate = new Date(currentDate);
+  targetDate.setDate(currentDate.getDate());
+
+  // Set the time to 12:00:00
+  targetDate.setHours(0, 0, 0, 0);
+
+  // Format the date in ISO string format
+  const formattedDate = targetDate.toISOString();
+
+  return formattedDate;
+}
+
+export function getTodayFormatted() {
+  const dateNow = new Date();
+
+  const weekday = dateNow.toLocaleDateString('en-US', { weekday: 'long' });
+  const day = dateNow.toLocaleDateString('en-US', { day: 'numeric' });
+  const month = dateNow.toLocaleDateString('en-US', { month: 'short' });
+  const year = dateNow.toLocaleDateString('en-US', { year: 'numeric' });
+
+  const formattedDate = `${weekday} ${day} ${month}, ${year}`;
+
+  return formattedDate;
+}
