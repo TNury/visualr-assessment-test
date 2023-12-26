@@ -30,7 +30,7 @@ const Home: React.FC<HomeProps> = async (props) => {
   const totalOrdersLength = totalOrdersLengthResponse.data.orders.data[0]?.id;
 
   return (
-    <main className='flex flex-col pb-6 pl-[128px] pr-[434px]'>
+    <main className='flex flex-col gap-6 pb-6 pl-[128px] pr-[434px]'>
       <Header>
         <MenuNav activeMenu={activeMenu} />
       </Header>
