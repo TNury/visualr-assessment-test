@@ -541,6 +541,7 @@ export type Order = {
   status?: Maybe<Enum_Order_Status>;
   tableNumber?: Maybe<Scalars['String']['output']>;
   total?: Maybe<Scalars['Float']['output']>;
+  totalDishes?: Maybe<Scalars['Int']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
 
@@ -579,6 +580,7 @@ export type OrderFiltersInput = {
   status?: InputMaybe<StringFilterInput>;
   tableNumber?: InputMaybe<StringFilterInput>;
   total?: InputMaybe<FloatFilterInput>;
+  totalDishes?: InputMaybe<IntFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -588,6 +590,7 @@ export type OrderInput = {
   status?: InputMaybe<Enum_Order_Status>;
   tableNumber?: InputMaybe<Scalars['String']['input']>;
   total?: InputMaybe<Scalars['Float']['input']>;
+  totalDishes?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type Pagination = {
@@ -1169,4 +1172,4 @@ export type RawDashboardHighlightsByDateRangeQueryVariables = Exact<{
 }>;
 
 
-export type RawDashboardHighlightsByDateRangeQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
+export type RawDashboardHighlightsByDateRangeQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, totalDishes?: number | null } | null }> } | null };

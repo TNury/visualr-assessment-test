@@ -98,7 +98,7 @@ export function getCalculatedDashboardHighlights(
   const totalDishesOrdered: number = _.reduce(
     ordersData,
     (sum, order) => {
-      return sum + order.attributes.dishes.data.length;
+      return sum + order.attributes.totalDishes
     },
     0
   );

@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { deleteCookie } from '@vat/actions/cookies.actions';
 import { createOrder } from '@vat/actions/order.actions';
 
 import { OrderContextProps } from '@vat/types/order.types';
@@ -50,6 +49,7 @@ export const useOrderPaymentPanel = (props: UseOrderPaymentPanelProps) => {
             dishes: orderState.items.map((item) => item.id),
             status: Enum_Order_Status.Pending,
             tableNumber: tableNo,
+            totalDishes: orderState.itemsCount,
           },
         });
 

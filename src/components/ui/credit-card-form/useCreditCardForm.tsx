@@ -1,6 +1,6 @@
 'use client';
 
-import { Dispatch, useState } from 'react';
+import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -131,6 +131,7 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
             dishes: orderState.items.map((item) => item.id),
             status: Enum_Order_Status.Pending,
             tableNumber: tableNo,
+            totalDishes: orderState.itemsCount,
           },
         });
 

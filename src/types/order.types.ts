@@ -20,6 +20,7 @@ export type OrderStateProps = {
   id: string;
   items: OrderItemProps[];
   subtotal: number;
+  itemsCount: number;
 };
 
 export type OrderActionProps =

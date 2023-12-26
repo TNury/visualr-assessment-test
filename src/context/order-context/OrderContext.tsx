@@ -22,6 +22,7 @@ const INITIAL_ORDER_STATE: OrderStateProps = {
   id: '',
   items: [],
   subtotal: 0,
+  itemsCount: 0,
 };
 
 const orderReducer = (

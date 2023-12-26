@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import { deleteCookie, storeCookie } from '@vat/actions/cookies.actions';
+import { storeCookie } from '@vat/actions/cookies.actions';
 
 import { DishEntityProps } from '@vat/types/menu.types';
 import { OrderStateProps } from '@vat/types/order.types';
@@ -12,6 +12,12 @@ function debouncedStoreCookie(key: string, value: OrderStateProps): void {
 function returnOrderTotal(orderItems: OrderStateProps['items']): number {
   return orderItems.reduce((acc, curr) => {
     return acc + curr.price * curr.quantity;
+  }, 0);
+}
+
+function returnItemsCount(orderItems: OrderStateProps['items']): number {
+  return orderItems.reduce((acc, curr) => {
+    return acc + curr.quantity;
   }, 0);
 }
 
@@ -48,6 +54,7 @@ export function handleOrderItemAddition(
     ...currentState,
     items: updatedOrderItems,
     subtotal: returnOrderTotal(updatedOrderItems),
+    itemsCount: returnItemsCount(updatedOrderItems),
   };
 
   debouncedStoreCookie('order', updatedOrderState);
@@ -68,6 +75,7 @@ export function handleOrderItemRemoval(
     ...currentState,
     items: updatedOrderItems,
     subtotal: returnOrderTotal(updatedOrderItems),
+    itemsCount: returnItemsCount(updatedOrderItems),
   };
 
   debouncedStoreCookie('order', updatedOrderState);
@@ -89,6 +97,7 @@ export function handleOrderItemQuantityUpdate(
     ...currentState,
     items: updatedOrderItems,
     subtotal: returnOrderTotal(updatedOrderItems),
+    itemsCount: returnItemsCount(updatedOrderItems),
   };
 
   debouncedStoreCookie('order', updatedOrderState);
@@ -123,6 +132,7 @@ export function handleOrderClear(
     id: String(Number(currentState.id) + 1),
     items: [],
     subtotal: 0,
+    itemsCount: 0,
   };
 
   debouncedStoreCookie('order', updatedOrderData);

@@ -26,11 +26,7 @@ query rawDashboardHighlightsByDateRange(
       attributes {
         owner
         total
-        dishes {
-          data {
-            id
-          }
-        }
+        totalDishes
       }
     }
   }

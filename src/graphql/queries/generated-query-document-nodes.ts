@@ -90,11 +90,7 @@ export const RawDashboardHighlightsByDateRange = gql`
       attributes {
         owner
         total
-        dishes {
-          data {
-            id
-          }
-        }
+        totalDishes
       }
     }
   }
