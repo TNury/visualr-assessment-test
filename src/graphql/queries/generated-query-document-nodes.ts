@@ -80,3 +80,20 @@ export const TotalOrdersLength = gql`
   }
 }
     `;
+export const RawDashboardHighlightsByDate = gql`
+    query rawDashboardHighlightsByDate($dateToday: DateTime!) {
+  orders(pagination: {limit: 999}, filters: {createdAt: {gte: $dateToday}}) {
+    data {
+      attributes {
+        owner
+        total
+        dishes {
+          data {
+            id
+          }
+        }
+      }
+    }
+  }
+}
+    `;

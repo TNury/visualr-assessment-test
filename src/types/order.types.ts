@@ -3,6 +3,7 @@ import { DishEntityProps } from '@vat/types/menu.types';
 import {
   CreateOrderMutation,
   CreateOrderMutationVariables,
+  RawDashboardHighlightsByDateQuery,
   TotalOrdersLengthQuery,
 } from '@vat/types/queries.types';
 
@@ -43,4 +44,9 @@ export type CreateOrderResponse = {
 export type GetTotalOrdersLengthResponse = {
   errors?: ErrorProps[];
   data?: TotalOrdersLengthQuery;
+};
+
+export type RawDashboardHighlightsByDateResponse = {
+  errors?: ErrorProps[];
+  data?: RawDashboardHighlightsByDateQuery;
 };
