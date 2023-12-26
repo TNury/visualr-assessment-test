@@ -1,5 +1,7 @@
 import { MenuSearchField } from '@vat/components/ui/menu-search-field/MenuSearchField';
 
+import { getTodayFormatted } from '@vat/lib/utils';
+
 type HeaderProps = {
   children?: React.ReactNode;
 };
@@ -12,7 +14,7 @@ export const Header: React.FC<HeaderProps> = ({ children }) => {
         <div className='flex w-full flex-col justify-start gap-1'>
           <h1 className='text-heading-h1 text-white'>Jaegar Resto</h1>
           <p className='text-body-lg-regular text-text-lighter'>
-            Tuesday 2 Feb, 2021
+            {getTodayFormatted()}
           </p>
         </div>
         <MenuSearchField />
