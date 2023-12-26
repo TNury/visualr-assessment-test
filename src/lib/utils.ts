@@ -1,8 +1,10 @@
+import _ from 'lodash';
 import { twMerge } from 'tailwind-merge';
 
 import { type ClassValue, clsx } from 'clsx';
 
 import { MediaProps } from '@vat/types/media.types';
+import { RawDashboardHighlightsByDateRangeResponse } from '@vat/types/order.types';
 
 /**
  * Merges class names using the `clsx` and `tailwind-merge` libraries.
@@ -80,4 +82,60 @@ export function getTodayFormatted() {
   const formattedDate = `${weekday} ${day} ${month}, ${year}`;
 
   return formattedDate;
+}
+
+export function getCalculatedDashboardHighlights(
+  ordersData: RawDashboardHighlightsByDateRangeResponse['data']['orders']['data']
+) {
+  const totalOrdersRevenue: number = _.reduce(
+    ordersData,
+    (sum, order) => {
+      return sum + order.attributes.total;
+    },
+    0
+  );
+
+  const totalDishesOrdered: number = _.reduce(
+    ordersData,
+    (sum, order) => {
+      return sum + order.attributes.dishes.data.length;
+    },
+    0
+  );
+
+  const uniqueOrders = ordersData.filter(
+    (entry) => entry.attributes.owner !== 'Anonymous'
+  );
+  const uniqueCustomers = uniqueOrders.length;
+
+  const anonymousOrders = ordersData.filter(
+    (entry) => entry.attributes.owner === 'Anonymous'
+  );
+  const anonymousCustomers = anonymousOrders.length;
+
+  const totalCustomers = uniqueCustomers + anonymousCustomers;
+
+  return {
+    totalOrdersRevenue: Math.round(totalOrdersRevenue),
+    totalDishesOrdered,
+    totalCustomers,
+  };
+}
+
+export function calculatePercentageChange(
+  yesterday: ReturnType<typeof getCalculatedDashboardHighlights>,
+  today: ReturnType<typeof getCalculatedDashboardHighlights>
+): Record<string, string> {
+  const result: Record<string, string> = {};
+
+  for (const key in yesterday) {
+    if (yesterday.hasOwnProperty(key) && today.hasOwnProperty(key)) {
+      const percentageChange =
+        ((today[key] - yesterday[key]) / yesterday[key]) * 100;
+      const sign = percentageChange >= 0 ? '+' : '-';
+      result[key] = `${sign}${Math.abs(percentageChange).toFixed(2)}%`;
+    }
+  }
+
+  return result;
 }

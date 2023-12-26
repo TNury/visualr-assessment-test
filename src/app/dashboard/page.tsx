@@ -25,17 +25,20 @@ const Dashboard = async () => {
         <StatisticsHighlight
           label='Total Revenue'
           statisticType='totalRevenue'
-          total={returnFormattedPrice(totalOrdersRevenue)}
+          total={returnFormattedPrice(totalOrdersRevenue.value)}
+          percentage={totalOrdersRevenue.percentage}
         />
         <StatisticsHighlight
           label='Total Dish Ordered'
           statisticType='totalDishes'
-          total={returnFormattedNumber(totalDishesOrdered)}
+          total={returnFormattedNumber(totalDishesOrdered.value)}
+          percentage={totalDishesOrdered.percentage}
         />
         <StatisticsHighlight
           label='Total Customer'
           statisticType='totalCustomers'
-          total={returnFormattedNumber(totalCustomers)}
+          total={returnFormattedNumber(totalCustomers.value)}
+          percentage={totalCustomers.percentage}
         />
       </div>
     </main>

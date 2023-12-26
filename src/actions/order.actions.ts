@@ -2,7 +2,11 @@ import _ from 'lodash';
 
 import callAPI from '@vat/services/api';
 
-import { getDateAtMidnight } from '@vat/lib/utils';
+import {
+  calculatePercentageChange,
+  getCalculatedDashboardHighlights,
+  getDateAtMidnight,
+} from '@vat/lib/utils';
 
 import {
   CreateOrderArgs,
@@ -34,50 +38,53 @@ export async function getTotalOrdersLength(): Promise<GetTotalOrdersLengthRespon
 }
 
 export async function getDashboardHighlights() {
+  const yesterday = getDateAtMidnight(-1);
   const today = getDateAtMidnight();
   const tomorrow = getDateAtMidnight(1);
 
-  const response: RawDashboardHighlightsByDateRangeResponse = await callAPI(
-    'RawDashboardHighlightsByDateRange',
-    { dateStart: today, dateEnd: tomorrow },
-    {
-      cache: 'no-cache',
-    }
+  const ordersDataTodayResponse: RawDashboardHighlightsByDateRangeResponse =
+    await callAPI(
+      'RawDashboardHighlightsByDateRange',
+      { dateStart: today, dateEnd: tomorrow },
+      {
+        cache: 'no-cache',
+      }
+    );
+  const ordersDataToday = ordersDataTodayResponse.data.orders.data;
+
+  const ordersDataYesterdayReponse: RawDashboardHighlightsByDateRangeResponse =
+    await callAPI(
+      'RawDashboardHighlightsByDateRange',
+      { dateStart: yesterday, dateEnd: today },
+      {
+        cache: 'no-cache',
+      }
+    );
+  const ordersDataYesterday = ordersDataYesterdayReponse.data.orders.data;
+
+  const calculatedHighlightsToday =
+    getCalculatedDashboardHighlights(ordersDataToday);
+
+  const calculatedHighlightsYesterday =
+    getCalculatedDashboardHighlights(ordersDataYesterday);
+
+  const highlightsPercentages = calculatePercentageChange(
+    calculatedHighlightsYesterday,
+    calculatedHighlightsToday
   );
-
-  const ordersData = response.data.orders.data;
-
-  const totalOrdersRevenue: number = _.reduce(
-    ordersData,
-    (sum, order) => {
-      return sum + order.attributes.total;
-    },
-    0
-  );
-
-  const totalDishesOrdered: number = _.reduce(
-    ordersData,
-    (sum, order) => {
-      return sum + order.attributes.dishes.data.length;
-    },
-    0
-  );
-
-  const uniqueOrders = ordersData.filter(
-    (entry) => entry.attributes.owner !== 'Anonymous'
-  );
-  const uniqueCustomers = uniqueOrders.length;
-
-  const anonymousOrders = ordersData.filter(
-    (entry) => entry.attributes.owner === 'Anonymous'
-  );
-  const anonymousCustomers = anonymousOrders.length;
-
-  const totalCustomers = uniqueCustomers + anonymousCustomers;
 
   return {
-    totalOrdersRevenue: Math.round(totalOrdersRevenue),
-    totalDishesOrdered,
-    totalCustomers,
+    totalOrdersRevenue: {
+      value: calculatedHighlightsToday.totalOrdersRevenue,
+      percentage: highlightsPercentages.totalOrdersRevenue,
+    },
+    totalDishesOrdered: {
+      value: calculatedHighlightsToday.totalDishesOrdered,
+      percentage: highlightsPercentages.totalDishesOrdered,
+    },
+    totalCustomers: {
+      value: calculatedHighlightsToday.totalCustomers,
+      percentage: highlightsPercentages.totalCustomers,
+    },
   };
 }
