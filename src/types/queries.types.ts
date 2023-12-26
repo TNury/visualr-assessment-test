@@ -1163,9 +1163,10 @@ export type TotalOrdersLengthQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type TotalOrdersLengthQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', id?: string | null }> } | null };
 
-export type RawDashboardHighlightsByDateQueryVariables = Exact<{
-  dateToday: Scalars['DateTime']['input'];
+export type RawDashboardHighlightsByDateRangeQueryVariables = Exact<{
+  dateStart: Scalars['DateTime']['input'];
+  dateEnd: Scalars['DateTime']['input'];
 }>;
 
 
-export type RawDashboardHighlightsByDateQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
+export type RawDashboardHighlightsByDateRangeQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };

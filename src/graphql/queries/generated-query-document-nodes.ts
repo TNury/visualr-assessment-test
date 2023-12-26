@@ -80,9 +80,12 @@ export const TotalOrdersLength = gql`
   }
 }
     `;
-export const RawDashboardHighlightsByDate = gql`
-    query rawDashboardHighlightsByDate($dateToday: DateTime!) {
-  orders(pagination: {limit: 999}, filters: {createdAt: {gte: $dateToday}}) {
+export const RawDashboardHighlightsByDateRange = gql`
+    query rawDashboardHighlightsByDateRange($dateStart: DateTime!, $dateEnd: DateTime!) {
+  orders(
+    pagination: {limit: 999}
+    filters: {createdAt: {gte: $dateStart, lt: $dateEnd}}
+  ) {
     data {
       attributes {
         owner

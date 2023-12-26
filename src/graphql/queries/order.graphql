@@ -14,10 +14,13 @@ query totalOrdersLength {
   }
 }
 
-query rawDashboardHighlightsByDate($dateToday: DateTime!) {
+query rawDashboardHighlightsByDateRange(
+  $dateStart: DateTime!
+  $dateEnd: DateTime!
+) {
   orders(
     pagination: { limit: 999 }
-    filters: { createdAt: { gte: $dateToday } }
+    filters: { createdAt: { gte: $dateStart, lt: $dateEnd } }
   ) {
     data {
       attributes {

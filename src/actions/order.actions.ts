@@ -2,11 +2,13 @@ import _ from 'lodash';
 
 import callAPI from '@vat/services/api';
 
+import { getDateAtMidnight } from '@vat/lib/utils';
+
 import {
   CreateOrderArgs,
   CreateOrderResponse,
   GetTotalOrdersLengthResponse,
-  RawDashboardHighlightsByDateResponse,
+  RawDashboardHighlightsByDateRangeResponse,
 } from '@vat/types/order.types';
 
 export async function createOrder(
@@ -31,10 +33,13 @@ export async function getTotalOrdersLength(): Promise<GetTotalOrdersLengthRespon
   return response;
 }
 
-export async function getDashboardHighlightsByDate(date: string) {
-  const response: RawDashboardHighlightsByDateResponse = await callAPI(
-    'RawDashboardHighlightsByDate',
-    { dateToday: date },
+export async function getDashboardHighlights() {
+  const today = getDateAtMidnight();
+  const tomorrow = getDateAtMidnight(1);
+
+  const response: RawDashboardHighlightsByDateRangeResponse = await callAPI(
+    'RawDashboardHighlightsByDateRange',
+    { dateStart: today, dateEnd: tomorrow },
     {
       cache: 'no-cache',
     }
