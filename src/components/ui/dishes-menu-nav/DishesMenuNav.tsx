@@ -25,12 +25,10 @@ export const DishesMenuNav: React.FC<DishesMenuNav> = async ({
                 query: { menu: entry.id },
               }}
               key={index}
-              className='relative flex flex-col pb-3 text-body-base-semibold text-white data-[active="true"]:text-primary'>
+              className='group relative flex flex-col pb-3 text-body-base-semibold text-white transition-all duration-150 hover:text-primary active:opacity-70 data-[active="true"]:text-primary'>
               {entry.attributes.title}
 
-              {entry.id === activeMenu && (
-                <div className='absolute bottom-[-2px] left-0 h-[3px] w-3/5 rounded-sm bg-primary' />
-              )}
+              <div className='absolute bottom-[-2px] left-0 h-[3px] w-3/5 rounded-sm bg-primary transition-all duration-150 group-data-[active="false"]:w-0' />
             </Link>
           </li>
         ))}
