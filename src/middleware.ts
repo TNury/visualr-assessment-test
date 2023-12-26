@@ -18,6 +18,12 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/?menu=1', request.url));
   }
 
+  if (pathname.includes('products-management') && !menuId) {
+    return NextResponse.redirect(
+      new URL('/settings/products-management?menu=1', request.url)
+    );
+  }
+
   return NextResponse.next();
 }
 
