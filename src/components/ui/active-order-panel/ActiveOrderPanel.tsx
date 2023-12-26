@@ -35,9 +35,9 @@ export const ActiveOrderPanel = () => {
           </div>
         </div>
       ) : (
-        <div className='flex flex-col items-center gap-4 p-6 text-center'>
+        <div className='flex flex-col items-center gap-1 p-6 text-center'>
           <h2 className='text-heading-h1 text-white'>Your cart is empty</h2>
-          <p className='max-w-36 text-body-lg-semibold text-text-lighter'>
+          <p className='max-w-36 text-body-lg-regular text-text-lighter'>
             Add items to create an order
           </p>
         </div>
