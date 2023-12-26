@@ -23,12 +23,8 @@ export const ActiveOrderPanel = () => {
         </div>
       </div>
       {orderState.items.length > 0 ? (
-        <div className='flex h-full flex-col'>
-          <OrderSummary
-            maxHeight={340.8}
-            orderState={orderState}
-            dispatch={dispatch}
-          />
+        <div className='grid h-full grid-rows-[1fr,auto] overflow-auto'>
+          <OrderSummary orderState={orderState} dispatch={dispatch} />
 
           <div className='mt-auto px-6 pb-6 pt-[18px]'>
             <Link

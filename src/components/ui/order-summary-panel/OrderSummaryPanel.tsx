@@ -33,11 +33,7 @@ export const OrderSummaryPanel = () => {
         </div>
       </div>
 
-      <OrderSummary
-        maxHeight={268}
-        orderState={orderState}
-        dispatch={dispatch}
-      />
+      <OrderSummary orderState={orderState} dispatch={dispatch} />
     </div>
   );
 };
