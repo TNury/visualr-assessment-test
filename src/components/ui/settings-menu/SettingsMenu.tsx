@@ -11,9 +11,9 @@ import { Security } from '@vat/icons/Security';
 
 const menuItems = [
   {
-    name: 'Appereance',
+    name: 'Appearance',
     description: 'Dark and Light mode, Font size',
-    href: '/settings/appereance',
+    href: '/settings/appearance',
     icon: <Appereance />,
   },
   {
@@ -51,7 +51,7 @@ export const SettingsMenu = () => {
         {menuItems.map((item, index) => (
           <li key={index}>
             <Link
-              href={'/settings/products-management'}
+              href={item.href}
               data-active={item.href === pathname}
               className='hover:bg-base-dark-bg-1-hover group flex p-6 data-[active="true"]:bg-primary-hover-2'>
               <div className='relative flex w-full flex-col gap-1'>
