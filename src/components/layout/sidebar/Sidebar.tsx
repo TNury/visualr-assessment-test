@@ -7,7 +7,7 @@ import { Button } from '@vat/components/ui/button/Button';
 
 export const Sidebar = () => {
   return (
-    <div className='fixed left-0 top-0 flex h-screen flex-col items-center gap-4 rounded-r-lg bg-base-dark-bg-2 py-6'>
+    <nav className='fixed left-0 top-0 flex h-screen flex-col items-center gap-4 rounded-r-lg bg-base-dark-bg-2 py-6'>
       <Image
         src='/assets/media/png/logo.png'
         width={224}
@@ -15,12 +15,14 @@ export const Sidebar = () => {
         alt='logo'
         className='h-14 w-14'
       />
-      <SidebarMenu />
-      <Button
-        variant='base'
-        className='z-10 mt-auto flex h-14 w-14 items-center justify-center'>
-        <Logout className='z-10 h-6 w-6 text-primary' />
-      </Button>
-    </div>
+      <ul className='h-full w-full flex flex-col items-center'>
+        <SidebarMenu />
+        <Button
+          variant='base'
+          className='z-10 mt-auto flex h-14 w-14 items-center justify-center'>
+          <Logout className='z-10 h-6 w-6 text-primary' />
+        </Button>
+      </ul>
+    </nav>
   );
 };
