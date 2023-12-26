@@ -97,7 +97,7 @@ const config: Config = {
       colors: {
         primary: '#EA7C69',
         'primary-hover-1': '#FE907D',
-        'primary-hover-2': 'rgba(234, 124, 105, 0.16)',
+        'primary-hover-2': '#EA7C6929',
         secondary: '#9288E0',
 
         'text-gray': '#889898',
@@ -110,6 +110,7 @@ const config: Config = {
         'base-dark-line': '#393C49',
         'base-dark-line-2': '#ABBBC2',
         'base-dark-bg-1': '#252836',
+        'base-dark-bg-1-hover': '#2D303E80',
         'base-dark-bg-2': '#1F1D2B',
         'base-dark-bg-2-hover': '#232131',
 
