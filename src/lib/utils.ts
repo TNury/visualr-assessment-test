@@ -27,24 +27,33 @@ export function returnMediaProps(imageProps: MediaProps) {
 
 /**
  * Formats the given price as a string with a dollar sign and two decimal places.
- * 
+ *
  * @param price - The price to be formatted.
  * @returns The formatted price string.
  */
 export function returnFormattedPrice(price: number) {
-  return `$ ${price.toFixed(2)}`;
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  })
+    .format(price)
+    .replace('$', '$ ');
+}
+
+export function returnFormattedNumber(value: number) {
+  return new Intl.NumberFormat('en-US').format(value);
 }
 
 /**
- * Returns the current date at midnight in ISO string format.
+ * Returns the date at midnight in ISO string format.
  * @returns The formatted date in ISO string format.
  */
-export function getTodayAtMidnight() {
+export function getDateAtMidnight(daysToAdd: number = 0) {
   const currentDate = new Date();
 
   // Add the specified number of days to the current date
   const targetDate = new Date(currentDate);
-  targetDate.setDate(currentDate.getDate());
+  targetDate.setDate(currentDate.getDate() + daysToAdd);
 
   // Set the time to 12:00:00
   targetDate.setHours(0, 0, 0, 0);
