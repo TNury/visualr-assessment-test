@@ -1,7 +1,7 @@
 import { ActiveOrderPanel } from '@vat/components/ui/active-order-panel/ActiveOrderPanel';
+import { DishesMenuNav } from '@vat/components/ui/dishes-menu-nav/DishesMenuNav';
 import { DishesView } from '@vat/components/ui/dishes-view/DishesView';
-import { Header } from '@vat/components/ui/header/Header';
-import { MenuNav } from '@vat/components/ui/menu-nav/MenuNav';
+import { HomepageHeader } from '@vat/components/ui/homepage-header/HomepageHeader';
 import { OrderConfirmationDrawer } from '@vat/components/ui/order-confirmation-drawer/OrderConfirmationDrawer';
 
 import { OrderProvider } from '@vat/context/order-context/OrderContext';
@@ -31,9 +31,9 @@ const Home: React.FC<HomeProps> = async (props) => {
 
   return (
     <main className='flex flex-col gap-6 pb-6 pl-[128px] pr-[434px]'>
-      <Header>
-        <MenuNav activeMenu={activeMenu} />
-      </Header>
+      <HomepageHeader>
+        <DishesMenuNav linkPathname='/' activeMenu={activeMenu} />
+      </HomepageHeader>
       <OrderProvider
         initialOrderData={activeOrder}
         initialOrderId={
