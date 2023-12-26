@@ -68,7 +68,7 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
   };
 
   return (
-    <div className='flex flex-col gap-[10px]'>
+    <div className='flex flex-col gap-2.5'>
       <div className='flex items-center gap-4'>
         <Image
           src={returnMediaProps(orderItem.media.data).src}

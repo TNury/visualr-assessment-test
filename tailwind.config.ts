@@ -10,9 +10,11 @@ const config: Config = {
     extend: {
       width: {
         '4.5': '1.125rem', // 18px
+        '33': '8.25rem', // 132px
       },
       height: {
         '4.5': '1.125rem', // 18px
+        '33': '8.25rem', // 132px
       },
       padding: {
         '4.5': '1.125rem', // 18px

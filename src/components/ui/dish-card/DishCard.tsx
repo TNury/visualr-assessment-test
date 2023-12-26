@@ -10,17 +10,16 @@ export type DishCardProps = {
   dishProps: DishEntityProps;
 };
 
-// @ TODO, REVIEW THE ARBITRARY VALUES USED HERE
 export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
   return (
-    <div className='pb-4.5 group relative flex w-full flex-col items-center gap-[10px] px-6 pt-0'>
+    <div className='pb-4.5 group relative flex w-full flex-col items-center gap-2.5 px-6 pt-0'>
       <div className='z-20 flex w-full items-end justify-center'>
         <Image
           src={returnMediaProps(dishProps.attributes.media.data).src}
           alt={dishProps.attributes.title}
           width={528}
           height={528}
-          className='h-[132px] w-[132px] transition-all duration-200 group-hover:-rotate-45 group-hover:scale-110'
+          className='h-33 w-33 transition-all duration-200 group-hover:-rotate-45 group-hover:scale-110'
         />
       </div>
       <div className='z-20 flex h-full flex-col gap-2'>
