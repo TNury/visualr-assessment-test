@@ -45,8 +45,10 @@ export async function getDashboardHighlights() {
     }
   );
 
+  const ordersData = response.data.orders.data;
+
   const totalOrdersRevenue: number = _.reduce(
-    response.data.orders.data,
+    ordersData,
     (sum, order) => {
       return sum + order.attributes.total;
     },
@@ -54,14 +56,24 @@ export async function getDashboardHighlights() {
   );
 
   const totalDishesOrdered: number = _.reduce(
-    response.data.orders.data,
+    ordersData,
     (sum, order) => {
       return sum + order.attributes.dishes.data.length;
     },
     0
   );
 
-  const totalCustomers = response.data.orders.data.length + 1;
+  const uniqueOrders = ordersData.filter(
+    (entry) => entry.attributes.owner !== 'Anonymous'
+  );
+  const uniqueCustomers = uniqueOrders.length;
+
+  const anonymousOrders = ordersData.filter(
+    (entry) => entry.attributes.owner === 'Anonymous'
+  );
+  const anonymousCustomers = anonymousOrders.length;
+
+  const totalCustomers = uniqueCustomers + anonymousCustomers;
 
   return {
     totalOrdersRevenue: Math.round(totalOrdersRevenue),
