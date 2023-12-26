@@ -121,8 +121,10 @@ const config: Config = {
         'accents-red': '#FF7CA3',
         'accents-bg-red': '#FF64713D',
         'accents-orange': '#FFB572',
+        'accents-bg-orange': '#FFB57233',
         'accents-blue': '#65B0F6',
         'accents-purple': '#9290FE',
+        'accents-bg-purple': '#9290FE33',
       },
     },
     boxShadow: {

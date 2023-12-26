@@ -1173,3 +1173,11 @@ export type RawDashboardHighlightsByDateRangeQueryVariables = Exact<{
 
 
 export type RawDashboardHighlightsByDateRangeQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, totalDishes?: number | null } | null }> } | null };
+
+export type OrderReportByPaginationQueryVariables = Exact<{
+  start: Scalars['Int']['input'];
+  limit: Scalars['Int']['input'];
+}>;
+
+
+export type OrderReportByPaginationQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', id?: string | null, attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, status?: Enum_Order_Status | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', attributes?: { __typename?: 'Dish', title?: string | null } | null }> } | null } | null }> } | null };

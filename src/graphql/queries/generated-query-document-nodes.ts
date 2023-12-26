@@ -96,3 +96,24 @@ export const RawDashboardHighlightsByDateRange = gql`
   }
 }
     `;
+export const OrderReportByPagination = gql`
+    query orderReportByPagination($start: Int!, $limit: Int!) {
+  orders(pagination: {start: $start, limit: $limit}) {
+    data {
+      id
+      attributes {
+        owner
+        total
+        status
+        dishes {
+          data {
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    `;

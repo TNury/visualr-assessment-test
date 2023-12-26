@@ -12,6 +12,8 @@ import {
   CreateOrderArgs,
   CreateOrderResponse,
   GetTotalOrdersLengthResponse,
+  OrderReportByPaginationArgs,
+  OrderReportByPaginationResponse,
   RawDashboardHighlightsByDateRangeResponse,
 } from '@vat/types/order.types';
 
@@ -87,4 +89,18 @@ export async function getDashboardHighlights() {
       percentage: highlightsPercentages.totalCustomers,
     },
   };
+}
+
+export async function getOrdersReportByPagination(
+  args: OrderReportByPaginationArgs
+): Promise<OrderReportByPaginationResponse> {
+  const response: OrderReportByPaginationResponse = await callAPI(
+    'OrderReportByPagination',
+    args,
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  return response;
 }
