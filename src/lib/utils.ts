@@ -13,6 +13,11 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Returns the media properties with the updated `src` attribute.
+ * @param imageProps - The media properties object.
+ * @returns The updated media properties object.
+ */
 export function returnMediaProps(imageProps: MediaProps) {
   return {
     ...imageProps.attributes,
@@ -20,10 +25,20 @@ export function returnMediaProps(imageProps: MediaProps) {
   };
 }
 
+/**
+ * Formats the given price as a string with a dollar sign and two decimal places.
+ * 
+ * @param price - The price to be formatted.
+ * @returns The formatted price string.
+ */
 export function returnFormattedPrice(price: number) {
   return `$ ${price.toFixed(2)}`;
 }
 
+/**
+ * Returns the current date at midnight in ISO string format.
+ * @returns The formatted date in ISO string format.
+ */
 export function getTodayAtMidnight() {
   const currentDate = new Date();
 
@@ -40,6 +55,11 @@ export function getTodayAtMidnight() {
   return formattedDate;
 }
 
+/**
+ * Returns the current date formatted as a string.
+ * The format is "Weekday Day Month, Year".
+ * @returns The formatted date string.
+ */
 export function getTodayFormatted() {
   const dateNow = new Date();
 
