@@ -28,7 +28,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <link rel='icon' href='/assets/media/png/logo.png' sizes='512x512' />
       </head>
       <SnackbarProvider>
-        <body className={cn(barlow.className, 'bg-base-dark-bg-1')}>
+        <body
+          className={cn(
+            barlow.className,
+            'bg-base-dark-bg-1 transition-opacity duration-200'
+          )}>
           <Sidebar />
           {children}
         </body>
