@@ -57,7 +57,11 @@ export const MediaField: FC<MediaFieldProps> = ({ label, error, addMedia }) => {
         {imagePreview ? (
           <div className='flex w-full flex-col items-center'>
             <div className='flex w-full justify-center py-6'>
-              <img src={imagePreview} alt='Preview' className='h-33 w-33 object-cover' />
+              <img
+                src={imagePreview}
+                alt='Media preview'
+                className='h-33 w-33 object-cover'
+              />
             </div>
             <Button
               type='button'
@@ -84,7 +88,7 @@ export const MediaField: FC<MediaFieldProps> = ({ label, error, addMedia }) => {
         )}
         <input
           type='file'
-          accept={'image/*'}
+          accept='.png, .jpg, .jpeg'
           ref={fileInputRef}
           className='hidden'
           onChange={handleFileAddition}
