@@ -4,12 +4,10 @@ import { getMenusData } from '@vat/actions/menu.actions';
 
 type DishesMenuNav = {
   activeMenu: string;
-  linkPathname: string;
 };
 
 export const DishesMenuNav: React.FC<DishesMenuNav> = async ({
   activeMenu,
-  linkPathname,
 }) => {
   const menusData = await getMenusData();
 
@@ -21,7 +19,6 @@ export const DishesMenuNav: React.FC<DishesMenuNav> = async ({
             <Link
               data-active={entry.id === activeMenu}
               href={{
-                pathname: linkPathname,
                 query: { menu: entry.id },
               }}
               key={index}

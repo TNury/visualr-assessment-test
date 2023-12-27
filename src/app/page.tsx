@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = async (props) => {
   return (
     <main className='flex flex-col gap-6 pb-6 pl-[128px] pr-[434px]'>
       <HomepageHeader>
-        <DishesMenuNav linkPathname='/' activeMenu={activeMenu} />
+        <DishesMenuNav activeMenu={activeMenu} />
       </HomepageHeader>
       <OrderProvider
         initialOrderData={activeOrder}
