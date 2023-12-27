@@ -32,7 +32,7 @@ export const OrderConfirmationDrawer = () => {
             },
           ],
         }}>
-        <div className='flex h-full w-fit rounded-l-2xl bg-base-dark-bg-2'>
+        <div className='flex h-full w-fit'>
           <div className='w-fit border-r border-base-dark-line'>
             <OrderSummaryPanel />
           </div>
