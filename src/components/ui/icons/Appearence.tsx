@@ -1,6 +1,6 @@
 interface IconProps extends React.HTMLAttributes<SVGElement> {}
 
-export const Appereance: React.FC<IconProps> = (props) => {
+export const Appearence: React.FC<IconProps> = (props) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'

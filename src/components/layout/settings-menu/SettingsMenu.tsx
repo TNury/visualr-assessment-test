@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { Appereance } from '@vat/icons/Appereance';
+import { Appearence } from '@vat/icons/Appearence';
 import { Discount } from '@vat/icons/Discount';
 import { Notifications } from '@vat/icons/Notifications';
 import { Restaurant } from '@vat/icons/Restaurant';
@@ -14,7 +14,7 @@ const menuItems = [
     name: 'Appearance',
     description: 'Dark and Light mode, Font size',
     href: '/settings/appearance',
-    icon: <Appereance />,
+    icon: <Appearence />,
   },
   {
     name: 'Products Management',
@@ -53,7 +53,7 @@ export const SettingsMenu = () => {
             <Link
               href={item.href}
               data-active={item.href === pathname}
-              className='hover:bg-base-dark-bg-1-hover group flex p-6 transition-all duration-150 data-[active="true"]:bg-primary-hover-2'>
+              className='group flex p-6 transition-all duration-150 hover:bg-base-dark-bg-1-hover data-[active="true"]:bg-primary-hover-2'>
               <div className='relative flex w-full flex-col gap-1'>
                 <div className='flex w-full items-center gap-2'>
                   <div className='text-text-light group-data-[active="true"]:!text-primary'>
