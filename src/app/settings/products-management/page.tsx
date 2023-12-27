@@ -6,14 +6,14 @@ type ProductsManagementProps = {
   params: {};
   searchParams: {
     menu: string;
-    openDishCreationDrawer: string;
+    openDishCreationDrawerOnMenu: string;
   };
 };
 
 const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
   const activeMenu = props.searchParams.menu;
   const openDishCreationDrawer =
-    props.searchParams.openDishCreationDrawer === 'true';
+    props.searchParams.openDishCreationDrawerOnMenu;
 
   return (
     <div className='flex h-full w-full flex-col'>
@@ -24,7 +24,7 @@ const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
         <DishesMenuNav activeMenu={activeMenu} />
       </div>
       <DishesManagementView activeMenu={activeMenu} />
-      {openDishCreationDrawer && <DishCreationDrawer />}
+      {Boolean(openDishCreationDrawer) && <DishCreationDrawer />}
     </div>
   );
 };
