@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@vat/components/ui/button/Button';
 import { OrderSummary } from '@vat/components/ui/order-summary/OrderSummary';
+import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
 
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
 
@@ -26,7 +27,7 @@ export const ActiveOrderPanel = () => {
         <div className='grid h-full grid-rows-[1fr,auto] overflow-auto'>
           <OrderSummary orderState={orderState} dispatch={dispatch} />
 
-          <div className='pt-4.5 mt-auto px-6 pb-6'>
+          <div className='mt-auto px-6 pb-6 pt-4.5'>
             <Link
               href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}
               scroll={false}>
@@ -35,12 +36,10 @@ export const ActiveOrderPanel = () => {
           </div>
         </div>
       ) : (
-        <div className='flex flex-col items-center gap-1 p-6 text-center'>
-          <h2 className='text-heading-h1 text-white'>Your cart is empty</h2>
-          <p className='max-w-36 text-body-lg-regular text-text-lighter'>
-            Add items to create an order
-          </p>
-        </div>
+        <PlaceholderMessage
+          title='Your cart is empty'
+          body='Add items to create an order'
+        />
       )}
     </div>
   );
