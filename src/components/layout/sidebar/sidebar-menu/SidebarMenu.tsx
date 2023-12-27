@@ -50,7 +50,7 @@ export const SidebarMenu = () => {
             href={entry.href}
             data-active={handleHighlight(entry.href)}
             className='group relative -mr-[1px] flex items-center justify-center pr-0'>
-            <Background className='text-base-dark-bg-1 transition-all duration-150 group-data-[active="false"]:translate-x-full' />
+            <Background className='text-base-dark-bg-1 transition-transform duration-150 group-data-[active="false"]:translate-x-full' />
 
             <Button
               variant={handleHighlight(entry.href) ? 'contained' : 'ghost'}

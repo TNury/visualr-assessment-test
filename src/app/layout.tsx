@@ -31,7 +31,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <body
           className={cn(
             barlow.className,
-            'bg-base-dark-bg-1 transition-opacity duration-200'
+            'bg-base-dark-bg-1 transition-opacity duration-150'
           )}>
           <Sidebar />
           {children}

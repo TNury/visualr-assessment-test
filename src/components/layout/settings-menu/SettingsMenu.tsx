@@ -53,7 +53,7 @@ export const SettingsMenu = () => {
             <Link
               href={item.href}
               data-active={item.href === pathname}
-              className='group flex p-6 transition-all duration-150 hover:bg-base-dark-bg-1-hover data-[active="true"]:bg-primary-hover-2'>
+              className='group flex p-6 transition-colors duration-150 hover:bg-base-dark-bg-1-hover data-[active="true"]:bg-primary-hover-2'>
               <div className='relative flex w-full flex-col gap-1'>
                 <div className='flex w-full items-center gap-2'>
                   <div className='text-text-light group-data-[active="true"]:!text-primary'>
@@ -66,9 +66,8 @@ export const SettingsMenu = () => {
                 <p className='ml-[24px] text-body-sm-regular text-text-light'>
                   {item.description}
                 </p>
-                {item.href === pathname && (
-                  <div className='absolute -right-6 top-0 h-full w-1 rounded-full bg-primary' />
-                )}
+
+                <div className='absolute -right-6 top-0 h-full w-1 rounded-full bg-primary transition-opacity duration-150 group-data-[active="false"]:opacity-0' />
               </div>
             </Link>
           </li>

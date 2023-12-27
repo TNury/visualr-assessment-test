@@ -38,7 +38,7 @@ export const TextField: React.FC<TextFieldProps> = (props) => {
         data-has-icon={Boolean(icon)}
         data-error={Boolean(error)}
         className={cn(
-          'h-12 rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-sm leading-[140%] text-text-lighter caret-white outline-none transition-all duration-150 placeholder:text-text-gray hover:!border-base-dark-line hover:!bg-base-form-bg-hover focus:!border-base-dark-line-2 focus:!bg-base-dark-bg-2 data-[error="true"]:border-accents-bg-red data-[error="true"]:bg-accents-bg-red data-[has-icon="true"]:pl-[42px]',
+          'h-12 rounded-lg border border-base-dark-line bg-base-form-bg p-[14px] text-sm leading-[140%] text-text-lighter caret-white outline-none transition-colors duration-150 placeholder:text-text-gray hover:!border-base-dark-line hover:!bg-base-form-bg-hover focus:!border-base-dark-line-2 focus:!bg-base-dark-bg-2 data-[error="true"]:border-accents-bg-red data-[error="true"]:bg-accents-bg-red data-[has-icon="true"]:pl-[42px]',
           className
         )}
         placeholder={props.placeholder}
