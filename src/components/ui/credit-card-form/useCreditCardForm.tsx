@@ -11,6 +11,8 @@ import {
   StripeCardNumberElementChangeEvent,
 } from '@stripe/stripe-js';
 
+import { useDrawerLoading } from '@vat/components/ui/drawer/useDrawerLoading';
+
 import { createOrder } from '@vat/actions/order.actions';
 import { createPaymentIntent } from '@vat/actions/payment.actions';
 
@@ -33,6 +35,8 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
   const elements = useElements();
 
   const router = useRouter();
+
+  const { setLoading } = useDrawerLoading();
 
   const [cardHolderName, setCardHolderName] = useState('');
   const [errors, setErrors] = useState({
@@ -66,20 +70,8 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
     }
   };
 
-  const toggleSubmitBtns = (disabled: boolean) => {
-    const submitBtnWrapper = document.getElementById('orderPaymentPanelBtns');
-
-    if (disabled) {
-      submitBtnWrapper?.classList.add('opacity-70');
-      submitBtnWrapper?.classList.add('pointer-events-none');
-    } else {
-      submitBtnWrapper?.classList.remove('opacity-70');
-      submitBtnWrapper?.classList.remove('pointer-events-none');
-    }
-  };
-
   const triggerPayment = async () => {
-    toggleSubmitBtns(true);
+    setLoading(true);
 
     if (!stripe || !elements) {
       // In case Stripe.js has not yet loaded.
@@ -91,7 +83,7 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
     const cardCvcElement = elements.getElement('cardCvc');
 
     if (!cardNumberElement || !cardExpiryElement || !cardCvcElement) {
-      toggleSubmitBtns(false);
+      setLoading(false);
 
       return;
     }
@@ -102,7 +94,7 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
         cardHolderName: 'Card holder name is required.',
       }));
 
-      toggleSubmitBtns(false);
+      setLoading(false);
 
       return;
     }
@@ -164,7 +156,7 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
       });
     }
 
-    toggleSubmitBtns(false);
+    setLoading(false);
   };
 
   return {
