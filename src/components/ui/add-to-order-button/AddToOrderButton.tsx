@@ -20,7 +20,7 @@ export const AddToOrderButton: React.FC<AddToOrderButtonProps> = ({
 
   return (
     <Button
-      variant='base'
+      variant='ghost'
       size='sm'
       className='flex items-center justify-center gap-2'
       onClick={handleAddToCart}>

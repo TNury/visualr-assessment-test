@@ -26,7 +26,7 @@ export const OrderSummaryPanel = () => {
             </p>
           </div>
           <Link href='/' scroll={false}>
-            <Button variant='contained-secondary' className='w-fit'>
+            <Button variant='contained-2' className='w-fit'>
               <Add className='h-5 w-5' />
             </Button>
           </Link>

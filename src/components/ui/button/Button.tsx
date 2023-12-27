@@ -7,19 +7,24 @@ import { type VariantProps, cva } from 'class-variance-authority';
 // @ TODO, GET RID OF THE ARBITRARY PADDING VALUE OF 14PX
 // @ TODO, CHECK THE PADDING OF THE SM VARIANT
 const buttonVariants = cva(
-  'w-full p-[14px] text-sm font-semibold leading-[140%] disabled:opacity-70 disabled:pointer-events-none transition-all duration-150',
+  'w-full p-[14px] text-sm font-semibold leading-[140%] transition-all duration-200 disabled:pointer-events-none disabled:opacity-70',
   {
     variants: {
       variant: {
-        base: 'bg-transparent text-primary hover:bg-primary-hover-2 active:opacity-70',
-        'base-2':
-          'bg-primary-hover-2 text-primary hover:text-white hover:bg-primary active:opacity-70',
+        ghost:
+          'bg-transparent text-primary hover:bg-primary-hover-2 active:opacity-70',
+        'ghost-2':
+          'bg-primary-hover-2 text-primary hover:bg-primary hover:text-white active:opacity-70',
+        'ghost-3':
+          'bg-transparent text-text-lighter hover:bg-base-dark-bg-1 hover:text-white active:opacity-70',
+        'ghost-4':
+          'bg-base-dark-bg-1 text-text-lighter hover:bg-base-form-bg hover:text-white active:opacity-70',
         contained:
           'bg-primary text-base-bg shadow-md hover:bg-primary-hover-1 active:opacity-70',
-        'contained-secondary':
+        'contained-2':
           'bg-primary text-base-bg hover:bg-primary-hover-1 active:opacity-70',
         outlined:
-          'bg-transparent border text-primary border-primary hover:bg-primary-hover-2 active:opacity-70',
+          'border border-primary bg-transparent text-primary hover:bg-primary-hover-2 active:opacity-70',
       },
       shape: {
         rounded: 'rounded-lg',
