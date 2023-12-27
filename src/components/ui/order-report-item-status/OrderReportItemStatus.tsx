@@ -1,13 +1,13 @@
 import { cn } from '@vat/lib/utils';
 
-import { OrderReportByPaginationResponseEntityProps } from '@vat/types/order.types';
+import { PaginatedOrderReportByDateQueryEntityProps } from '@vat/types/order.types';
 
 import { VariantProps, cva } from 'class-variance-authority';
 
 // @ TODO, GET RID OF THE ARBITRARY PADDING VALUE OF 14PX
 // @ TODO, CHECK THE PADDING OF THE SM VARIANT
 const orderReportItemStatusVariants = cva(
-  'h-fit w-full text-center rounded-full px-3 py-1',
+  'h-fit w-full rounded-full px-3 py-1 text-center',
   {
     variants: {
       variant: {
@@ -23,7 +23,7 @@ const orderReportItemStatusVariants = cva(
 );
 
 type OrderReportItemStatus = {
-  orderProps: OrderReportByPaginationResponseEntityProps;
+  orderProps: PaginatedOrderReportByDateQueryEntityProps;
 };
 
 export const OrderReportItemStatus: React.FC<OrderReportItemStatus> = ({
