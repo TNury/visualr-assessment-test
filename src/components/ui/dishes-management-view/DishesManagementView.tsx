@@ -17,7 +17,7 @@ export const DishesManagementView: React.FC<
   const menuResponse = await getMenuById({ id: activeMenu });
 
   return (
-    <div className='grid w-full flex-1 auto-rows-max grid-cols-3 gap-4 overflow-auto p-6 xl:grid-cols-6'>
+    <div className='grid w-full flex-1 auto-rows-max grid-cols-3 gap-4 overflow-auto p-6 lg:grid-cols-4 xl:grid-cols-6'>
       <div className='flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-primary'>
         <Link
           href={{
