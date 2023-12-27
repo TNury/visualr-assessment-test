@@ -53,7 +53,7 @@ export const SidebarMenu = () => {
             <Background className='text-base-dark-bg-1 transition-all duration-150 group-data-[active="false"]:translate-x-full' />
 
             <Button
-              variant={handleHighlight(entry.href) ? 'contained' : 'base'}
+              variant={handleHighlight(entry.href) ? 'contained' : 'ghost'}
               className='absolute left-3 z-10 flex h-14 w-14 items-center justify-center text-primary group-data-[active="true"]:text-white'
               role='none'
               tabIndex={-1}>
