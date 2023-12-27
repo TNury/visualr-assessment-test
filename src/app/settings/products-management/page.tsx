@@ -6,12 +6,14 @@ type ProductsManagementProps = {
   params: {};
   searchParams: {
     menu: string;
+
     openDishCreationDrawerOnMenu: string;
   };
 };
 
 const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
   const activeMenu = props.searchParams.menu;
+
   const openDishCreationDrawer =
     props.searchParams.openDishCreationDrawerOnMenu;
 
@@ -24,7 +26,13 @@ const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
         <DishesMenuNav activeMenu={activeMenu} />
       </div>
       <DishesManagementView activeMenu={activeMenu} />
-      {Boolean(openDishCreationDrawer) && <DishCreationDrawer />}
+
+      {Boolean(openDishCreationDrawer) && (
+        <DishCreationDrawer
+          menuId={activeMenu}
+          menuTitle={openDishCreationDrawer}
+        />
+      )}
     </div>
   );
 };
