@@ -3,8 +3,8 @@ import { DishEntityProps } from '@vat/types/menu.types';
 import {
   CreateOrderMutation,
   CreateOrderMutationVariables,
-  OrderReportByPaginationQuery,
-  OrderReportByPaginationQueryVariables,
+  PaginatedOrderReportByDateQuery,
+  PaginatedOrderReportByDateQueryVariables,
   RawDashboardHighlightsByDateRangeQuery,
   TotalOrdersLengthQuery,
 } from '@vat/types/queries.types';
@@ -54,12 +54,13 @@ export type RawDashboardHighlightsByDateRangeResponse = {
   data?: RawDashboardHighlightsByDateRangeQuery;
 };
 
-export type OrderReportByPaginationArgs = OrderReportByPaginationQueryVariables;
+export type PaginatedOrderReportByDateArgs =
+  PaginatedOrderReportByDateQueryVariables;
 
-export type OrderReportByPaginationResponse = {
+export type PaginatedOrderReportByDateRespose = {
   errors?: ErrorProps[];
-  data?: OrderReportByPaginationQuery;
+  data?: PaginatedOrderReportByDateQuery;
 };
 
-export type OrderReportByPaginationResponseEntityProps =
-  OrderReportByPaginationResponse['data']['orders']['data'][0];
+export type PaginatedOrderReportByDateQueryEntityProps =
+  PaginatedOrderReportByDateRespose['data']['orders']['data'][0];

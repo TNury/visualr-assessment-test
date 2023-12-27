@@ -53,3 +53,11 @@ query dishesBySearchString($searchString: String!) {
     }
   }
 }
+
+mutation createDish($data: DishInput!) {
+  createDish(data: $data) {
+    data {
+      id
+    }
+  }
+}

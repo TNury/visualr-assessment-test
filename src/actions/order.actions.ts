@@ -12,8 +12,8 @@ import {
   CreateOrderArgs,
   CreateOrderResponse,
   GetTotalOrdersLengthResponse,
-  OrderReportByPaginationArgs,
-  OrderReportByPaginationResponse,
+  PaginatedOrderReportByDateArgs,
+  PaginatedOrderReportByDateRespose,
   RawDashboardHighlightsByDateRangeResponse,
 } from '@vat/types/order.types';
 
@@ -91,11 +91,11 @@ export async function getDashboardHighlights() {
   };
 }
 
-export async function getOrdersReportByPagination(
-  args: OrderReportByPaginationArgs
-): Promise<OrderReportByPaginationResponse> {
-  const response: OrderReportByPaginationResponse = await callAPI(
-    'OrderReportByPagination',
+export async function getPaginatedOrderReportsByDate(
+  args: PaginatedOrderReportByDateArgs
+): Promise<PaginatedOrderReportByDateRespose> {
+  const response: PaginatedOrderReportByDateRespose = await callAPI(
+    'PaginatedOrderReportByDate',
     args,
     {
       cache: 'no-cache',

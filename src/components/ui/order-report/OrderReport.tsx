@@ -1,14 +1,17 @@
 import React from 'react';
 
 import { OrderReportItem } from '@vat/components/ui/order-report-item/OrderReportItem';
+import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
 
-import { OrderReportByPaginationResponse } from '@vat/types/order.types';
+import { PaginatedOrderReportByDateRespose } from '@vat/types/order.types';
 
 type OrderReportProps = {
-  orderReport: OrderReportByPaginationResponse;
+  orderReport: PaginatedOrderReportByDateRespose;
 };
 
 export const OrderReport: React.FC<OrderReportProps> = ({ orderReport }) => {
+  const isEmpty = orderReport.data.orders.data.length === 0;
+
   return (
     <div className='flex flex-1 flex-col overflow-auto rounded-lg bg-base-dark-bg-2'>
       <div className='flex flex-col gap-6 border-b border-base-dark-line p-6'>
@@ -25,9 +28,17 @@ export const OrderReport: React.FC<OrderReportProps> = ({ orderReport }) => {
         </div>
       </div>
       <div className='flex h-full w-full flex-col overflow-auto px-6'>
-        {orderReport.data.orders.data.map((entry) => (
-          <OrderReportItem key={entry.id} orderProps={entry} />
-        ))}
+        {isEmpty ? (
+          <PlaceholderMessage
+            title='No orders yet'
+            body='Start taking orders by going to the menu page and add dishes to your menu.'
+            bodySize='lg'
+          />
+        ) : (
+          orderReport.data.orders.data.map((entry) => (
+            <OrderReportItem key={entry.id} orderProps={entry} />
+          ))
+        )}
       </div>
     </div>
   );

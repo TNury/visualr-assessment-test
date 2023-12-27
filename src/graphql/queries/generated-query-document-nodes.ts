@@ -63,6 +63,15 @@ export const DishesBySearchString = gql`
   }
 }
     ${MediaProps}`;
+export const CreateDish = gql`
+    mutation createDish($data: DishInput!) {
+  createDish(data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const CreateOrder = gql`
     mutation createOrder($data: OrderInput!) {
   createOrder(data: $data) {
@@ -97,9 +106,9 @@ export const RawDashboardHighlightsByDateRange = gql`
   }
 }
     `;
-export const OrderReportByPagination = gql`
-    query orderReportByPagination($start: Int!, $limit: Int!) {
-  orders(pagination: {start: $start, limit: $limit}) {
+export const PaginatedOrderReportByDate = gql`
+    query paginatedOrderReportByDate($pagination: PaginationArg!, $date: DateTimeFilterInput!) {
+  orders(pagination: $pagination, filters: {createdAt: $date}) {
     data {
       id
       attributes {

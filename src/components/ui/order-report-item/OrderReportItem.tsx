@@ -2,10 +2,10 @@ import { OrderReportItemStatus } from '@vat/components/ui/order-report-item-stat
 
 import { returnFormattedPrice } from '@vat/lib/utils';
 
-import { OrderReportByPaginationResponseEntityProps } from '@vat/types/order.types';
+import { PaginatedOrderReportByDateQueryEntityProps } from '@vat/types/order.types';
 
 type OrderReportItemPropsProps = {
-  orderProps: OrderReportByPaginationResponseEntityProps;
+  orderProps: PaginatedOrderReportByDateQueryEntityProps;
 };
 
 export const OrderReportItem: React.FC<OrderReportItemPropsProps> = ({

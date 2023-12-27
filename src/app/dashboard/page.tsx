@@ -3,10 +3,11 @@ import { StatisticsHighlight } from '@vat/components/ui/statistics-highlight/Sta
 
 import {
   getDashboardHighlights,
-  getOrdersReportByPagination,
+  getPaginatedOrderReportsByDate,
 } from '@vat/actions/order.actions';
 
 import {
+  getDateAtMidnight,
   getTodayFormatted,
   returnFormattedNumber,
   returnFormattedPrice,
@@ -17,13 +18,18 @@ const Dashboard = async () => {
   const { totalOrdersRevenue, totalDishesOrdered, totalCustomers } =
     dashboardHighlights;
 
-  const orderReport = await getOrdersReportByPagination({
-    start: 0,
-    limit: 10,
+  const orderReport = await getPaginatedOrderReportsByDate({
+    pagination: {
+      start: 0,
+      limit: 10,
+    },
+    date: {
+      gte: getDateAtMidnight(),
+    },
   });
 
   return (
-    <main className='grid grid-rows-[auto,auto,1fr] h-screen gap-6 bg-base-dark-bg-1 p-6 pl-[128px] pr-[434px]'>
+    <main className='grid h-screen grid-rows-[auto,auto,1fr] gap-6 bg-base-dark-bg-1 p-6 pl-[128px] pr-[434px]'>
       <div className='flex flex-col gap-1 border-b border-base-dark-line pb-6'>
         <h1 className='text-heading-h1 text-white'>Dashboard</h1>
         <p className='text-body-lg-regular text-text-light'>

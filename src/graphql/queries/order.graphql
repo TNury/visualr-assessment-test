@@ -32,8 +32,12 @@ query rawDashboardHighlightsByDateRange(
   }
 }
 
-query orderReportByPagination($start: Int!, $limit: Int!) {
-  orders(pagination: { start: $start, limit: $limit }) {
+
+query paginatedOrderReportByDate(
+  $pagination: PaginationArg!
+  $date: DateTimeFilterInput!
+) {
+  orders(pagination: $pagination, filters: { createdAt: $date }) {
     data {
       id
       attributes {
