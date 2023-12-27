@@ -35,4 +35,5 @@ module.exports = {
     '@trivago/prettier-plugin-sort-imports',
     'prettier-plugin-tailwindcss',
   ],
+  tailwindFunctions: ['clsx', 'cva'],
 };
