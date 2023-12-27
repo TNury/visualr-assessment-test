@@ -18,8 +18,10 @@ export const OrderConfirmationDrawer = () => {
   const openConfirmationDrawer =
     useSearchParams().get('openConfirmationDrawer') === 'true';
 
+  if (!openConfirmationDrawer) return null;
+
   return (
-    <Drawer open={openConfirmationDrawer}>
+    <Drawer urlToReturnTo='/'>
       <Elements
         stripe={stripePromise}
         options={{
