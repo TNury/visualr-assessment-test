@@ -1,3 +1,5 @@
+'use server';
+
 import _ from 'lodash';
 
 import callAPI from '@vat/services/api';
