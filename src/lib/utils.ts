@@ -28,6 +28,22 @@ export function returnMediaProps(imageProps: MediaProps) {
 }
 
 /**
+ * Returns a base64-encoded string representing the image preview of a given file.
+ * @param image - The file to generate the preview from.
+ * @returns A Promise that resolves with the base64-encoded string of the image preview.
+ */
+export async function getImagePreview(image: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve(reader.result as string);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(image);
+  });
+}
+
+/**
  * Formats the given price as a string with a dollar sign and two decimal places.
  *
  * @param price - The price to be formatted.
@@ -98,7 +114,7 @@ export function getCalculatedDashboardHighlights(
   const totalDishesOrdered: number = _.reduce(
     ordersData,
     (sum, order) => {
-      return sum + order.attributes.totalDishes
+      return sum + order.attributes.totalDishes;
     },
     0
   );
