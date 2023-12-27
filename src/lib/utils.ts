@@ -50,15 +50,29 @@ export async function getImagePreview(image: File): Promise<string> {
  * @returns The formatted price string.
  */
 export function returnFormattedPrice(price: number) {
-  return new Intl.NumberFormat('en-US', {
+  if (!price) {
+    console.error('Price is not defined');
+
+    return;
+  }
+
+  let formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   })
     .format(price)
     .replace('$', '$ ');
+
+  return formattedPrice;
 }
 
 export function returnFormattedNumber(value: number) {
+  if (!value) {
+    console.error('Value is not defined');
+
+    return;
+  }
+
   return new Intl.NumberFormat('en-US').format(value);
 }
 
