@@ -4,12 +4,12 @@ import {
   DishesBySearchStringQueryVariables,
   MenuByIdQuery,
   MenuByIdQueryVariables,
-  MenusDataQuery,
+  MenusTitlesQuery,
 } from '@vat/types/queries.types';
 
-export type GetMenusDataResponse = {
+export type GetMenusTitlesResponse = {
   errors?: ErrorProps[];
-  data: MenusDataQuery | null;
+  data: MenusTitlesQuery | null;
 };
 
 export type GetMenuByIdArgs = MenuByIdQueryVariables;

@@ -1,6 +1,7 @@
 #import "./fragments.graphql"
 
-query menusData {
+# Update this to getMenus titles
+query menusTitles {
   menus {
     data {
       id
@@ -16,6 +17,7 @@ query menuById($id: ID!) {
     data {
       id
       attributes {
+        title
         dishes {
           data {
             id

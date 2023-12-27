@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { getMenusData } from '@vat/actions/menu.actions';
+import { getMenusTitles } from '@vat/actions/menu.actions';
 
 type DishesMenuNav = {
   activeMenu: string;
@@ -9,7 +9,7 @@ type DishesMenuNav = {
 export const DishesMenuNav: React.FC<DishesMenuNav> = async ({
   activeMenu,
 }) => {
-  const menusData = await getMenusData();
+  const menusData = await getMenusTitles();
 
   return (
     <nav className='h-fit w-full'>

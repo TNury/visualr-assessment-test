@@ -5,11 +5,11 @@ import {
   GetDishesBySearchStringResponse,
   GetMenuByIdArgs,
   GetMenuByIdResponse,
-  GetMenusDataResponse,
+  GetMenusTitlesResponse,
 } from '@vat/types/menu.types';
 
-export async function getMenusData(): Promise<GetMenusDataResponse> {
-  const response: GetMenusDataResponse = await callAPI('MenusData', null, {
+export async function getMenusTitles(): Promise<GetMenusTitlesResponse> {
+  const response: GetMenusTitlesResponse = await callAPI('MenusTitles', null, {
     cache: 'no-cache',
   });
 

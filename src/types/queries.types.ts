@@ -1135,17 +1135,17 @@ export type UsersPermissionsUserRelationResponseCollection = {
 
 export type MediaPropsFragment = { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null };
 
-export type MenusDataQueryVariables = Exact<{ [key: string]: never; }>;
+export type MenusTitlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MenusDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null } | null }> } | null };
+export type MenusTitlesQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null } | null }> } | null };
 
 export type MenuByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type MenuByIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
+export type MenuByIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
 
 export type DishesBySearchStringQueryVariables = Exact<{
   searchString: Scalars['String']['input'];

@@ -7,8 +7,8 @@ export const MediaProps = gql`
   }
 }
     `;
-export const MenusData = gql`
-    query menusData {
+export const MenusTitles = gql`
+    query menusTitles {
   menus {
     data {
       id
@@ -25,6 +25,7 @@ export const MenuById = gql`
     data {
       id
       attributes {
+        title
         dishes {
           data {
             id
