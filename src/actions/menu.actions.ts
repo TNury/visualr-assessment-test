@@ -1,6 +1,17 @@
+'use server';
+
+import { revalidatePath } from 'next/cache';
+
 import callAPI from '@vat/services/api';
 
+import { uploadMedia } from '@vat/actions/media.actions';
+
+import { floatNumberRegex } from '@vat/lib/regex';
+
 import {
+  CreateDishArgs,
+  CreateDishFormProps,
+  CreateDishResponse,
   GetDishesBySearchStringArgs,
   GetDishesBySearchStringResponse,
   GetMenuByIdArgs,
@@ -36,6 +47,44 @@ export async function getDishesBySearchString(
       cache: 'no-cache',
     }
   );
+
+  return response;
+}
+
+export async function createDish(
+  menuId: string,
+  args: CreateDishFormProps
+): Promise<CreateDishResponse> {
+  const mediaUploadResponse = await uploadMedia(args.media);
+
+  // If there was an error uploading the media, log the error and return the response
+  if (mediaUploadResponse.error) {
+    console.error(mediaUploadResponse.error);
+    return mediaUploadResponse;
+  }
+
+  console.log(Number(args.price.replace(floatNumberRegex, '')));
+
+  const payload: CreateDishArgs = {
+    data: {
+      ...args,
+      media: String(mediaUploadResponse[0].id),
+      menu: menuId,
+      price: 20,
+    },
+  };
+
+  const response: CreateDishResponse = await callAPI(
+    'CreateDish',
+    {
+      ...payload,
+    },
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  revalidatePath('/settings/products-management?menu=1', 'page');
 
   return response;
 }

@@ -1,5 +1,7 @@
 import { ErrorProps } from '@vat/types/error.types';
 import {
+  CreateDishMutation,
+  CreateDishMutationVariables,
   DishesBySearchStringQuery,
   DishesBySearchStringQueryVariables,
   MenuByIdQuery,
@@ -28,3 +30,18 @@ export type GetDishesBySearchStringResponse = {
 
 export type DishEntityProps =
   MenuByIdQuery['menu']['data']['attributes']['dishes']['data'][0];
+
+export type CreateDishArgs = CreateDishMutationVariables;
+
+export type CreateDishFormProps = Omit<
+  CreateDishMutationVariables['data'],
+  'media' | 'price'
+> & {
+  media: FormData | null;
+  price: string;
+};
+
+export type CreateDishResponse = {
+  errors?: ErrorProps[];
+  data: CreateDishMutation | null;
+};
