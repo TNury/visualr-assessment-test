@@ -34,18 +34,26 @@ const navLinks = [
 export const SidebarMenu = () => {
   const pathname = usePathname();
 
+  const handleHighlight = (href: string) => {
+    if (href !== '/') {
+      return pathname.includes(href);
+    } else {
+      return pathname === href;
+    }
+  };
+
   return (
-    <ul className='flex flex-col pl-3 pr-0 overflow-hidden'>
+    <ul className='flex flex-col overflow-hidden pl-3 pr-0'>
       {navLinks.map((entry, index) => (
         <li key={index}>
           <Link
             href={entry.href}
-            data-active={pathname === entry.href}
+            data-active={handleHighlight(entry.href)}
             className='group relative -mr-[1px] flex items-center justify-center pr-0'>
             <Background className='text-base-dark-bg-1 transition-all duration-150 group-data-[active="false"]:translate-x-full' />
 
             <Button
-              variant={pathname === entry.href ? 'contained' : 'base'}
+              variant={handleHighlight(entry.href) ? 'contained' : 'base'}
               className='absolute left-3 z-10 flex h-14 w-14 items-center justify-center text-primary group-data-[active="true"]:text-white'
               role='none'
               tabIndex={-1}>
