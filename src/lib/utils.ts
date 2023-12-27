@@ -50,7 +50,7 @@ export async function getImagePreview(image: File): Promise<string> {
  * @returns The formatted price string.
  */
 export function returnFormattedPrice(price: number) {
-  if (!price) {
+  if (price === undefined) {
     console.error('Price is not defined');
 
     return;
@@ -67,7 +67,7 @@ export function returnFormattedPrice(price: number) {
 }
 
 export function returnFormattedNumber(value: number) {
-  if (!value) {
+  if (value === undefined) {
     console.error('Value is not defined');
 
     return;
