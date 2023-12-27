@@ -53,7 +53,7 @@ export const SettingsMenu = () => {
             <Link
               href={item.href}
               data-active={item.href === pathname}
-              className='hover:bg-base-dark-bg-1-hover group flex p-6 data-[active="true"]:bg-primary-hover-2'>
+              className='hover:bg-base-dark-bg-1-hover group flex p-6 transition-all duration-150 data-[active="true"]:bg-primary-hover-2'>
               <div className='relative flex w-full flex-col gap-1'>
                 <div className='flex w-full items-center gap-2'>
                   <div className='text-text-light group-data-[active="true"]:!text-primary'>
