@@ -18,8 +18,10 @@ export const DishManagementDrawer: React.FC<
 > = async ({ dishId }) => {
   const dishProps = await getDishById({ id: dishId });
 
-  if (!dishProps.data.dish) {
+  if (!dishProps.data.dish.data) {
     redirect('/app/settings/products-management');
+
+    return null;
   }
 
   return (
@@ -30,7 +32,7 @@ export const DishManagementDrawer: React.FC<
             <Back className='text-white' />
           </ReturnLink>
           <div className='flex items-center justify-between gap-4'>
-            <div className='flex flex-col gap-2'>
+            <div className='flex w-4/5 flex-col gap-2'>
               <h1 className='text-heading-h1 text-white'>Manage your dish</h1>
               <p className='text-body-lg-medium text-text-light'>
                 Managing{' '}
