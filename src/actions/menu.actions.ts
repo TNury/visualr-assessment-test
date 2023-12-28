@@ -68,7 +68,7 @@ export async function createDish(
       ...args,
       media: String(mediaUploadResponse[0].id),
       menu: menuId,
-      price: 20,
+      price: Number(args.price.replace(floatNumberRegex, '')),
     },
   };
 
