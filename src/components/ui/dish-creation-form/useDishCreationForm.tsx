@@ -1,3 +1,5 @@
+'use client';
+
 import { useRouter } from 'next/navigation';
 
 import { useFormik } from 'formik';
@@ -9,7 +11,7 @@ import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContex
 import { createDish } from '@vat/actions/menu.actions';
 
 import { floatNumberRegex, priceRegex } from '@vat/lib/regex';
-import { dishCreationSchema } from '@vat/lib/schemas';
+import { dishFormSchema } from '@vat/lib/schemas';
 import { returnFormattedPrice } from '@vat/lib/utils';
 
 import { CreateDishFormProps } from '@vat/types/menu.types';
@@ -31,7 +33,7 @@ export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
       title: '',
       price: '',
     },
-    validationSchema: dishCreationSchema,
+    validationSchema: dishFormSchema,
     onSubmit: handleOnSubmit,
   });
 
@@ -41,7 +43,7 @@ export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
     try {
       await createDish(menuId, values);
 
-      router.push(`/settings/products-management/?menu=${menuId}`);
+      router.back();
 
       dispatch({
         type: 'SET_SNACKBAR',
@@ -72,6 +74,10 @@ export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
     formik.setFieldValue('media', mediaAsFormData);
   };
 
+  const handleMediaRemoval = () => {
+    formik.setFieldValue('media', null);
+  };
+
   const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const price = event.target.value.replace(priceRegex, '');
 
@@ -97,5 +103,6 @@ export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
     handleMediaAddition,
     handlePriceChange,
     handlePriceOnBlur,
+    handleMediaRemoval,
   };
 };
