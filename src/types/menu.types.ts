@@ -8,6 +8,8 @@ import {
   MenuByIdQuery,
   MenuByIdQueryVariables,
   MenusTitlesQuery,
+  UpdateDishMutation,
+  UpdateDishMutationVariables,
 } from '@vat/types/queries.types';
 
 export type GetMenusTitlesResponse = {
@@ -52,4 +54,19 @@ export type CreateDishFormProps = Omit<
 export type CreateDishResponse = {
   errors?: ErrorProps[];
   data: CreateDishMutation | null;
+};
+
+export type UpdateDishArgs = UpdateDishMutationVariables;
+
+export type ManageDishFormProps = Omit<
+  UpdateDishMutationVariables['data'],
+  'media' | 'price'
+> & {
+  media: FormData | null | string;
+  price: string;
+};
+
+export type UpdateDishResponse = {
+  errors?: ErrorProps[];
+  data: UpdateDishMutation | null;
 };

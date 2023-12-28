@@ -82,3 +82,10 @@ mutation createDish($data: DishInput!) {
   }
 }
 
+mutation updateDish($id: ID!, $data: DishInput!) {
+  updateDish(id: $id, data: $data) {
+    data {
+      id
+    }
+  }
+}

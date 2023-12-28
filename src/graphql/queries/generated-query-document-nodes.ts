@@ -90,6 +90,15 @@ export const CreateDish = gql`
   }
 }
     `;
+export const UpdateDish = gql`
+    mutation updateDish($id: ID!, $data: DishInput!) {
+  updateDish(id: $id, data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const CreateOrder = gql`
     mutation createOrder($data: OrderInput!) {
   createOrder(data: $data) {
