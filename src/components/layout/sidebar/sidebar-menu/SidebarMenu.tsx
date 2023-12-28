@@ -54,7 +54,9 @@ export const SidebarMenu = () => {
 
             <Button
               variant={handleHighlight(entry.href) ? 'contained' : 'ghost'}
-              className='absolute left-3 z-10 flex h-14 w-14 items-center justify-center text-primary group-data-[active="true"]:text-white'
+              layout='centered'
+              size='icon-2'
+              className='z-10 text-primary absolute left-3 group-data-[active="true"]:text-white'
               role='none'
               tabIndex={-1}>
               {icons[entry.id]}

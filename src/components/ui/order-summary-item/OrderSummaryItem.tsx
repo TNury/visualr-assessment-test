@@ -106,7 +106,8 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
         />
         <Button
           variant='outlined'
-          className='flex w-12 items-center justify-center'
+          size='icon-1'
+          layout='centered'
           onClick={handleRemoveClick}>
           <Trash className='h-5 w-5' />
         </Button>

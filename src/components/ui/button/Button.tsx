@@ -30,9 +30,14 @@ const buttonVariants = cva(
         rounded: 'rounded-lg',
         'rounded-bottom': 'rounded-b-lg',
       },
+      layout: {
+        centered: 'flex items-center justify-center',
+      },
       size: {
         default: 'h-12',
         sm: 'h-8',
+        'icon-1': 'h-12 w-12 p-0',
+        'icon-2': 'h-14 w-14 p-0',
       },
     },
     defaultVariants: {
@@ -48,11 +53,14 @@ interface ButtonProps
     VariantProps<typeof buttonVariants> {}
 
 export const Button: React.FC<ButtonProps> = (props) => {
-  const { children, className, variant, size, shape, ...restOfProps } = props;
+  const { children, className, variant, size, shape, layout, ...restOfProps } =
+    props;
 
   return (
     <button
-      className={cn(buttonVariants({ variant, size, shape, className }))}
+      className={cn(
+        buttonVariants({ variant, size, shape, layout, className })
+      )}
       {...restOfProps}>
       {children}
     </button>
