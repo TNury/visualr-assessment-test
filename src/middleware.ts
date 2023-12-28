@@ -5,12 +5,13 @@ export async function middleware(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
   const menuId = searchParams.get('menu');
+  const searchQuery = searchParams.get('search');
   const isOrderConfirmationOpen =
     searchParams.get('openConfirmationDrawer') === 'true';
 
   const orderData = request.cookies.get('order')?.value;
 
-  if (pathname === '/' && !menuId) {
+  if (pathname === '/' && !menuId && !searchQuery) {
     return NextResponse.redirect(new URL('/?menu=1', request.url));
   }
 
@@ -18,7 +19,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL('/?menu=1', request.url));
   }
 
-  if (pathname.includes('products-management') && !menuId) {
+  if (pathname.includes('products-management') && !menuId && !searchQuery) {
     return NextResponse.redirect(
       new URL('/settings/products-management?menu=1', request.url)
     );

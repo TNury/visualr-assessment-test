@@ -1,6 +1,7 @@
 import { ActiveOrderPanel } from '@vat/components/ui/active-order-panel/ActiveOrderPanel';
 import { DishesMenuNav } from '@vat/components/ui/dishes-menu-nav/DishesMenuNav';
-import { DishesView } from '@vat/components/ui/dishes-view/DishesView';
+import { DishesViewByMenu } from '@vat/components/ui/dishes-view-by-menu/DishesViewByMenu';
+import { DishesViewBySearch } from '@vat/components/ui/dishes-view-by-search/DishesViewBySearch';
 import { HomepageHeader } from '@vat/components/ui/homepage-header/HomepageHeader';
 import { OrderConfirmationDrawer } from '@vat/components/ui/order-confirmation-drawer/OrderConfirmationDrawer';
 
@@ -39,7 +40,12 @@ const Home: React.FC<HomeProps> = async (props) => {
         initialOrderId={
           totalOrdersLength ? String(Number(totalOrdersLength) + 1) : '1'
         }>
-        <DishesView searchQuery={searchQuery} activeMenu={activeMenu} />
+        {searchQuery ? (
+          <DishesViewBySearch searchQuery={searchQuery} />
+        ) : (
+          <DishesViewByMenu activeMenu={activeMenu} />
+        )}
+
         <ActiveOrderPanel />
         <OrderConfirmationDrawer />
       </OrderProvider>

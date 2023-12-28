@@ -2,14 +2,11 @@
 
 import { ChangeEvent } from 'react';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
 export const MenuSearchField = () => {
-  const searchParams = useSearchParams();
-  const activeMenu = searchParams.get('menu');
-
   const router = useRouter();
 
   let interval: NodeJS.Timeout;
@@ -22,9 +19,9 @@ export const MenuSearchField = () => {
 
     interval = setTimeout(() => {
       if (value) {
-        router.push(`/?menu=${activeMenu}&search=${value}`);
+        router.push(`/?search=${value}`);
       } else {
-        router.push(`/?menu=${activeMenu}`);
+        router.push(`/?menu=1`);
       }
     }, 1000);
   };
