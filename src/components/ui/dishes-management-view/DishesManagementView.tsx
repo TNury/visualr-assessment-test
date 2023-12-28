@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@vat/components/ui/button/Button';
 import { DishManagementCard } from '@vat/components/ui/dish-management-card/DishManagementCard';
 import { Add } from '@vat/components/ui/icons/Add';
+import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
 
 import {
   getDishesBySearchString,
@@ -13,8 +14,6 @@ import {
   GetDishesBySearchStringResponse,
   GetMenuByIdResponse,
 } from '@vat/types/menu.types';
-
-import { PlaceholderMessage } from '../placeholder-message/PlaceholderMessage';
 
 type DishesManagementViewProps = {
   activeMenu: string;
@@ -68,7 +67,11 @@ export const DishesManagementView: React.FC<
         </div>
       )}
       {results.map((entry, index) => (
-        <DishManagementCard key={index} dishProps={entry} />
+        <DishManagementCard
+          key={index}
+          activeMenu={activeMenu}
+          dishProps={entry}
+        />
       ))}
     </div>
   );
