@@ -13,11 +13,19 @@ import { getImagePreview } from '@vat/lib/utils';
 type MediaFieldProps = {
   label?: string;
   error?: string;
+  mediaUrl?: string;
   addMedia: (file: File) => void;
+  removeMedia: () => void;
 };
 
-export const MediaField: FC<MediaFieldProps> = ({ label, error, addMedia }) => {
-  const [imagePreview, setImagePreview] = useState<string | null>(null); // If the file is an image
+export const MediaField: FC<MediaFieldProps> = ({
+  label,
+  error,
+  addMedia,
+  removeMedia,
+  mediaUrl,
+}) => {
+  const [imagePreview, setImagePreview] = useState<string | null>(mediaUrl); // If the file is an image
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileAddition = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +53,12 @@ export const MediaField: FC<MediaFieldProps> = ({ label, error, addMedia }) => {
 
   const handleRemoveMediaClick = () => {
     setImagePreview(null);
+
+    removeMedia();
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   return (
