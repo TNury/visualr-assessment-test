@@ -17,7 +17,7 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
   dishProps,
 }) => {
   return (
-    <div className='relative flex  w-full flex-col items-center gap-4 rounded-lg border border-base-dark-line'>
+    <div className='relative flex w-full flex-col items-center gap-4 rounded-lg border border-base-dark-line'>
       <div className='flex h-full w-full flex-col items-center gap-4 p-6 pb-0'>
         <Image
           src={returnMediaProps(dishProps.attributes.media.data).src}
@@ -28,7 +28,7 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
         />
 
         <div className='z-20 flex h-full w-full flex-col items-center gap-2'>
-          <p className='max-w-36 text-center text-body-base-medium text-white'>
+          <p className='line-clamp-2 max-w-36 text-center text-body-base-medium text-white'>
             {dishProps.attributes.title}
           </p>
 
