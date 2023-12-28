@@ -41,7 +41,7 @@ export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
     try {
       await createDish(menuId, values);
 
-      router.push('/settings/products-management');
+      router.push(`/settings/products-management/?menu=${menuId}`);
 
       dispatch({
         type: 'SET_SNACKBAR',
