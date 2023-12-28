@@ -12,12 +12,24 @@ import { DishByMenuEntityProps } from '@vat/types/menu.types';
 export type DishManagementCardProps = {
   dishProps: DishByMenuEntityProps;
   activeMenu: string;
+  searchQuery?: string;
 };
 
 export const DishManagementCard: React.FC<DishManagementCardProps> = ({
   dishProps,
   activeMenu,
+  searchQuery,
 }) => {
+  const editDishButtonQuery = {
+    openDishManagementDrawerOnDish: dishProps.id,
+  };
+
+  if (searchQuery) {
+    editDishButtonQuery['search'] = searchQuery;
+  } else {
+    editDishButtonQuery['menu'] = activeMenu;
+  }
+
   return (
     <div className='relative flex w-full flex-col items-center gap-4 rounded-lg border border-base-dark-line'>
       <div className='flex h-full w-full flex-col items-center gap-4 p-6 pb-0'>
@@ -42,10 +54,7 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
 
       <Link
         href={{
-          query: {
-            menu: activeMenu,
-            openDishManagementDrawerOnDish: dishProps.attributes.title,
-          },
+          query: editDishButtonQuery,
         }}
         className='w-full'>
         <Button
