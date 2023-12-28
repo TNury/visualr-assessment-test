@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { DeleteDishButton } from '@vat/components/ui/delete-dish-button/DeleteDishButton';
 import { DishManagementForm } from '@vat/components/ui/dish-management-form/DishManagementForm';
 import { Drawer } from '@vat/components/ui/drawer/Drawer';
@@ -15,6 +17,10 @@ export const DishManagementDrawer: React.FC<
   DishManagementDrawerProps
 > = async ({ dishId }) => {
   const dishProps = await getDishById({ id: dishId });
+
+  if (!dishProps.data.dish) {
+    redirect('/app/settings/products-management');
+  }
 
   return (
     <Drawer>
