@@ -53,7 +53,7 @@ export const MediaField: FC<MediaFieldProps> = ({ label, error, addMedia }) => {
       {label && (
         <label className='text-body-base-medium text-white'>{label}</label>
       )}
-      <div className='flex h-[228px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-base-dark-line group-data-[error="true"]:border-accents-red group-data-[error="true"]:bg-accents-bg-red'>
+      <div className='flex h-[228px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-base-dark-line group-data-[error="true"]:border-accents-bg-red group-data-[error="true"]:bg-accents-bg-red'>
         {imagePreview ? (
           <div className='flex w-full flex-col items-center'>
             <div className='flex w-full justify-center py-6'>
