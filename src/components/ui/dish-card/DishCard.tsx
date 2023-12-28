@@ -3,10 +3,10 @@ import { RoundedImage } from '@vat/components/ui/rounded-image/RoundedImage';
 
 import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
 
-import { DishEntityProps } from '@vat/types/menu.types';
+import { DishByMenuEntityProps } from '@vat/types/menu.types';
 
 export type DishCardProps = {
-  dishProps: DishEntityProps;
+  dishProps: DishByMenuEntityProps;
 };
 
 export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {

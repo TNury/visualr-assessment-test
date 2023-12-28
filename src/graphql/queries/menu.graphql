@@ -57,6 +57,23 @@ query dishesBySearchString($searchString: String!) {
   }
 }
 
+query dishById($id: ID!) {
+  dish(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        price
+        media {
+          data {
+            ...MediaProps
+          }
+        }
+      }
+    }
+  }
+}
+
 mutation createDish($data: DishInput!) {
   createDish(data: $data) {
     data {
@@ -64,3 +81,4 @@ mutation createDish($data: DishInput!) {
     }
   }
 }
+

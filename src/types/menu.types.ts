@@ -2,6 +2,7 @@ import { ErrorProps } from '@vat/types/error.types';
 import {
   CreateDishMutation,
   CreateDishMutationVariables,
+  DishByIdQuery,
   DishesBySearchStringQuery,
   DishesBySearchStringQueryVariables,
   MenuByIdQuery,
@@ -28,8 +29,15 @@ export type GetDishesBySearchStringResponse = {
   data: DishesBySearchStringQuery | null;
 };
 
-export type DishEntityProps =
+export type DishByMenuEntityProps =
   MenuByIdQuery['menu']['data']['attributes']['dishes']['data'][0];
+
+export type GetDishByIdArgs = MenuByIdQueryVariables;
+
+export type GetDishByIdResponse = {
+  errors?: ErrorProps[];
+  data: DishByIdQuery | null;
+};
 
 export type CreateDishArgs = CreateDishMutationVariables;
 

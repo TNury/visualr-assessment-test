@@ -1154,6 +1154,13 @@ export type DishesBySearchStringQueryVariables = Exact<{
 
 export type DishesBySearchStringQuery = { __typename?: 'Query', dishes?: { __typename?: 'DishEntityResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null };
 
+export type DishByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DishByIdQuery = { __typename?: 'Query', dish?: { __typename?: 'DishEntityResponse', data?: { __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null } | null } | null };
+
 export type CreateDishMutationVariables = Exact<{
   data: DishInput;
 }>;

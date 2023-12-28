@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import { storeCookie } from '@vat/actions/cookies.actions';
 
-import { DishEntityProps } from '@vat/types/menu.types';
+import { DishByMenuEntityProps } from '@vat/types/menu.types';
 import { OrderStateProps } from '@vat/types/order.types';
 
 function debouncedStoreCookie(key: string, value: OrderStateProps): void {
@@ -23,7 +23,7 @@ function returnItemsCount(orderItems: OrderStateProps['items']): number {
 
 export function handleOrderItemAddition(
   currentState: OrderStateProps,
-  item: DishEntityProps
+  item: DishByMenuEntityProps
 ): OrderStateProps {
   const orderItems = currentState.items;
   let updatedOrderItems: OrderStateProps['items'];

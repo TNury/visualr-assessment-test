@@ -3,10 +3,10 @@
 import { Button } from '@vat/components/ui/button/Button';
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
 import { Add } from '@vat/icons/Add';
-import { DishEntityProps } from '@vat/types/menu.types';
+import { DishByMenuEntityProps } from '@vat/types/menu.types';
 
 type AddToOrderButtonProps = {
-  dishProps: DishEntityProps;
+  dishProps: DishByMenuEntityProps;
 };
 
 export const AddToOrderButton: React.FC<AddToOrderButtonProps> = ({

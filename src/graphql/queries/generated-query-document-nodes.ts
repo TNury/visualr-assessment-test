@@ -63,6 +63,24 @@ export const DishesBySearchString = gql`
   }
 }
     ${MediaProps}`;
+export const DishById = gql`
+    query dishById($id: ID!) {
+  dish(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        price
+        media {
+          data {
+            ...MediaProps
+          }
+        }
+      }
+    }
+  }
+}
+    ${MediaProps}`;
 export const CreateDish = gql`
     mutation createDish($data: DishInput!) {
   createDish(data: $data) {

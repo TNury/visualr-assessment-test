@@ -1,5 +1,5 @@
 import { ErrorProps } from '@vat/types/error.types';
-import { DishEntityProps } from '@vat/types/menu.types';
+import { DishByMenuEntityProps } from '@vat/types/menu.types';
 import {
   CreateOrderMutation,
   CreateOrderMutationVariables,
@@ -15,7 +15,7 @@ export type OrderItemProps = {
   price: number;
   quantity: number;
   notes?: string;
-  media: DishEntityProps['attributes']['media'];
+  media: DishByMenuEntityProps['attributes']['media'];
 };
 
 export type OrderStateProps = {
@@ -26,7 +26,7 @@ export type OrderStateProps = {
 };
 
 export type OrderActionProps =
-  | { type: 'ADD_ITEM'; item: DishEntityProps }
+  | { type: 'ADD_ITEM'; item: DishByMenuEntityProps }
   | { type: 'REMOVE_ITEM'; id: string }
   | { type: 'UPDATE_QUANTITY'; id: string; quantity: number }
   | { type: 'UPDATE_NOTES'; id: string; notes: string }

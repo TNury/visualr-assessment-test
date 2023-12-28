@@ -12,6 +12,8 @@ import {
   CreateDishArgs,
   CreateDishFormProps,
   CreateDishResponse,
+  GetDishByIdArgs,
+  GetDishByIdResponse,
   GetDishesBySearchStringArgs,
   GetDishesBySearchStringResponse,
   GetMenuByIdArgs,
@@ -47,6 +49,16 @@ export async function getDishesBySearchString(
       cache: 'no-cache',
     }
   );
+
+  return response;
+}
+
+export async function getDishById(
+  args: GetDishByIdArgs
+): Promise<GetDishByIdResponse> {
+  const response: GetDishByIdResponse = await callAPI('DishById', args, {
+    cache: 'no-cache',
+  });
 
   return response;
 }
