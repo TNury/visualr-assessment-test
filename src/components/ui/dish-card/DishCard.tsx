@@ -34,7 +34,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
           <AddToOrderButton dishProps={dishProps} />
         </div>
       </div>
-      <div className='absolute bottom-0 left-0 z-10 h-[85%] w-full rounded-2xl bg-base-dark-bg-2 transition-colors duration-150 group-hover:bg-base-dark-bg-2-hover' />
+      <div className='absolute bottom-0 left-0 z-10 h-[calc(100%-34px)] w-full rounded-2xl bg-base-dark-bg-2 transition-colors duration-150 group-hover:bg-base-dark-bg-2-hover' />
     </div>
   );
 };
