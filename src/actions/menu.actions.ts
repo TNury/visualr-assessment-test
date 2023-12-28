@@ -63,8 +63,6 @@ export async function createDish(
     return mediaUploadResponse;
   }
 
-  console.log(Number(args.price.replace(floatNumberRegex, '')));
-
   const payload: CreateDishArgs = {
     data: {
       ...args,

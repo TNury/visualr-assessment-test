@@ -26,7 +26,7 @@ export const MenuById = gql`
       id
       attributes {
         title
-        dishes {
+        dishes(sort: "createdAt:desc") {
           data {
             id
             attributes {
@@ -47,7 +47,7 @@ export const MenuById = gql`
     ${MediaProps}`;
 export const DishesBySearchString = gql`
     query dishesBySearchString($searchString: String!) {
-  dishes(filters: {title: {contains: $searchString}}) {
+  dishes(filters: {title: {contains: $searchString}}, sort: "createdAt:desc") {
     data {
       id
       attributes {

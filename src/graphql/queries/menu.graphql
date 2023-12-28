@@ -18,7 +18,7 @@ query menuById($id: ID!) {
       id
       attributes {
         title
-        dishes {
+        dishes(sort: "createdAt:desc") {
           data {
             id
             attributes {
@@ -38,7 +38,10 @@ query menuById($id: ID!) {
 }
 
 query dishesBySearchString($searchString: String!) {
-  dishes(filters: { title: { contains: $searchString } }) {
+  dishes(
+    filters: { title: { contains: $searchString } }
+    sort: "createdAt:desc"
+  ) {
     data {
       id
       attributes {
