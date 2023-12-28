@@ -8,7 +8,6 @@ import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
 import { DishEntityProps } from '@vat/types/menu.types';
 
 export type DishManagementCardProps = {
-  menuTitle: string;
   dishProps: DishEntityProps;
 };
 
