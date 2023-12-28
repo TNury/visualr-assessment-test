@@ -71,6 +71,7 @@ export const DishesManagementView: React.FC<
           key={index}
           activeMenu={activeMenu}
           dishProps={entry}
+          searchQuery={searchQuery}
         />
       ))}
     </div>

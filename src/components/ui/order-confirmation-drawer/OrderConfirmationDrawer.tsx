@@ -21,7 +21,7 @@ export const OrderConfirmationDrawer = () => {
   if (!openConfirmationDrawer) return null;
 
   return (
-    <Drawer urlToReturnTo='/'>
+    <Drawer>
       <Elements
         stripe={stripePromise}
         options={{
