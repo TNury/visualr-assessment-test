@@ -17,7 +17,7 @@ export const DishCreationDrawer: React.FC<DishCreationDrawerProps> = ({
 }) => {
   return (
     <Drawer>
-      <div className='flex h-full w-[410px] flex-col overflow-auto py-6'>
+      <div className='flex h-full w-[410px] flex-col overflow-auto pt-6'>
         <div className='mx-6 flex flex-col gap-4 border-b border-base-dark-line pb-6'>
           <ReturnLink>
             <Back className='text-white' />

@@ -56,7 +56,7 @@ export const DishCreationForm: React.FC<DishCreationFormProps> = ({
         </div>
       </div>
 
-      <div className='mx-6 flex gap-2 border-t border-base-dark-line pt-6'>
+      <div className='mx-6 flex gap-2 border-t border-base-dark-line py-6'>
         <ReturnLink>
           <Button variant='outlined'>Cancel</Button>
         </ReturnLink>
