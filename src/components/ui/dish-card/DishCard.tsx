@@ -1,10 +1,9 @@
-import Image from 'next/image';
+import { AddToOrderButton } from '@vat/components/ui/add-to-order-button/AddToOrderButton';
+import { RoundedImage } from '@vat/components/ui/rounded-image/RoundedImage';
 
 import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
 
 import { DishEntityProps } from '@vat/types/menu.types';
-
-import { AddToOrderButton } from '../add-to-order-button/AddToOrderButton';
 
 export type DishCardProps = {
   dishProps: DishEntityProps;
@@ -13,15 +12,17 @@ export type DishCardProps = {
 export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
   return (
     <div className='group relative flex w-full flex-col items-center gap-2.5 px-6 pb-4.5 pt-0'>
-      <div className='z-20 flex w-full items-end justify-center'>
-        <Image
-          src={returnMediaProps(dishProps.attributes.media.data).src}
-          alt={dishProps.attributes.title}
-          width={528}
-          height={528}
-          className='h-33 w-33 transition-transform duration-150 group-hover:-rotate-45 group-hover:scale-110'
-        />
-      </div>
+      <RoundedImage
+        wrapperProps={{
+          className: 'z-20',
+        }}
+        src={returnMediaProps(dishProps.attributes.media.data).src}
+        alt={dishProps.attributes.title}
+        width={528}
+        height={528}
+        className='h-33 w-33 object-cover transition-transform duration-150 group-hover:-rotate-45 group-hover:scale-110'
+      />
+
       <div className='z-20 flex h-full flex-col gap-2'>
         <p className='min-h-[36.4px] max-w-36 text-center text-body-base-medium text-white'>
           {dishProps.attributes.title}

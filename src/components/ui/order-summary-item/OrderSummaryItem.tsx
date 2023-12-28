@@ -2,11 +2,10 @@
 
 import { Dispatch } from 'react';
 
-import Image from 'next/image';
-
 import { Trash } from '@vat/icons/Trash';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { RoundedImage } from '@vat/components/ui/rounded-image/RoundedImage';
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
 import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
@@ -70,13 +69,14 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
   return (
     <div className='flex flex-col gap-2.5'>
       <div className='flex items-center gap-4'>
-        <Image
+        <RoundedImage
           src={returnMediaProps(orderItem.media.data).src}
           alt={orderItem.title}
           width={528}
           height={528}
-          className='h-10 w-10'
+          className='h-10 w-10 object-cover'
         />
+
         <div className='flex flex-col gap-2'>
           <p className='w-36 truncate text-body-base-medium text-white'>
             {orderItem.title}

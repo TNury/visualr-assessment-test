@@ -1,8 +1,7 @@
-import Image from 'next/image';
-
 import { Edit } from '@vat/icons/Edit';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { RoundedImage } from '@vat/components/ui/rounded-image/RoundedImage';
 
 import { returnFormattedPrice, returnMediaProps } from '@vat/lib/utils';
 
@@ -19,12 +18,12 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
   return (
     <div className='relative flex w-full flex-col items-center gap-4 rounded-lg border border-base-dark-line'>
       <div className='flex h-full w-full flex-col items-center gap-4 p-6 pb-0'>
-        <Image
+        <RoundedImage
           src={returnMediaProps(dishProps.attributes.media.data).src}
           alt={dishProps.attributes.title}
           width={528}
           height={528}
-          className='h-33 w-33'
+          className='h-33 w-33 overflow-clip rounded-full object-cover'
         />
 
         <div className='z-20 flex h-full w-full flex-col items-center gap-2'>

@@ -6,6 +6,7 @@ import { Add } from '@vat/icons/Add';
 import { Trash } from '@vat/icons/Trash';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { RoundedImage } from '@vat/components/ui/rounded-image/RoundedImage';
 
 import { getImagePreview } from '@vat/lib/utils';
 
@@ -56,13 +57,17 @@ export const MediaField: FC<MediaFieldProps> = ({ label, error, addMedia }) => {
       <div className='flex h-[228px] w-full flex-col items-center justify-center rounded-lg border border-dashed border-base-dark-line group-data-[error="true"]:border-accents-bg-red group-data-[error="true"]:bg-accents-bg-red'>
         {imagePreview ? (
           <div className='flex w-full flex-col items-center'>
-            <div className='flex w-full justify-center py-6'>
-              <img
-                src={imagePreview}
-                alt='Media preview'
-                className='h-33 w-33 object-cover'
-              />
-            </div>
+            <RoundedImage
+              wrapperProps={{
+                className: 'py-6',
+              }}
+              width={528}
+              height={528}
+              src={imagePreview}
+              alt='Media preview'
+              className='h-33 w-33 overflow-clip rounded-full object-cover'
+            />
+
             <Button
               type='button'
               variant='ghost-4'
