@@ -10,10 +10,12 @@ export const useDrawerLoading = () => {
     if (loading) {
       bodyRef?.classList.add('opacity-70');
       drawerContent?.classList.add('pointer-events-none');
-    } else {
+    }
+
+    return () => {
       bodyRef?.classList.remove('opacity-70');
       drawerContent?.classList.remove('pointer-events-none');
-    }
+    };
   }, [loading]);
 
   return { loading, setLoading };
