@@ -99,6 +99,15 @@ export const UpdateDish = gql`
   }
 }
     `;
+export const DeleteDish = gql`
+    mutation deleteDish($id: ID!) {
+  deleteDish(id: $id) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const CreateOrder = gql`
     mutation createOrder($data: OrderInput!) {
   createOrder(data: $data) {

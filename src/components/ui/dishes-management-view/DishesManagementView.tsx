@@ -49,7 +49,7 @@ export const DishesManagementView: React.FC<
       bodySize='lg'
     />
   ) : (
-    <div className='grid w-full flex-1 auto-rows-[300px] grid-cols-3 gap-4 overflow-auto p-6 lg:grid-cols-4 xl:grid-cols-6'>
+    <div className='grid w-full flex-1 auto-rows-[302px] grid-cols-3 gap-4 overflow-auto p-6 lg:grid-cols-4 xl:grid-cols-6'>
       {!searchQuery && (
         <div className='relative flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-primary'>
           <Link

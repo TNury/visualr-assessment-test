@@ -8,6 +8,7 @@ import {
   MenuByIdQuery,
   MenuByIdQueryVariables,
   MenusTitlesQuery,
+  MutationDeleteDishArgs,
   UpdateDishMutation,
   UpdateDishMutationVariables,
 } from '@vat/types/queries.types';
@@ -69,4 +70,11 @@ export type ManageDishFormProps = Omit<
 export type UpdateDishResponse = {
   errors?: ErrorProps[];
   data: UpdateDishMutation | null;
+};
+
+export type DeleteDishArgs = MutationDeleteDishArgs;
+
+export type DeleteDishResponse = {
+  errors?: ErrorProps[];
+  data: MutationDeleteDishArgs | null;
 };

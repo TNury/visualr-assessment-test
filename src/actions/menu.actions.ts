@@ -12,6 +12,8 @@ import {
   CreateDishArgs,
   CreateDishFormProps,
   CreateDishResponse,
+  DeleteDishArgs,
+  DeleteDishResponse,
   GetDishByIdArgs,
   GetDishByIdResponse,
   GetDishesBySearchStringArgs,
@@ -146,6 +148,33 @@ export async function updateDish(
       cache: 'no-cache',
     }
   );
+
+  revalidatePath('/settings/products-management');
+
+  return response;
+}
+
+export async function deleteDish(
+  dishProps: GetDishByIdResponse
+): Promise<DeleteDishResponse> {
+  const response: DeleteDishResponse = await callAPI(
+    'DeleteDish',
+    {
+      id: dishProps.data.dish.data.id,
+    },
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  const deleteMediaResponse = await deleteMedia(
+    dishProps.data.dish.data.attributes.media.data.id
+  );
+
+  if (deleteMediaResponse.error) {
+    console.error(deleteMediaResponse.error);
+    return deleteMediaResponse;
+  }
 
   revalidatePath('/settings/products-management');
 

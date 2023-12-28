@@ -89,3 +89,11 @@ mutation updateDish($id: ID!, $data: DishInput!) {
     }
   }
 }
+
+mutation deleteDish($id: ID!) {
+  deleteDish(id: $id) {
+    data {
+      id
+    }
+  }
+}

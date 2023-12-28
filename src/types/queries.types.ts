@@ -1176,6 +1176,13 @@ export type UpdateDishMutationVariables = Exact<{
 
 export type UpdateDishMutation = { __typename?: 'Mutation', updateDish?: { __typename?: 'DishEntityResponse', data?: { __typename?: 'DishEntity', id?: string | null } | null } | null };
 
+export type DeleteDishMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteDishMutation = { __typename?: 'Mutation', deleteDish?: { __typename?: 'DishEntityResponse', data?: { __typename?: 'DishEntity', id?: string | null } | null } | null };
+
 export type CreateOrderMutationVariables = Exact<{
   data: OrderInput;
 }>;
