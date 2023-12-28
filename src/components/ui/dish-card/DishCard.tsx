@@ -14,13 +14,14 @@ export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
     <div className='group relative flex w-full flex-col items-center gap-2.5 px-6 pb-4.5 pt-0'>
       <RoundedImage
         wrapperProps={{
-          className: 'z-20',
+          className:
+            'z-20 transition-transform duration-150 group-hover:-rotate-45 group-hover:scale-110',
         }}
         src={returnMediaProps(dishProps.attributes.media.data).src}
         alt={dishProps.attributes.title}
         width={528}
         height={528}
-        className='h-33 w-33 object-cover transition-transform duration-150 group-hover:-rotate-45 group-hover:scale-110'
+        className='h-33 w-33 object-cover'
       />
 
       <div className='z-20 flex h-full flex-col gap-2'>
