@@ -3,13 +3,13 @@
 import Link from 'next/link';
 
 import { Button } from '@vat/components/ui/button/Button';
+import { useOrderPaymentPanel } from '@vat/components/ui/order-payment-panel/useOrderPaymentPanel';
 import { PaymentFormGroup } from '@vat/components/ui/payment-form-group/PaymentFormGroup';
+import { ReturnLink } from '@vat/components/ui/return-link/ReturnLink';
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
 import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
-
-import { useOrderPaymentPanel } from './useOrderPaymentPanel';
 
 export type PaymentMethodProps = 'credit-card' | 'paypal' | 'cash';
 
@@ -67,9 +67,9 @@ export const OrderPaymentPanel = () => {
         </div>
       </div>
       <div id='orderPaymentPanelBtns' className='mt-auto flex gap-2 px-6 pb-6'>
-        <Link href='/' scroll={false} className='w-full'>
+        <ReturnLink>
           <Button variant='outlined'>Cancel</Button>
-        </Link>
+        </ReturnLink>
         <Button onClick={handleClick}>Confirm Payment</Button>
       </div>
     </div>
