@@ -19,6 +19,8 @@ const buttonVariants = cva(
           'bg-transparent text-text-lighter hover:bg-base-dark-bg-1 hover:text-white active:opacity-70',
         'ghost-4':
           'bg-base-dark-bg-1 text-text-lighter hover:bg-base-form-bg hover:text-white active:opacity-70',
+        'ghost-5':
+          'bg-transparent text-primary hover:bg-base-form-bg-hover active:opacity-70',
         contained:
           'bg-primary text-base-bg shadow-md hover:bg-primary-hover-1 active:opacity-70',
         'contained-2':
