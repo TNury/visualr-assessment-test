@@ -19,9 +19,9 @@ export const MenuSearchField = () => {
 
     interval = setTimeout(() => {
       if (value) {
-        router.push(`/?search=${value}`);
+        router.push(`?search=${value}`);
       } else {
-        router.push(`/?menu=1`);
+        router.push(`?menu=1`);
       }
     }, 1000);
   };
