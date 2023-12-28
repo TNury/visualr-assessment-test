@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const dishCreationSchema = yup
+export const dishFormSchema = yup
   .object()
   .shape({
     media: yup.mixed().required(`The product's media is required.`),
