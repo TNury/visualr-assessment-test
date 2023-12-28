@@ -11,6 +11,8 @@ import { TextField } from '@vat/components/ui/text-field/TextField';
 import { useOrderContext } from '@vat/context/order-context/OrderContext';
 import { useSnackbarContext } from '@vat/context/snackbar-context/SnackbarContext';
 
+import { DrawerHead } from '../drawer-head/DrawerHead';
+
 export type PaymentMethodProps = 'credit-card' | 'paypal' | 'cash';
 
 export const OrderPaymentPanel = () => {
@@ -29,14 +31,12 @@ export const OrderPaymentPanel = () => {
 
   return (
     <div className='flex h-full w-[410px] flex-col overflow-auto'>
-      <div className='mx-6 flex flex-col gap-4 border-b border-base-dark-line py-6 pt-16'>
-        <div className='flex flex-col gap-2'>
-          <h1 className='text-heading-h1 text-white'>Payment</h1>
-          <p className='text-body-lg-medium text-text-light'>
-            Choose from the payment methods below
-          </p>
-        </div>
-      </div>
+      <DrawerHead
+        hideReturnLink
+        title='Payment'
+        subtitle='Choose from the payment methods below'
+      />
+
       <div className='flex h-full flex-1 flex-col overflow-auto'>
         <div className='flex flex-col gap-4 overflow-auto px-6 py-4'>
           <h2 className='text-heading-h2 text-white'>Payment Method</h2>

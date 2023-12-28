@@ -8,6 +8,8 @@ import { ReturnLink } from '@vat/components/ui/return-link/ReturnLink';
 
 import { getDishById } from '@vat/actions/menu.actions';
 
+import { DrawerHead } from '../drawer-head/DrawerHead';
+
 type DishManagementDrawerProps = {
   dishId: string;
 };
@@ -27,25 +29,11 @@ export const DishManagementDrawer: React.FC<
   return (
     <Drawer>
       <div className='flex h-full w-[410px] flex-col overflow-auto pt-6'>
-        <div className='mx-6 flex flex-col gap-4 border-b border-base-dark-line pb-6'>
-          <ReturnLink>
-            <Back className='text-white' />
-          </ReturnLink>
-          <div className='flex items-center justify-between gap-4'>
-            <div className='flex w-4/5 flex-col gap-2'>
-              <h1 className='text-heading-h1 text-white'>Manage your dish</h1>
-              <p className='text-body-lg-medium text-text-light'>
-                Managing{' '}
-                <span className='text-body-lg-semibold text-primary'>
-                  {dishProps.data.dish.data.attributes.title}'s
-                </span>{' '}
-                details
-              </p>
-            </div>
-
-            <DeleteDishButton dishProps={dishProps} />
-          </div>
-        </div>
+        <DrawerHead
+          title='Manage your dish'
+          subtitle={`Managing ${dishProps.data.dish.data.attributes.title}'s details`}
+          endAddornment={<DeleteDishButton dishProps={dishProps} />}
+        />
 
         <DishManagementForm dishProps={dishProps} />
       </div>
