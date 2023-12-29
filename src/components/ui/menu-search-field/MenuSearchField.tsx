@@ -26,7 +26,7 @@ export const MenuSearchField = () => {
       if (value) {
         router.replace(`?search=${value}`);
       } else {
-        router.push(`?menu=${returnMenu}`);
+        router.push(`?menu=${returnMenu()}`);
       }
     }, 1000);
   };
