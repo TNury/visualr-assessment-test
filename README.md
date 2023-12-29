@@ -19,10 +19,11 @@ execution of the project, you're welcome to contact me.
 - You can pay for the order with credit-card, paypal or cash. Only credit-card has actual
   processing, the other are just placeholders. You can use the following to simulate a
   successful payment:
+
   - Card number: 4242 4242 4242 4242
   - Expiration date: 04/24
   - CVC: 242
-  - ZIP: 42424
+
 - The discount is hardcoded to 0.
 
 ### The dashboard
