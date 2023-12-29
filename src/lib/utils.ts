@@ -1,15 +1,10 @@
 import _ from 'lodash';
 import { twMerge } from 'tailwind-merge';
 
-
-
 import { type ClassValue, clsx } from 'clsx';
-
-
 
 import { MediaProps } from '@vat/types/media.types';
 import { RawDashboardHighlightsByDateRangeResponse } from '@vat/types/order.types';
-
 
 /**
  * Merges class names using the `clsx` and `tailwind-merge` libraries.
@@ -169,7 +164,7 @@ export function getCalculatedDashboardHighlights(
   const totalCustomers = uniqueCustomers + anonymousCustomers;
 
   return {
-    totalOrdersRevenue: Math.round(totalOrdersRevenue),
+    totalOrdersRevenue,
     totalDishesOrdered,
     totalCustomers,
   };
