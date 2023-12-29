@@ -88,6 +88,7 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
         <TextField
           value={orderItem.quantity}
           className='w-12 text-center'
+          variant='text-body-lg-medium'
           wrapperProps={{ className: 'ml-auto' }}
           onChange={handleQuantityChange}
           onBlur={handleQuantityOnBlur}
