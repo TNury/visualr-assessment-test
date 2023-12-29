@@ -30,7 +30,7 @@ export const MenusTitles = gql`
     `;
 export const MenusManagementData = gql`
     query menusManagementData {
-  menus {
+  menus(sort: "index:asc") {
     data {
       id
       attributes {

@@ -20,7 +20,7 @@ query menusTitles {
 }
 
 query menusManagementData {
-  menus {
+  menus(sort: "index:asc") {
     data {
       id
       attributes {
