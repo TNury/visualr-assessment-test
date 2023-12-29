@@ -71,8 +71,10 @@ const Dashboard = async () => {
         </div>
         <OrderReport orderReport={orderReport} />
       </div>
-      <div className='flex flex-col gap-6 min-w-[375px]'>
-        <MostOrderedDishes dishes={mostOrderedDishes} />
+      <div className='flex min-w-[375px] flex-col gap-6'>
+        {mostOrderedDishes.length > 0 && (
+          <MostOrderedDishes dishes={mostOrderedDishes} />
+        )}
       </div>
     </main>
   );
