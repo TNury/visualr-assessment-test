@@ -6,7 +6,7 @@ This is my result of the assesment test proposed by Visual's to test the knowled
 
 ## Before we start
 
-Most of the data you're seeing is from the app itself. The menu, the dishes, the orders, the customers, etc. I'll cite the exceptions when they appear. This project took a lot of time and effort to be made, so I hope you enjoy it.
+Most of the data you're seeing is from the app itself. The menu, the dishes, the orders, the customers, etc. I'll cite the exceptions when they appear. This project took a lot of time and effort to be made, so I hope you enjoy it. If any problems arise during the execution of the project, you're welcome to contact me.
 
 ### The homepage
 
