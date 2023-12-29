@@ -41,6 +41,27 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+export type ComponentReusableDishesQuantities = {
+  __typename?: 'ComponentReusableDishesQuantities';
+  dish?: Maybe<DishEntityResponse>;
+  id: Scalars['ID']['output'];
+  quantity?: Maybe<Scalars['Int']['output']>;
+};
+
+export type ComponentReusableDishesQuantitiesFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentReusableDishesQuantitiesFiltersInput>>>;
+  dish?: InputMaybe<DishFiltersInput>;
+  not?: InputMaybe<ComponentReusableDishesQuantitiesFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentReusableDishesQuantitiesFiltersInput>>>;
+  quantity?: InputMaybe<IntFilterInput>;
+};
+
+export type ComponentReusableDishesQuantitiesInput = {
+  dish?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  quantity?: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
@@ -152,7 +173,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type GenericMorph = Dish | I18NLocale | Menu | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ComponentReusableDishesQuantities | Dish | I18NLocale | Menu | Order | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type I18NLocale = {
   __typename?: 'I18NLocale';
@@ -537,6 +558,7 @@ export type Order = {
   __typename?: 'Order';
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   dishes?: Maybe<DishRelationResponseCollection>;
+  dishesQuantities?: Maybe<Array<Maybe<ComponentReusableDishesQuantities>>>;
   owner?: Maybe<Scalars['String']['output']>;
   status?: Maybe<Enum_Order_Status>;
   tableNumber?: Maybe<Scalars['String']['output']>;
@@ -548,6 +570,13 @@ export type Order = {
 
 export type OrderDishesArgs = {
   filters?: InputMaybe<DishFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type OrderDishesQuantitiesArgs = {
+  filters?: InputMaybe<ComponentReusableDishesQuantitiesFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
@@ -573,6 +602,7 @@ export type OrderFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   dishes?: InputMaybe<DishFiltersInput>;
+  dishesQuantities?: InputMaybe<ComponentReusableDishesQuantitiesFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
   not?: InputMaybe<OrderFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<OrderFiltersInput>>>;
@@ -586,6 +616,7 @@ export type OrderFiltersInput = {
 
 export type OrderInput = {
   dishes?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  dishesQuantities?: InputMaybe<Array<InputMaybe<ComponentReusableDishesQuantitiesInput>>>;
   owner?: InputMaybe<Scalars['String']['input']>;
   status?: InputMaybe<Enum_Order_Status>;
   tableNumber?: InputMaybe<Scalars['String']['input']>;

@@ -14,15 +14,36 @@ import {
   CreateOrderArgs,
   CreateOrderResponse,
   GetTotalOrdersLengthResponse,
+  OrderStateProps,
   PaginatedOrderReportByDateArgs,
   PaginatedOrderReportByDateRespose,
   RawDashboardHighlightsByDateRangeResponse,
 } from '@vat/types/order.types';
+import { Enum_Order_Status } from '@vat/types/queries.types';
 
 export async function createOrder(
-  args: CreateOrderArgs
+  owner: string,
+  tableNo: string,
+  orderState: OrderStateProps
 ): Promise<CreateOrderResponse> {
-  const response: CreateOrderResponse = await callAPI('CreateOrder', args, {
+  const payload: CreateOrderArgs = {
+    data: {
+      owner,
+      total: orderState.subtotal,
+      dishes: orderState.items.map((item) => item.id),
+      dishesQuantities: orderState.items.map((item) => {
+        return {
+          dish: item.id,
+          quantity: item.quantity,
+        };
+      }),
+      status: Enum_Order_Status.Pending,
+      tableNumber: tableNo,
+      totalDishes: orderState.itemsCount,
+    },
+  };
+
+  const response: CreateOrderResponse = await callAPI('CreateOrder', payload, {
     cache: 'no-cache',
   });
 

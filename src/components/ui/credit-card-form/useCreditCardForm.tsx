@@ -116,16 +116,11 @@ export const useCreditCardForm = (props: UseCreditCardFormProps) => {
 
       if (result.paymentIntent?.status === 'succeeded') {
         // The payment has been processed!
-        const orderCreationResponse = await createOrder({
-          data: {
-            owner: cardHolderName,
-            total: orderState.subtotal,
-            dishes: orderState.items.map((item) => item.id),
-            status: Enum_Order_Status.Pending,
-            tableNumber: tableNo,
-            totalDishes: orderState.itemsCount,
-          },
-        });
+        const orderCreationResponse = await createOrder(
+          cardHolderName,
+          tableNo,
+          orderState
+        );
 
         if (orderCreationResponse.data.createOrder.data.id) {
           router.push('/', {

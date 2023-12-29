@@ -42,16 +42,11 @@ export const useOrderPaymentPanel = (props: UseOrderPaymentPanelProps) => {
       paymentBtnRef?.click();
     } else {
       try {
-        const orderCreationResponse = await createOrder({
-          data: {
-            owner: 'Anonymous',
-            total: orderState.subtotal,
-            dishes: orderState.items.map((item) => item.id),
-            status: Enum_Order_Status.Pending,
-            tableNumber: tableNo,
-            totalDishes: orderState.itemsCount,
-          },
-        });
+        const orderCreationResponse = await createOrder(
+          'Anonymous',
+          tableNo,
+          orderState
+        );
 
         if (orderCreationResponse.data.createOrder.data.id) {
           router.push('/', {
