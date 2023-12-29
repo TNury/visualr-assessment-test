@@ -20,34 +20,31 @@ export const DishCreationForm: React.FC = () => {
     <form
       onSubmit={formik.handleSubmit}
       className='flex h-full flex-col overflow-auto'>
-      <div className='flex flex-1 flex-col gap-4 overflow-auto px-6 py-4'>
-        <h2 className='text-heading-h2 text-white'>Details</h2>
-        <div className='flex flex-col gap-4'>
-          <MediaField
-            label='Media'
-            error={formik.touched.media && (formik.errors.media as string)}
-            addMedia={handleMediaAddition}
-            removeMedia={handleMediaRemoval}
-          />
+      <div className='flex flex-1 flex-col gap-4 overflow-auto p-6'>
+        <MediaField
+          label='Media'
+          error={formik.touched.media && (formik.errors.media as string)}
+          addMedia={handleMediaAddition}
+          removeMedia={handleMediaRemoval}
+        />
 
-          <TextField
-            id='title'
-            placeholder='Spaghetti Bolognese'
-            label='Title'
-            value={formik.values.title}
-            onChange={formik.handleChange}
-            error={formik.touched.title && formik.errors.title}
-          />
-          <TextField
-            id='price'
-            placeholder='$ 10.00'
-            label='Price'
-            onChange={handlePriceChange}
-            onBlur={handlePriceOnBlur}
-            value={formik.values.price}
-            error={formik.touched.price && formik.errors.price}
-          />
-        </div>
+        <TextField
+          id='title'
+          placeholder='Spaghetti Bolognese'
+          label='Title'
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          error={formik.touched.title && formik.errors.title}
+        />
+        <TextField
+          id='price'
+          placeholder='$ 10.00'
+          label='Price'
+          onChange={handlePriceChange}
+          onBlur={handlePriceOnBlur}
+          value={formik.values.price}
+          error={formik.touched.price && formik.errors.price}
+        />
       </div>
 
       <div className='mx-6 flex gap-2 border-t border-base-dark-line py-6'>

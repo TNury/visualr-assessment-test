@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
 import { Edit } from '@vat/icons/Edit';
 
+import { AddQueryLink } from '@vat/components/ui/add-query-link/AddQueryLink';
 import { Button } from '@vat/components/ui/button/Button';
 import { RoundedImage } from '@vat/components/ui/rounded-image/RoundedImage';
 
@@ -11,25 +10,11 @@ import { DishByMenuEntityProps } from '@vat/types/menu.types';
 
 export type DishManagementCardProps = {
   dishProps: DishByMenuEntityProps;
-  activeMenu: string;
-  searchQuery?: string;
 };
 
 export const DishManagementCard: React.FC<DishManagementCardProps> = ({
   dishProps,
-  activeMenu,
-  searchQuery,
 }) => {
-  const editDishButtonQuery = {
-    openDishManagementDrawerOnDish: dishProps.id,
-  };
-
-  if (searchQuery) {
-    editDishButtonQuery['search'] = searchQuery;
-  } else {
-    editDishButtonQuery['menu'] = activeMenu;
-  }
-
   return (
     <div className='relative flex w-full flex-col items-center gap-4 rounded-lg border border-base-dark-line'>
       <div className='flex h-full w-full flex-col items-center gap-4 p-6 pb-0'>
@@ -52,11 +37,7 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
         </div>
       </div>
 
-      <Link
-        href={{
-          query: editDishButtonQuery,
-        }}
-        className='w-full'>
+      <AddQueryLink query={`openDishManagementDrawerOnDish=${dishProps.id}`}>
         <Button
           variant='ghost-2'
           shape='rounded-bottom'
@@ -65,7 +46,7 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
           <Edit className='h-5 w-5' />
           Edit dish
         </Button>
-      </Link>
+      </AddQueryLink>
     </div>
   );
 };

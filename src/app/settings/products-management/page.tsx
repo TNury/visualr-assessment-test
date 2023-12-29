@@ -13,6 +13,7 @@ type ProductsManagementProps = {
     openDishCreationDrawerOnMenu?: string;
     openDishManagementDrawerOnDish?: string;
     openMenusManagementDrawer?: boolean;
+    openMenuManagementModal?: boolean;
   };
 };
 
@@ -29,12 +30,11 @@ const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
   const openMenusManagementDrawer =
     props.searchParams.openMenusManagementDrawer;
 
+  const openMenuManagementModal = props.searchParams.openMenuManagementModal;
+
   return (
     <div className='flex h-full w-full flex-col'>
-      <ProductsManagementHeader
-        activeMenu={activeMenu}
-        searchQuery={searchQuery}
-      />
+      <ProductsManagementHeader />
       <div className='border-b border-base-dark-line px-6'>
         <DishesMenuNav activeMenu={activeMenu} />
       </div>
@@ -42,17 +42,18 @@ const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
       <DishesManagementView searchQuery={searchQuery} activeMenu={activeMenu} />
 
       {Boolean(openDishCreationDrawer) && (
-        <DishCreationDrawer
-          menuId={activeMenu}
-          menuTitle={openDishCreationDrawer}
-        />
+        <DishCreationDrawer menuTitle={openDishCreationDrawer} />
       )}
 
       {Boolean(openDishManagementDrawer) && (
         <DishManagementDrawer dishId={openDishManagementDrawer} />
       )}
 
-      {Boolean(openMenusManagementDrawer) && <MenusManagementDrawer />}
+      {Boolean(openMenusManagementDrawer) && (
+        <MenusManagementDrawer
+          openMenuManagementModal={openMenuManagementModal}
+        />
+      )}
     </div>
   );
 };

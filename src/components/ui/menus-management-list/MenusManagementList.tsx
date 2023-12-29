@@ -33,11 +33,10 @@ export const MenusManagementList: React.FC<MenusManagementListProps> = ({
           <Button variant='outlined-2' size='icon-1' layout='centered'>
             <Edit className='h-5 w-5' />
           </Button>
-          {index !== 0 && (
-            <Button variant='outlined' size='icon-1' layout='centered'>
-              <Trash className='h-5 w-5' />
-            </Button>
-          )}
+
+          <Button variant='outlined' size='icon-1' layout='centered'>
+            <Trash className='h-5 w-5' />
+          </Button>
         </div>
       ))}
     </div>
