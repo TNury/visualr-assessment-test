@@ -7,20 +7,14 @@ import { TextField } from '@vat/components/ui/text-field/TextField';
 
 import { useDishCreationForm } from './useDishCreationForm';
 
-type DishCreationFormProps = {
-  menuId: string;
-};
-
-export const DishCreationForm: React.FC<DishCreationFormProps> = ({
-  menuId,
-}) => {
+export const DishCreationForm: React.FC = () => {
   const {
     formik,
     handleMediaAddition,
     handleMediaRemoval,
     handlePriceChange,
     handlePriceOnBlur,
-  } = useDishCreationForm({ menuId });
+  } = useDishCreationForm();
 
   return (
     <form

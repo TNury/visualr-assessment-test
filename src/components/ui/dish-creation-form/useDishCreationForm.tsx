@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useFormik } from 'formik';
 
@@ -16,11 +16,9 @@ import { returnFormattedPrice } from '@vat/lib/utils';
 
 import { CreateDishFormProps } from '@vat/types/menu.types';
 
-type useDishCreationFormProps = {
-  menuId: string;
-};
+export const useDishCreationForm = () => {
+  const menuId = useSearchParams().get('menu');
 
-export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
   const { setLoading } = useDrawerLoading();
 
   const router = useRouter();
@@ -43,7 +41,7 @@ export const useDishCreationForm = ({ menuId }: useDishCreationFormProps) => {
     try {
       await createDish(menuId, values);
 
-      router.back();
+      router.push(`?menu=${menuId}`);
 
       dispatch({
         type: 'SET_SNACKBAR',

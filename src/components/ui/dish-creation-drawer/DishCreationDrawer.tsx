@@ -1,17 +1,13 @@
 import { DishCreationForm } from '@vat/components/ui/dish-creation-form/DishCreationForm';
 import { Drawer } from '@vat/components/ui/drawer/Drawer';
-import { Back } from '@vat/components/ui/icons/Back';
-import { ReturnLink } from '@vat/components/ui/return-link/ReturnLink';
 
 import { DrawerHead } from '../drawer-head/DrawerHead';
 
 type DishCreationDrawerProps = {
-  menuId: string;
   menuTitle: string;
 };
 
 export const DishCreationDrawer: React.FC<DishCreationDrawerProps> = ({
-  menuId,
   menuTitle,
 }) => {
   return (
@@ -22,7 +18,7 @@ export const DishCreationDrawer: React.FC<DishCreationDrawerProps> = ({
           subtitle={`Fill in the details below to create a new dish for the ${menuTitle} menu`}
         />
 
-        <DishCreationForm menuId={menuId} />
+        <DishCreationForm />
       </div>
     </Drawer>
   );

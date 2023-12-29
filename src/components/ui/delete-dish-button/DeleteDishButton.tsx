@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { Trash } from '@vat/icons/Trash';
 
@@ -22,6 +22,7 @@ export const DeleteDishButton: React.FC<DeleteDishButtonProps> = ({
   const { dispatch } = useSnackbarContext();
 
   const router = useRouter();
+  const menuId = useSearchParams().get('menu');
 
   const handleDeleteButtonClick = async () => {
     try {
@@ -35,7 +36,7 @@ export const DeleteDishButton: React.FC<DeleteDishButtonProps> = ({
         },
       });
 
-      router.back();
+      router.push(`?menu=${menuId}`);
     } catch (error) {
       console.error(error);
 

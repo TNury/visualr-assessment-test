@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useFormik } from 'formik';
 
@@ -26,6 +26,8 @@ type useDishManagementFormProps = {
 export const useDishManagementForm = ({
   dishProps,
 }: useDishManagementFormProps) => {
+  const menuId = useSearchParams().get('menu');
+
   const { setLoading } = useDrawerLoading();
 
   const router = useRouter();
@@ -48,7 +50,7 @@ export const useDishManagementForm = ({
     try {
       await updateDish(dishProps, values);
 
-      router.back();
+      router.push(`?menu=${menuId}`);
 
       dispatch({
         type: 'SET_SNACKBAR',
