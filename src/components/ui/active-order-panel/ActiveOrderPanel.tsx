@@ -1,8 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-
+import { AddQueryLink } from '@vat/components/ui/add-query-link/AddQueryLink';
 import { Button } from '@vat/components/ui/button/Button';
 import { OrderSummary } from '@vat/components/ui/order-summary/OrderSummary';
 import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
@@ -11,7 +9,6 @@ import { useOrderContext } from '@vat/context/order-context/OrderContext';
 
 export const ActiveOrderPanel = () => {
   const { orderState, dispatch } = useOrderContext();
-  const activeMenu = useSearchParams().get('menu');
 
   return (
     <div className='fixed right-0 top-0 z-40 flex h-full w-[410px] flex-col rounded-l-lg bg-base-dark-bg-2'>
@@ -28,11 +25,9 @@ export const ActiveOrderPanel = () => {
           <OrderSummary orderState={orderState} dispatch={dispatch} />
 
           <div className='mt-auto px-6 pb-6 pt-4.5'>
-            <Link
-              href={`/?menu=${activeMenu}&openConfirmationDrawer=true`}
-              scroll={false}>
+            <AddQueryLink query='openConfirmationDrawer=true'>
               <Button variant='contained'>Continue to Payment</Button>
-            </Link>
+            </AddQueryLink>
           </div>
         </div>
       ) : (

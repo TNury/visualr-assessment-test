@@ -1,5 +1,4 @@
-import Link from 'next/link';
-
+import { AddQueryLink } from '@vat/components/ui/add-query-link/AddQueryLink';
 import { Button } from '@vat/components/ui/button/Button';
 import { DishManagementCard } from '@vat/components/ui/dish-management-card/DishManagementCard';
 import { Add } from '@vat/components/ui/icons/Add';
@@ -52,27 +51,16 @@ export const DishesManagementView: React.FC<
     <div className='grid w-full flex-1 auto-rows-[302px] grid-cols-3 gap-4 overflow-auto p-6 lg:grid-cols-4 xl:grid-cols-6'>
       {!searchQuery && (
         <div className='relative flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-primary'>
-          <Link
-            href={{
-              query: {
-                menu: activeMenu,
-                openDishCreationDrawerOnMenu: menuTitle,
-              },
-            }}>
+          <AddQueryLink query={`openDishCreationDrawerOnMenu=${menuTitle}`}>
             <Button variant='ghost' className='w-fit' role='none' tabIndex={-1}>
               <Add className='h-5 w-5' />
             </Button>
-          </Link>
+          </AddQueryLink>
           <p className='text-body-lg-semibold text-primary'>Add new dish</p>
         </div>
       )}
       {results.map((entry, index) => (
-        <DishManagementCard
-          key={index}
-          activeMenu={activeMenu}
-          dishProps={entry}
-          searchQuery={searchQuery}
-        />
+        <DishManagementCard key={index} dishProps={entry} />
       ))}
     </div>
   );
