@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { DishCard } from '@vat/components/ui/dish-card/DishCard';
 import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
 
@@ -12,8 +14,12 @@ export const DishesViewByMenu: React.FC<DishesViewByMenuByMenuProps> = async ({
 }) => {
   const menuResponse = await getMenuById({ id: activeMenu });
 
+  if (!menuResponse.data.menu.data) {
+    redirect('/');
+  }
+
   const resultsAreEmpty =
-    menuResponse.data.menu.data.attributes.dishes.data.length === 0;
+    menuResponse.data.menu.data?.attributes.dishes.data.length === 0;
 
   return !resultsAreEmpty ? (
     <div className='flex flex-col gap-6'>

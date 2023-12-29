@@ -1,13 +1,18 @@
 'use client';
 
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useCallback } from 'react';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { TextField } from '@vat/components/ui/text-field/TextField';
 
 export const MenuSearchField = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const returnMenu = useCallback(() => {
+    return searchParams.get('menu');
+  }, []);
 
   let interval: NodeJS.Timeout;
   const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
@@ -19,9 +24,9 @@ export const MenuSearchField = () => {
 
     interval = setTimeout(() => {
       if (value) {
-        router.push(`?search=${value}`);
+        router.replace(`?search=${value}`);
       } else {
-        router.back();
+        router.push(`?menu=${returnMenu}`);
       }
     }, 1000);
   };
