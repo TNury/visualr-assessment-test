@@ -6,7 +6,7 @@ export const MenuCreationModal = () => {
   return (
     <Modal>
       <ModalHead
-        title='Manage menu'
+        title='Create menu'
         subtitle='Fill in the fields below to create a new menu.'
       />
       <MenuCreationForm />

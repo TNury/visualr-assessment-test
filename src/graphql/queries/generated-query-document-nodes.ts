@@ -46,6 +46,19 @@ export const MenusManagementData = gql`
   }
 }
     `;
+export const MenuById = gql`
+    query menuById($id: ID!) {
+  menu(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        index
+      }
+    }
+  }
+}
+    `;
 export const DishesByMenuId = gql`
     query dishesByMenuId($id: ID!) {
   menu(id: $id) {

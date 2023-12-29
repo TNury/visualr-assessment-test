@@ -34,7 +34,6 @@ export async function middleware(request: NextRequest) {
 
   const orderData = cookies.get('order')?.value;
 
-  // TODO: Add cookies here
   if (
     !menuId &&
     (pathname === '/' || pathname.includes('products-management'))

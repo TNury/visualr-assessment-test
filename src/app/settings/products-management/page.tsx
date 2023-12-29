@@ -12,25 +12,24 @@ type ProductsManagementProps = {
     search?: string;
     openDishCreationDrawerOnMenu?: string;
     openDishManagementDrawerOnDish?: string;
-    openMenusManagementDrawer?: boolean;
-    openMenuManagementModal?: boolean;
+    openMenusManagementDrawer?: string;
+    openCreateMenuModal?: string;
+    openMenuManagementModalOnMenu?: string;
   };
 };
 
-const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
-  const activeMenu = props.searchParams.menu;
-  const searchQuery = props.searchParams.search;
-
-  const openDishCreationDrawer =
-    props.searchParams.openDishCreationDrawerOnMenu;
-
-  const openDishManagementDrawer =
-    props.searchParams.openDishManagementDrawerOnDish;
-
-  const openMenusManagementDrawer =
-    props.searchParams.openMenusManagementDrawer;
-
-  const openMenuManagementModal = props.searchParams.openMenuManagementModal;
+const ProductsManagement: React.FC<ProductsManagementProps> = ({
+  searchParams,
+}) => {
+  const {
+    menu: activeMenu,
+    search: searchQuery,
+    openDishCreationDrawerOnMenu: dishCreationDrawerMenuTitle,
+    openDishManagementDrawerOnDish: dishManagementDrawerDishId,
+    openMenusManagementDrawer: isMenusManagementDrawerOpen,
+    openCreateMenuModal: isCreateMenuModalOpen,
+    openMenuManagementModalOnMenu: isMenuManagementModalOnMenuOpen,
+  } = searchParams;
 
   return (
     <div className='flex h-full w-full flex-col'>
@@ -41,17 +40,18 @@ const ProductsManagement: React.FC<ProductsManagementProps> = (props) => {
 
       <DishesManagementView searchQuery={searchQuery} activeMenu={activeMenu} />
 
-      {Boolean(openDishCreationDrawer) && (
-        <DishCreationDrawer menuTitle={openDishCreationDrawer} />
+      {dishCreationDrawerMenuTitle && (
+        <DishCreationDrawer menuTitle={dishCreationDrawerMenuTitle} />
       )}
 
-      {Boolean(openDishManagementDrawer) && (
-        <DishManagementDrawer dishId={openDishManagementDrawer} />
+      {dishManagementDrawerDishId && (
+        <DishManagementDrawer dishId={dishManagementDrawerDishId} />
       )}
 
-      {Boolean(openMenusManagementDrawer) && (
+      {isMenusManagementDrawerOpen && (
         <MenusManagementDrawer
-          openMenuManagementModal={openMenuManagementModal}
+          openCreateMenuModal={isCreateMenuModalOpen === 'true'}
+          openMenuManagementModalOnMenu={isMenuManagementModalOnMenuOpen}
         />
       )}
     </div>

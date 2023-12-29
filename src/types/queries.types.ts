@@ -1144,6 +1144,13 @@ export type MenusManagementDataQueryVariables = Exact<{ [key: string]: never; }>
 
 export type MenusManagementDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, index?: number | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
 
+export type MenuByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type MenuByIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, index?: number | null } | null } | null } | null };
+
 export type DishesByMenuIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;

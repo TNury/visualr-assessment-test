@@ -4,17 +4,19 @@ import { DrawerHead } from '@vat/components/ui/drawer-head/DrawerHead';
 import { Drawer } from '@vat/components/ui/drawer/Drawer';
 import { Add } from '@vat/components/ui/icons/Add';
 import { MenuCreationModal } from '@vat/components/ui/menu-creation-modal/MenuCreationModal';
+import { MenuManagementModal } from '@vat/components/ui/menu-management-modal/MenuManagementModal';
 import { MenusManagementList } from '@vat/components/ui/menus-management-list/MenusManagementList';
 
 import { getMenusManagementData } from '@vat/actions/menu.actions';
 
 type MenusManagementDrawerProps = {
-  openMenuManagementModal?: boolean;
+  openCreateMenuModal: boolean;
+  openMenuManagementModalOnMenu?: string;
 };
 
 export const MenusManagementDrawer: React.FC<
   MenusManagementDrawerProps
-> = async ({ openMenuManagementModal }) => {
+> = async ({ openCreateMenuModal, openMenuManagementModalOnMenu }) => {
   const response = await getMenusManagementData();
 
   return (
@@ -33,7 +35,10 @@ export const MenusManagementDrawer: React.FC<
         />
         <MenusManagementList menusProps={response} />
 
-        {openMenuManagementModal && <MenuCreationModal />}
+        {openCreateMenuModal && <MenuCreationModal />}
+        {openMenuManagementModalOnMenu && (
+          <MenuManagementModal menuId={openMenuManagementModalOnMenu} />
+        )}
       </div>
     </Drawer>
   );

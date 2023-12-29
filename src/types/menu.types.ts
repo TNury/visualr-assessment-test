@@ -4,11 +4,13 @@ import {
   CreateDishMutationVariables,
   CreateMenuMutation,
   DishByIdQuery,
+  DishesByMenuIdQuery,
+  DishesByMenuIdQueryVariables,
   DishesBySearchStringQuery,
   DishesBySearchStringQueryVariables,
   FeaturedMenuIdQuery,
-  DishesByMenuIdQuery,
-  DishesByMenuIdQueryVariables,
+  MenuByIdQuery,
+  MenuByIdQueryVariables,
   MenusManagementDataQuery,
   MenusTitlesQuery,
   MutationCreateMenuArgs,
@@ -37,6 +39,13 @@ export type GetMenusManagementDataResponse = {
 
 export type GetMenusManagementDataResponseEntity =
   GetMenusManagementDataResponse['data']['menus']['data'][0];
+
+export type GetMenuByIdArgs = MenuByIdQueryVariables;
+
+export type GetMenuByIdResponse = {
+  errors?: ErrorProps[];
+  data: MenuByIdQuery | null;
+};
 
 export type GetDishesByMenuIdArgs = DishesByMenuIdQueryVariables;
 

@@ -36,6 +36,18 @@ query menusManagementData {
   }
 }
 
+query menuById($id: ID!) {
+  menu(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        index
+      }
+    }
+  }
+}
+
 query dishesByMenuId($id: ID!) {
   menu(id: $id) {
     data {

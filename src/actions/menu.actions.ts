@@ -25,11 +25,14 @@ import {
   GetDishesBySearchStringArgs,
   GetDishesBySearchStringResponse,
   GetFeaturedMenuIdResponse,
+  GetMenuByIdArgs,
+  GetMenuByIdResponse,
   GetMenusManagementDataResponse,
   GetMenusTitlesResponse,
   ManageDishFormProps,
   UpdateDishArgs,
   UpdateDishResponse,
+  UpdateMenuArgs,
   UpdateMenuFormProps,
   UpdateMenuResponse,
 } from '@vat/types/menu.types';
@@ -62,6 +65,16 @@ export async function getMenusManagementData(): Promise<GetMenusManagementDataRe
       cache: 'no-cache',
     }
   );
+
+  return response;
+}
+
+export async function getMenuById(
+  args: GetMenuByIdArgs
+): Promise<GetMenuByIdResponse> {
+  const response: GetMenuByIdResponse = await callAPI('MenuById', {
+    ...args,
+  });
 
   return response;
 }
@@ -106,9 +119,11 @@ export async function createMenu(
 }
 
 export async function updateMenu(
+  originalMenuProps: GetMenuByIdResponse,
   args: UpdateMenuFormProps
 ): Promise<UpdateMenuResponse> {
-  const payload: CreateMenuArgs = {
+  const payload: UpdateMenuArgs = {
+    id: originalMenuProps.data.menu.data.id,
     data: {
       ...args,
       index: Number(args.index),

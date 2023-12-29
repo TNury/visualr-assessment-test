@@ -1,12 +1,12 @@
 import { Button } from '@vat/components/ui/button/Button';
+import { DeleteMenuButton } from '@vat/components/ui/delete-menu-button/DeleteMenuButton';
 import { Edit } from '@vat/components/ui/icons/Edit';
-import { Trash } from '@vat/components/ui/icons/Trash';
 
 import { returnFormattedNumber } from '@vat/lib/utils';
 
 import { GetMenusManagementDataResponse } from '@vat/types/menu.types';
 
-import { DeleteMenuButton } from '../delete-menu-button/DeleteMenuButton';
+import { AddQueryLink } from '../add-query-link/AddQueryLink';
 
 type MenusManagementListProps = {
   menusProps: GetMenusManagementDataResponse;
@@ -32,9 +32,11 @@ export const MenusManagementList: React.FC<MenusManagementListProps> = ({
               Dishes included
             </p>
           </div>
-          <Button variant='outlined-2' size='icon-1' layout='centered'>
-            <Edit className='h-5 w-5' />
-          </Button>
+          <AddQueryLink query={`openMenuManagementModalOnMenu=${entry.id}`}>
+            <Button variant='outlined-2' size='icon-1' layout='centered'>
+              <Edit className='h-5 w-5' />
+            </Button>
+          </AddQueryLink>
 
           <DeleteMenuButton menuProps={entry} />
         </div>
