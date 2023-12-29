@@ -40,7 +40,7 @@ export const PaymentOption: React.FC<PaymentOptionProps> = ({
       role='button'
       data-active={active}
       onClick={onClick}
-      className='group relative flex h-16 w-[101px] flex-col items-center justify-center gap-[2px] rounded-lg border border-base-dark-line bg-base-dark-bg-2 hover:bg-base-dark-bg-1 data-[active="true"]:bg-base-dark-bg-1'>
+      className='group relative flex h-16 w-[101px] flex-col items-center justify-center gap-[2px] rounded-lg border border-base-dark-line bg-base-dark-bg-2 hover:bg-base-dark-bg-1 data-[active="true"]:bg-base-dark-bg-1 active:opacity-70'>
       {typeMap[type].icon}
       {active && (
         <CheckmarkCircle className='absolute right-[3px] top-[3px] text-primary' />
