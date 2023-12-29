@@ -266,6 +266,7 @@ export type Menu = {
   __typename?: 'Menu';
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   dishes?: Maybe<DishRelationResponseCollection>;
+  index?: Maybe<Scalars['Int']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
@@ -300,6 +301,7 @@ export type MenuFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>;
   dishes?: InputMaybe<DishFiltersInput>;
   id?: InputMaybe<IdFilterInput>;
+  index?: InputMaybe<IntFilterInput>;
   not?: InputMaybe<MenuFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<MenuFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
@@ -309,6 +311,7 @@ export type MenuFiltersInput = {
 
 export type MenuInput = {
   dishes?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  index?: InputMaybe<Scalars['Int']['input']>;
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1135,10 +1138,20 @@ export type UsersPermissionsUserRelationResponseCollection = {
 
 export type MediaPropsFragment = { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null };
 
+export type FeaturedMenuIdQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type FeaturedMenuIdQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null }> } | null };
+
 export type MenusTitlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MenusTitlesQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null } | null }> } | null };
+
+export type MenusTitlesAndDishCountQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type MenusTitlesAndDishCountQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
 
 export type MenuByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];

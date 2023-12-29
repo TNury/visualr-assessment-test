@@ -18,18 +18,44 @@ import {
   GetDishByIdResponse,
   GetDishesBySearchStringArgs,
   GetDishesBySearchStringResponse,
+  GetFeaturedMenuIdResponse,
   GetMenuByIdArgs,
   GetMenuByIdResponse,
+  GetMenuTitlesAndDishCountResponse,
   GetMenusTitlesResponse,
   ManageDishFormProps,
   UpdateDishArgs,
   UpdateDishResponse,
 } from '@vat/types/menu.types';
 
+export async function getFeaturedMenuId(): Promise<GetFeaturedMenuIdResponse> {
+  const response: GetFeaturedMenuIdResponse = await callAPI(
+    'FeaturedMenuId',
+    null,
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  return response;
+}
+
 export async function getMenusTitles(): Promise<GetMenusTitlesResponse> {
   const response: GetMenusTitlesResponse = await callAPI('MenusTitles', null, {
     cache: 'no-cache',
   });
+
+  return response;
+}
+
+export async function getMenusTitlesAndDishCount(): Promise<GetMenuTitlesAndDishCountResponse> {
+  const response: GetMenuTitlesAndDishCountResponse = await callAPI(
+    'MenusTitlesAndDishCount',
+    null,
+    {
+      cache: 'no-cache',
+    }
+  );
 
   return response;
 }

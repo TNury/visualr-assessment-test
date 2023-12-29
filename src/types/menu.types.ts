@@ -5,17 +5,29 @@ import {
   DishByIdQuery,
   DishesBySearchStringQuery,
   DishesBySearchStringQueryVariables,
+  FeaturedMenuIdQuery,
   MenuByIdQuery,
   MenuByIdQueryVariables,
+  MenusTitlesAndDishCountQuery,
   MenusTitlesQuery,
   MutationDeleteDishArgs,
   UpdateDishMutation,
   UpdateDishMutationVariables,
 } from '@vat/types/queries.types';
 
+export type GetFeaturedMenuIdResponse = {
+  errors?: ErrorProps[];
+  data: FeaturedMenuIdQuery | null;
+};
+
 export type GetMenusTitlesResponse = {
   errors?: ErrorProps[];
   data: MenusTitlesQuery | null;
+};
+
+export type GetMenuTitlesAndDishCountResponse = {
+  errors?: ErrorProps[];
+  data: MenusTitlesAndDishCountQuery | null;
 };
 
 export type GetMenuByIdArgs = MenuByIdQueryVariables;

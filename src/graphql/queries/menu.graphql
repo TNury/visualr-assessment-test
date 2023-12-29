@@ -1,12 +1,35 @@
 #import "./fragments.graphql"
 
-# Update this to getMenus titles
+query featuredMenuId {
+  menus(sort: "index:asc", pagination: { limit: 1 }) {
+    data {
+      id
+    }
+  }
+}
+
 query menusTitles {
+  menus(sort: "index:asc") {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+
+query menusTitlesAndDishCount {
   menus {
     data {
       id
       attributes {
         title
+        dishes(pagination: { limit: 99 }) {
+          data {
+            id
+          }
+        }
       }
     }
   }

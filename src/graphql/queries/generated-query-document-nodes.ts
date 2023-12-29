@@ -7,13 +7,39 @@ export const MediaProps = gql`
   }
 }
     `;
+export const FeaturedMenuId = gql`
+    query featuredMenuId {
+  menus(sort: "index:asc", pagination: {limit: 1}) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const MenusTitles = gql`
     query menusTitles {
+  menus(sort: "index:asc") {
+    data {
+      id
+      attributes {
+        title
+      }
+    }
+  }
+}
+    `;
+export const MenusTitlesAndDishCount = gql`
+    query menusTitlesAndDishCount {
   menus {
     data {
       id
       attributes {
         title
+        dishes(pagination: {limit: 99}) {
+          data {
+            id
+          }
+        }
       }
     }
   }
