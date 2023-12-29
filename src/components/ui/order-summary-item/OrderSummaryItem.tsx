@@ -69,7 +69,7 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
     dispatch({ type: 'REMOVE_ITEM', id: orderItem.id });
 
     if (isLastItem) {
-      router.back();
+      router.push('/');
     }
   };
 
