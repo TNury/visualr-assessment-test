@@ -31,8 +31,6 @@ export async function middleware(request: NextRequest) {
 
   let menuId = searchParams.get('menu');
   const searchQuery = searchParams.get('search');
-  const isOrderConfirmationOpen =
-    searchParams.get('openConfirmationDrawer') === 'true';
 
   if (
     !menuId &&
