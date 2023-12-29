@@ -13,6 +13,9 @@ import {
 import {
   CreateOrderArgs,
   CreateOrderResponse,
+  GetMostOrderedDishesByPaginationArgs,
+  GetMostOrderedDishesByPaginationResponse,
+  GetMostOrderedDishesResponseEntity,
   GetTotalOrdersLengthResponse,
   OrderStateProps,
   PaginatedOrderReportByDateArgs,
@@ -126,4 +129,30 @@ export async function getPaginatedOrderReportsByDate(
   );
 
   return response;
+}
+
+export async function getMostOrderedDishesByPagination(
+  args: GetMostOrderedDishesByPaginationArgs
+): Promise<GetMostOrderedDishesResponseEntity[]> {
+  const response: GetMostOrderedDishesByPaginationResponse = await callAPI(
+    'MostOrderedDishesByPagination',
+    args,
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  const groupedDishes = _.groupBy(
+    response.data.orders.data.flatMap(
+      (order) => order.attributes.dishesQuantities
+    ),
+    'dish.data.id'
+  );
+
+  const dishQuantities = _.map(groupedDishes, (dishQuantities) => ({
+    dish: dishQuantities[0].dish,
+    quantity: _.sumBy(dishQuantities, 'quantity'),
+  }));
+
+  return dishQuantities.sort((a, b) => b.quantity - a.quantity);
 }

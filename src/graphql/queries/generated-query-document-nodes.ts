@@ -234,3 +234,44 @@ export const PaginatedOrderReportByDate = gql`
   }
 }
     `;
+export const MostOrderedDishesByPagination = gql`
+    query mostOrderedDishesByPagination($pagination: PaginationArg!, $date: DateTimeFilterInput!) {
+  orders(
+    pagination: $pagination
+    filters: {createdAt: $date}
+    sort: "dishesQuantities:quantity:desc"
+  ) {
+    data {
+      id
+      attributes {
+        owner
+        total
+        status
+        dishesQuantities {
+          dish {
+            data {
+              id
+              attributes {
+                title
+                media {
+                  data {
+                    ...MediaProps
+                  }
+                }
+              }
+            }
+          }
+          quantity
+        }
+        dishes {
+          data {
+            attributes {
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    ${MediaProps}`;

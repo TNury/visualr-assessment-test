@@ -1274,3 +1274,11 @@ export type PaginatedOrderReportByDateQueryVariables = Exact<{
 
 
 export type PaginatedOrderReportByDateQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', id?: string | null, attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, status?: Enum_Order_Status | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', attributes?: { __typename?: 'Dish', title?: string | null } | null }> } | null } | null }> } | null };
+
+export type MostOrderedDishesByPaginationQueryVariables = Exact<{
+  pagination: PaginationArg;
+  date: DateTimeFilterInput;
+}>;
+
+
+export type MostOrderedDishesByPaginationQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', id?: string | null, attributes?: { __typename?: 'Order', owner?: string | null, total?: number | null, status?: Enum_Order_Status | null, dishesQuantities?: Array<{ __typename?: 'ComponentReusableDishesQuantities', quantity?: number | null, dish?: { __typename?: 'DishEntityResponse', data?: { __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null } | null } | null } | null> | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', attributes?: { __typename?: 'Dish', title?: string | null } | null }> } | null } | null }> } | null };

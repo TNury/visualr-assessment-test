@@ -26,7 +26,7 @@ export const MenusManagementDrawer: React.FC<
           title='Manage menus'
           subtitle='Interact with the options below to manage your menus'
           endAddornment={
-            <AddQueryLink query='openMenuManagementModal=true'>
+            <AddQueryLink query='openCreateMenuModal=true'>
               <Button variant='contained-2' className='h-12 w-12' tabIndex={-1}>
                 <Add className='h-5 w-5' />
               </Button>

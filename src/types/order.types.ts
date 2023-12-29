@@ -3,6 +3,8 @@ import { DishByMenuEntityProps } from '@vat/types/menu.types';
 import {
   CreateOrderMutation,
   CreateOrderMutationVariables,
+  MostOrderedDishesByPaginationQuery,
+  MostOrderedDishesByPaginationQueryVariables,
   PaginatedOrderReportByDateQuery,
   PaginatedOrderReportByDateQueryVariables,
   RawDashboardHighlightsByDateRangeQuery,
@@ -64,3 +66,14 @@ export type PaginatedOrderReportByDateRespose = {
 
 export type PaginatedOrderReportByDateQueryEntityProps =
   PaginatedOrderReportByDateRespose['data']['orders']['data'][0];
+
+export type GetMostOrderedDishesByPaginationArgs =
+  MostOrderedDishesByPaginationQueryVariables;
+
+export type GetMostOrderedDishesByPaginationResponse = {
+  errors?: ErrorProps[];
+  data?: MostOrderedDishesByPaginationQuery;
+};
+
+export type GetMostOrderedDishesResponseEntity =
+  MostOrderedDishesByPaginationQuery['orders']['data'][0]['attributes']['dishesQuantities'][0];
