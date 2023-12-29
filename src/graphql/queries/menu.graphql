@@ -19,12 +19,13 @@ query menusTitles {
   }
 }
 
-query menusTitlesAndDishCount {
+query menusManagementData {
   menus {
     data {
       id
       attributes {
         title
+        index
         dishes(pagination: { limit: 99 }) {
           data {
             id

@@ -8,7 +8,7 @@ import {
   FeaturedMenuIdQuery,
   MenuByIdQuery,
   MenuByIdQueryVariables,
-  MenusTitlesAndDishCountQuery,
+  MenusManagementDataQuery,
   MenusTitlesQuery,
   MutationDeleteDishArgs,
   UpdateDishMutation,
@@ -25,9 +25,9 @@ export type GetMenusTitlesResponse = {
   data: MenusTitlesQuery | null;
 };
 
-export type GetMenuTitlesAndDishCountResponse = {
+export type GetMenusManagementDataResponse = {
   errors?: ErrorProps[];
-  data: MenusTitlesAndDishCountQuery | null;
+  data: MenusManagementDataQuery | null;
 };
 
 export type GetMenuByIdArgs = MenuByIdQueryVariables;

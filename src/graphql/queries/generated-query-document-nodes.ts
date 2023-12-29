@@ -28,13 +28,14 @@ export const MenusTitles = gql`
   }
 }
     `;
-export const MenusTitlesAndDishCount = gql`
-    query menusTitlesAndDishCount {
+export const MenusManagementData = gql`
+    query menusManagementData {
   menus {
     data {
       id
       attributes {
         title
+        index
         dishes(pagination: {limit: 99}) {
           data {
             id

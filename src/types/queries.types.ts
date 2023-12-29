@@ -1148,10 +1148,10 @@ export type MenusTitlesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type MenusTitlesQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null } | null }> } | null };
 
-export type MenusTitlesAndDishCountQueryVariables = Exact<{ [key: string]: never; }>;
+export type MenusManagementDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MenusTitlesAndDishCountQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
+export type MenusManagementDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, index?: number | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
 
 export type MenuByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];

@@ -12,7 +12,6 @@ import {
   CreateDishArgs,
   CreateDishFormProps,
   CreateDishResponse,
-  DeleteDishArgs,
   DeleteDishResponse,
   GetDishByIdArgs,
   GetDishByIdResponse,
@@ -21,7 +20,7 @@ import {
   GetFeaturedMenuIdResponse,
   GetMenuByIdArgs,
   GetMenuByIdResponse,
-  GetMenuTitlesAndDishCountResponse,
+  GetMenusManagementDataResponse,
   GetMenusTitlesResponse,
   ManageDishFormProps,
   UpdateDishArgs,
@@ -48,9 +47,9 @@ export async function getMenusTitles(): Promise<GetMenusTitlesResponse> {
   return response;
 }
 
-export async function getMenusTitlesAndDishCount(): Promise<GetMenuTitlesAndDishCountResponse> {
-  const response: GetMenuTitlesAndDishCountResponse = await callAPI(
-    'MenusTitlesAndDishCount',
+export async function getMenusManagementData(): Promise<GetMenusManagementDataResponse> {
+  const response: GetMenusManagementDataResponse = await callAPI(
+    'MenusManagementData',
     null,
     {
       cache: 'no-cache',
