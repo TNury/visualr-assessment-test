@@ -38,7 +38,7 @@ export const OrderPaymentPanel = () => {
       />
 
       <div className='flex h-full flex-1 flex-col overflow-auto'>
-        <div className='flex flex-col gap-4 overflow-auto px-6 py-4'>
+        <div className='flex flex-col gap-4 overflow-auto px-6 pb-4 pt-6'>
           <h2 className='text-heading-h2 text-white'>Payment Method</h2>
 
           <PaymentFormGroup
@@ -49,7 +49,7 @@ export const OrderPaymentPanel = () => {
             setPaymentMethod={setPaymentMethod}
           />
         </div>
-        <div className='mx-6 border-t border-base-dark-line py-4'>
+        <div className='mx-6 border-t border-base-dark-line pb-6 pt-4'>
           <TextField
             placeholder='333'
             label='Table no.'
