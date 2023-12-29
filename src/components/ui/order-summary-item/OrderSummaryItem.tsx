@@ -2,6 +2,8 @@
 
 import { Dispatch } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { Trash } from '@vat/icons/Trash';
 
 import { Button } from '@vat/components/ui/button/Button';
@@ -18,12 +20,16 @@ type OrderSummaryItemProps = {
   // preventing unnecessary re-renders of OrderSummary.tsx and its children on orderState changes,
   // and avoiding a React warning.
   dispatch: Dispatch<OrderActionProps>;
+  isLastItem: boolean;
 };
 
 export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
   orderItem,
   dispatch,
+  isLastItem,
 }) => {
+  const router = useRouter();
+
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '');
 
@@ -48,10 +54,7 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
     const quantity = parseInt(value);
 
     if (quantity === 0) {
-      dispatch({
-        type: 'REMOVE_ITEM',
-        id: orderItem.id,
-      });
+      handleRemoveClick();
 
       return;
     }
@@ -64,6 +67,10 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({
 
   const handleRemoveClick = () => {
     dispatch({ type: 'REMOVE_ITEM', id: orderItem.id });
+
+    if (isLastItem) {
+      router.back();
+    }
   };
 
   return (

@@ -19,7 +19,11 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({
       <div className='flex flex-col gap-6 overflow-auto overscroll-contain px-6'>
         {orderState.items.map((orderItem, index) => (
           <div key={index} className='w-full first:pt-6 last:pb-6'>
-            <OrderSummaryItem dispatch={dispatch} orderItem={orderItem} />
+            <OrderSummaryItem
+              isLastItem={orderState.items.length === 1}
+              dispatch={dispatch}
+              orderItem={orderItem}
+            />
           </div>
         ))}
       </div>

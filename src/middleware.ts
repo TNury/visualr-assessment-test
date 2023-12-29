@@ -34,11 +34,6 @@ export async function middleware(request: NextRequest) {
   const isOrderConfirmationOpen =
     searchParams.get('openConfirmationDrawer') === 'true';
 
-  const orderData = cookies.get('order')?.value;
-  const formattedOrderData: OrderStateProps = orderData
-    ? JSON.parse(orderData)
-    : null;
-
   if (
     !menuId &&
     (pathname === '/' || pathname.includes('products-management'))
@@ -50,15 +45,6 @@ export async function middleware(request: NextRequest) {
 
   // If you try to go '/' without a menu ID or search query.
   if (pathname === '/' && !menuId && !searchQuery) {
-    return redirectWithMenuId('/', featuredMenuId, request);
-  }
-
-  // If you try to open the order confirmation drawer without orderData
-  if (
-    pathname === '/' &&
-    isOrderConfirmationOpen &&
-    formattedOrderData.itemsCount === 0
-  ) {
     return redirectWithMenuId('/', featuredMenuId, request);
   }
 
