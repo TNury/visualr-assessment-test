@@ -16,7 +16,7 @@ import {
   GetMostOrderedDishesByPaginationArgs,
   GetMostOrderedDishesByPaginationResponse,
   GetMostOrderedDishesResponseEntity,
-  GetTotalOrdersLengthResponse,
+  HighestIdOrderResponse,
   OrderStateProps,
   PaginatedOrderReportByDateArgs,
   PaginatedOrderReportByDateRespose,
@@ -53,16 +53,20 @@ export async function createOrder(
   return response;
 }
 
-export async function getTotalOrdersLength(): Promise<GetTotalOrdersLengthResponse> {
-  const response: GetTotalOrdersLengthResponse = await callAPI(
-    'TotalOrdersLength',
+export async function getNextOrderId(): Promise<string> {
+  const response: HighestIdOrderResponse = await callAPI(
+    'HighestIdOrder',
     null,
     {
       cache: 'no-cache',
     }
   );
 
-  return response;
+  const highestOrderId = response.data.orders.data[0]?.id || '0';
+
+  const nextOrderId = String(Number(highestOrderId) + 1);
+
+  return nextOrderId;
 }
 
 export async function getDashboardHighlights() {

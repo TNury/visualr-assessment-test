@@ -1,6 +1,12 @@
 'use client';
 
-import { ReactNode, createContext, useContext, useReducer } from 'react';
+import {
+  ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useReducer,
+} from 'react';
 
 import {
   handleOrderClear,
@@ -48,15 +54,18 @@ const orderReducer = (
 export const OrderProvider: React.FC<{
   children: ReactNode;
   initialOrderData?: OrderStateProps;
-  initialOrderId: string;
-}> = ({ children, initialOrderData, initialOrderId }) => {
+  nextOrderId: string;
+}> = ({ children, initialOrderData, nextOrderId }) => {
   const [orderState, dispatch] = useReducer(
     orderReducer,
     initialOrderData
-      ? initialOrderData
+      ? {
+          ...initialOrderData,
+          id: nextOrderId,
+        }
       : {
           ...INITIAL_ORDER_STATE,
-          id: initialOrderId,
+          id: nextOrderId,
         }
   );
 

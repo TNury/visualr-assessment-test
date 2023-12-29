@@ -133,7 +133,7 @@ export function handleOrderClear(
   currentState: OrderStateProps
 ): OrderStateProps {
   const updatedOrderData = {
-    id: String(Number(currentState.id) + 1),
+    ...currentState,
     items: [],
     subtotal: 0,
     itemsCount: 0,

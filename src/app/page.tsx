@@ -8,7 +8,7 @@ import { OrderConfirmationDrawer } from '@vat/components/ui/order-confirmation-d
 import { OrderProvider } from '@vat/context/order-context/OrderContext';
 
 import { retrieveCookie } from '@vat/actions/cookies.actions';
-import { getTotalOrdersLength } from '@vat/actions/order.actions';
+import { getNextOrderId } from '@vat/actions/order.actions';
 
 import { OrderStateProps } from '@vat/types/order.types';
 
@@ -27,19 +27,14 @@ const Home: React.FC<HomeProps> = async (props) => {
   const searchQuery = props.searchParams.search;
   const activeOrder: OrderStateProps = await retrieveCookie('order');
 
-  const totalOrdersLengthResponse = await getTotalOrdersLength();
-  const totalOrdersLength = totalOrdersLengthResponse.data.orders.data[0]?.id;
+  const nextOrderId = await getNextOrderId();
 
   return (
     <main className='flex flex-col gap-6 pb-6 pl-[128px] pr-[434px]'>
       <HomepageHeader>
         <DishesMenuNav activeMenu={activeMenu} />
       </HomepageHeader>
-      <OrderProvider
-        initialOrderData={activeOrder}
-        initialOrderId={
-          totalOrdersLength ? String(Number(totalOrdersLength) + 1) : '1'
-        }>
+      <OrderProvider initialOrderData={activeOrder} nextOrderId={nextOrderId}>
         {searchQuery ? (
           <DishesViewBySearch searchQuery={searchQuery} />
         ) : (

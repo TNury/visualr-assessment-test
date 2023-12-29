@@ -1254,10 +1254,10 @@ export type CreateOrderMutationVariables = Exact<{
 
 export type CreateOrderMutation = { __typename?: 'Mutation', createOrder?: { __typename?: 'OrderEntityResponse', data?: { __typename?: 'OrderEntity', id?: string | null } | null } | null };
 
-export type TotalOrdersLengthQueryVariables = Exact<{ [key: string]: never; }>;
+export type HighestIdOrderQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type TotalOrdersLengthQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', id?: string | null }> } | null };
+export type HighestIdOrderQuery = { __typename?: 'Query', orders?: { __typename?: 'OrderEntityResponseCollection', data: Array<{ __typename?: 'OrderEntity', id?: string | null }> } | null };
 
 export type RawDashboardHighlightsByDateRangeQueryVariables = Exact<{
   dateStart: Scalars['DateTime']['input'];

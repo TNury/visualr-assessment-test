@@ -3,12 +3,12 @@ import { DishByMenuEntityProps } from '@vat/types/menu.types';
 import {
   CreateOrderMutation,
   CreateOrderMutationVariables,
+  HighestIdOrderQuery,
   MostOrderedDishesByPaginationQuery,
   MostOrderedDishesByPaginationQueryVariables,
   PaginatedOrderReportByDateQuery,
   PaginatedOrderReportByDateQueryVariables,
   RawDashboardHighlightsByDateRangeQuery,
-  TotalOrdersLengthQuery,
 } from '@vat/types/queries.types';
 
 export type OrderItemProps = {
@@ -46,9 +46,9 @@ export type CreateOrderResponse = {
   data?: CreateOrderMutation;
 };
 
-export type GetTotalOrdersLengthResponse = {
+export type HighestIdOrderResponse = {
   errors?: ErrorProps[];
-  data?: TotalOrdersLengthQuery;
+  data?: HighestIdOrderQuery;
 };
 
 export type RawDashboardHighlightsByDateRangeResponse = {

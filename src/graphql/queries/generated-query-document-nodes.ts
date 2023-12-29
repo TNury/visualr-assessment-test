@@ -184,8 +184,8 @@ export const CreateOrder = gql`
   }
 }
     `;
-export const TotalOrdersLength = gql`
-    query totalOrdersLength {
+export const HighestIdOrder = gql`
+    query highestIdOrder {
   orders(sort: "id:desc", pagination: {limit: 1}) {
     data {
       id
