@@ -9,6 +9,7 @@ type DrawerHeadProps = {
   endAddornment?: React.ReactNode;
   className?: string;
   hideReturnLink?: boolean;
+  children?: React.ReactNode;
 };
 
 export const DrawerHead: React.FC<DrawerHeadProps> = ({
@@ -17,6 +18,7 @@ export const DrawerHead: React.FC<DrawerHeadProps> = ({
   endAddornment,
   className,
   hideReturnLink,
+  children,
 }) => {
   return (
     <div
@@ -38,6 +40,7 @@ export const DrawerHead: React.FC<DrawerHeadProps> = ({
 
         {endAddornment && endAddornment}
       </div>
+      {children && children}
     </div>
   );
 };
