@@ -5,6 +5,9 @@ import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/Place
 
 import { PaginatedOrderReportByDateRespose } from '@vat/types/order.types';
 
+import { Button } from '../button/Button';
+import { Option } from '../icons/Option';
+
 type OrderReportProps = {
   orderReport: PaginatedOrderReportByDateRespose;
 };
@@ -15,8 +18,15 @@ export const OrderReport: React.FC<OrderReportProps> = ({ orderReport }) => {
   return (
     <div className='flex flex-1 flex-col overflow-auto rounded-lg bg-base-dark-bg-2'>
       <div className='flex flex-col gap-6 border-b border-base-dark-line p-6 pb-4'>
-        <div className='flex'>
+        <div className='flex items-center justify-between'>
           <h2 className='text-heading-h2 text-white'>Order Report</h2>
+          <Button
+            variant='outlined-2'
+            className='flex w-fit gap-2'
+            tabIndex={-1}>
+            Filter Order
+            <Option />
+          </Button>
         </div>
         <div className='flex gap-6'>
           <p className='w-[35%] text-body-base-semibold text-white'>Customer</p>
