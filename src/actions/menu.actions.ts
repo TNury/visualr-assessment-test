@@ -20,16 +20,18 @@ import {
   DeleteMenuResponse,
   GetDishByIdArgs,
   GetDishByIdResponse,
+  GetDishesByMenuIdArgs,
+  GetDishesByMenuIdResponse,
   GetDishesBySearchStringArgs,
   GetDishesBySearchStringResponse,
   GetFeaturedMenuIdResponse,
-  GetMenuByIdArgs,
-  GetMenuByIdResponse,
   GetMenusManagementDataResponse,
   GetMenusTitlesResponse,
   ManageDishFormProps,
   UpdateDishArgs,
   UpdateDishResponse,
+  UpdateMenuFormProps,
+  UpdateMenuResponse,
 } from '@vat/types/menu.types';
 
 export async function getFeaturedMenuId(): Promise<GetFeaturedMenuIdResponse> {
@@ -64,12 +66,16 @@ export async function getMenusManagementData(): Promise<GetMenusManagementDataRe
   return response;
 }
 
-export async function getMenuById(
-  args: GetMenuByIdArgs
-): Promise<GetMenuByIdResponse> {
-  const response: GetMenuByIdResponse = await callAPI('MenuById', args, {
-    cache: 'no-cache',
-  });
+export async function getDishesByMenuId(
+  args: GetDishesByMenuIdArgs
+): Promise<GetDishesByMenuIdResponse> {
+  const response: GetDishesByMenuIdResponse = await callAPI(
+    'DishesByMenuId',
+    args,
+    {
+      cache: 'no-cache',
+    }
+  );
 
   return response;
 }
@@ -86,6 +92,31 @@ export async function createMenu(
 
   const response: CreateMenuResponse = await callAPI(
     'CreateMenu',
+    {
+      ...payload,
+    },
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  revalidatePath('/settings/products-management');
+
+  return response;
+}
+
+export async function updateMenu(
+  args: UpdateMenuFormProps
+): Promise<UpdateMenuResponse> {
+  const payload: CreateMenuArgs = {
+    data: {
+      ...args,
+      index: Number(args.index),
+    },
+  };
+
+  const response: UpdateMenuResponse = await callAPI(
+    'UpdateMenu',
     {
       ...payload,
     },

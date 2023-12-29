@@ -1144,12 +1144,12 @@ export type MenusManagementDataQueryVariables = Exact<{ [key: string]: never; }>
 
 export type MenusManagementDataQuery = { __typename?: 'Query', menus?: { __typename?: 'MenuEntityResponseCollection', data: Array<{ __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, index?: number | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null }> } | null } | null }> } | null };
 
-export type MenuByIdQueryVariables = Exact<{
+export type DishesByMenuIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
-export type MenuByIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
+export type DishesByMenuIdQuery = { __typename?: 'Query', menu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null, attributes?: { __typename?: 'Menu', title?: string | null, dishes?: { __typename?: 'DishRelationResponseCollection', data: Array<{ __typename?: 'DishEntity', id?: string | null, attributes?: { __typename?: 'Dish', title?: string | null, price?: number | null, media?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null }> } | null } | null } | null } | null };
 
 export type CreateMenuMutationVariables = Exact<{
   data: MenuInput;
@@ -1157,6 +1157,14 @@ export type CreateMenuMutationVariables = Exact<{
 
 
 export type CreateMenuMutation = { __typename?: 'Mutation', createMenu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null } | null } | null };
+
+export type UpdateMenuMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+  data: MenuInput;
+}>;
+
+
+export type UpdateMenuMutation = { __typename?: 'Mutation', updateMenu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null } | null } | null };
 
 export type DeleteMenuMutationVariables = Exact<{
   id: Scalars['ID']['input'];

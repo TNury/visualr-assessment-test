@@ -7,15 +7,17 @@ import {
   DishesBySearchStringQuery,
   DishesBySearchStringQueryVariables,
   FeaturedMenuIdQuery,
-  MenuByIdQuery,
-  MenuByIdQueryVariables,
+  DishesByMenuIdQuery,
+  DishesByMenuIdQueryVariables,
   MenusManagementDataQuery,
   MenusTitlesQuery,
   MutationCreateMenuArgs,
   MutationDeleteDishArgs,
   MutationDeleteMenuArgs,
+  MutationUpdateMenuArgs,
   UpdateDishMutation,
   UpdateDishMutationVariables,
+  UpdateMenuMutation,
 } from '@vat/types/queries.types';
 
 export type GetFeaturedMenuIdResponse = {
@@ -36,11 +38,11 @@ export type GetMenusManagementDataResponse = {
 export type GetMenusManagementDataResponseEntity =
   GetMenusManagementDataResponse['data']['menus']['data'][0];
 
-export type GetMenuByIdArgs = MenuByIdQueryVariables;
+export type GetDishesByMenuIdArgs = DishesByMenuIdQueryVariables;
 
-export type GetMenuByIdResponse = {
+export type GetDishesByMenuIdResponse = {
   errors?: ErrorProps[];
-  data: MenuByIdQuery | null;
+  data: DishesByMenuIdQuery | null;
 };
 
 export type CreateMenuArgs = MutationCreateMenuArgs;
@@ -55,6 +57,20 @@ export type CreateMenuFormProps = Omit<
 export type CreateMenuResponse = {
   errors?: ErrorProps[];
   data: CreateMenuMutation | null;
+};
+
+export type UpdateMenuArgs = MutationUpdateMenuArgs;
+
+export type UpdateMenuFormProps = Omit<
+  MutationUpdateMenuArgs['data'],
+  'index'
+> & {
+  index: string;
+};
+
+export type UpdateMenuResponse = {
+  errors?: ErrorProps[];
+  data: UpdateMenuMutation | null;
 };
 
 export type DeleteMenuArgs = MutationDeleteMenuArgs;
@@ -72,9 +88,9 @@ export type GetDishesBySearchStringResponse = {
 };
 
 export type DishByMenuEntityProps =
-  MenuByIdQuery['menu']['data']['attributes']['dishes']['data'][0];
+  DishesByMenuIdQuery['menu']['data']['attributes']['dishes']['data'][0];
 
-export type GetDishByIdArgs = MenuByIdQueryVariables;
+export type GetDishByIdArgs = DishesByMenuIdQueryVariables;
 
 export type GetDishByIdResponse = {
   errors?: ErrorProps[];

@@ -46,8 +46,8 @@ export const MenusManagementData = gql`
   }
 }
     `;
-export const MenuById = gql`
-    query menuById($id: ID!) {
+export const DishesByMenuId = gql`
+    query dishesByMenuId($id: ID!) {
   menu(id: $id) {
     data {
       id
@@ -75,6 +75,15 @@ export const MenuById = gql`
 export const CreateMenu = gql`
     mutation createMenu($data: MenuInput!) {
   createMenu(data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;
+export const UpdateMenu = gql`
+    mutation updateMenu($id: ID!, $data: MenuInput!) {
+  updateMenu(id: $id, data: $data) {
     data {
       id
     }

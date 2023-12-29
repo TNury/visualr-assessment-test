@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { DishCard } from '@vat/components/ui/dish-card/DishCard';
 import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
 
-import { getMenuById } from '@vat/actions/menu.actions';
+import { getDishesByMenuId } from '@vat/actions/menu.actions';
 
 type DishesViewByMenuByMenuProps = {
   activeMenu: string;
@@ -12,7 +12,7 @@ type DishesViewByMenuByMenuProps = {
 export const DishesViewByMenu: React.FC<DishesViewByMenuByMenuProps> = async ({
   activeMenu,
 }) => {
-  const menuResponse = await getMenuById({ id: activeMenu });
+  const menuResponse = await getDishesByMenuId({ id: activeMenu });
 
   if (!menuResponse.data.menu.data) {
     redirect('/');

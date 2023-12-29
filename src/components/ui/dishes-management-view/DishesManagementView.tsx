@@ -7,13 +7,13 @@ import { Add } from '@vat/components/ui/icons/Add';
 import { PlaceholderMessage } from '@vat/components/ui/placeholder-message/PlaceholderMessage';
 
 import {
+  getDishesByMenuId,
   getDishesBySearchString,
-  getMenuById,
 } from '@vat/actions/menu.actions';
 
 import {
+  GetDishesByMenuIdResponse,
   GetDishesBySearchStringResponse,
-  GetMenuByIdResponse,
 } from '@vat/types/menu.types';
 
 type DishesManagementViewProps = {
@@ -25,7 +25,7 @@ export const DishesManagementView: React.FC<
   DishesManagementViewProps
 > = async ({ searchQuery, activeMenu }) => {
   let results:
-    | GetMenuByIdResponse['data']['menu']['data']['attributes']['dishes']['data']
+    | GetDishesByMenuIdResponse['data']['menu']['data']['attributes']['dishes']['data']
     | GetDishesBySearchStringResponse['data']['dishes']['data'];
 
   let menuTitle: string;
@@ -37,7 +37,7 @@ export const DishesManagementView: React.FC<
 
     results = searchResponse.data.dishes.data;
   } else {
-    const menuResponse = await getMenuById({ id: activeMenu });
+    const menuResponse = await getDishesByMenuId({ id: activeMenu });
 
     if (!menuResponse.data.menu.data) {
       redirect('/settings/products-management');

@@ -36,7 +36,7 @@ query menusManagementData {
   }
 }
 
-query menuById($id: ID!) {
+query dishesByMenuId($id: ID!) {
   menu(id: $id) {
     data {
       id
@@ -63,6 +63,14 @@ query menuById($id: ID!) {
 
 mutation createMenu($data: MenuInput!) {
   createMenu(data: $data) {
+    data {
+      id
+    }
+  }
+}
+
+mutation updateMenu($id: ID!, $data: MenuInput!) {
+  updateMenu(id: $id, data: $data) {
     data {
       id
     }
