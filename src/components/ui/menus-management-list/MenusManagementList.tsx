@@ -32,13 +32,16 @@ export const MenusManagementList: React.FC<MenusManagementListProps> = ({
               Dishes included
             </p>
           </div>
+
           <AddQueryLink query={`openMenuManagementModalOnMenu=${entry.id}`}>
             <Button variant='outlined-2' size='icon-1' layout='centered'>
               <Edit className='h-5 w-5' />
             </Button>
           </AddQueryLink>
 
-          <DeleteMenuButton menuProps={entry} />
+          {menusProps.data.menus.data.length > 1 && (
+            <DeleteMenuButton menuProps={entry} />
+          )}
         </div>
       ))}
     </div>
