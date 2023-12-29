@@ -23,6 +23,9 @@ export const DishManagementCard: React.FC<DishManagementCardProps> = ({
           alt={dishProps.attributes.title}
           width={528}
           height={528}
+          wrapperProps={{
+            className: 'min-w-33 min-h-33',
+          }}
           className='h-33 w-33 overflow-clip rounded-full object-cover'
         />
 

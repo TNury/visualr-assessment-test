@@ -76,6 +76,11 @@ export function returnFormattedPrice(price: number) {
   return formattedPrice;
 }
 
+/**
+ * Formats a number with the en-US locale.
+ * @param value - The number to be formatted.
+ * @returns The formatted number as a string.
+ */
 export function returnFormattedNumber(value: number) {
   if (value === undefined) {
     console.error('Value is not defined');
@@ -124,6 +129,14 @@ export function getTodayFormatted() {
   return formattedDate;
 }
 
+/**
+ * Calculates the dashboard highlights based on the provided orders data.
+ * @param ordersData - The orders data to calculate the highlights from.
+ * @returns An object containing the calculated dashboard highlights:
+ * - totalOrdersRevenue: The total revenue from all orders.
+ * - totalDishesOrdered: The total number of dishes ordered.
+ * - totalCustomers: The total number of unique customers.
+ */
 export function getCalculatedDashboardHighlights(
   ordersData: RawDashboardHighlightsByDateRangeResponse['data']['orders']['data']
 ) {
@@ -170,6 +183,13 @@ export function getCalculatedDashboardHighlights(
   };
 }
 
+/**
+ * Calculates the percentage change between two sets of dashboard highlights.
+ * @param yesterday - The highlights from yesterday.
+ * @param today - The highlights from today.
+ * @returns An object containing the percentage change for each highlight.
+ * @example { totalOrdersRevenue: '+10.00%', totalDishesOrdered: '-5.00%', totalCustomers: '+2.00%' }
+ */
 export function calculatePercentageChange(
   yesterday: ReturnType<typeof getCalculatedDashboardHighlights>,
   today: ReturnType<typeof getCalculatedDashboardHighlights>

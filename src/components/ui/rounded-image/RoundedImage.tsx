@@ -15,7 +15,7 @@ export const RoundedImage: React.FC<RoundedImageProps> = (props) => {
     <div
       {...restWrapperProps}
       className={cn(
-        'flex items-center justify-center overflow-clip rounded-full',
+        'flex items-center justify-center overflow-hidden rounded-full',
         className
       )}>
       <Image {...imageProps} />

@@ -15,7 +15,7 @@ export const DishCard: React.FC<DishCardProps> = ({ dishProps }) => {
       <RoundedImage
         wrapperProps={{
           className:
-            'z-20 transition-transform duration-150 group-hover:-rotate-45 group-hover:scale-110',
+            'z-20 min-w-33 min-h-33 transition-transform duration-150 group-hover:-rotate-45 group-hover:scale-110',
         }}
         src={returnMediaProps(dishProps.attributes.media.data).src}
         alt={dishProps.attributes.title}

@@ -8,6 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        '4.5': '1.125rem', // 18px
+        '33': '8.25rem', // 132px
+      },
+      maxHeight: {
+        '4.5': '1.125rem', // 18px
+        '33': '8.25rem', // 132px
+      },
+      minWidth: {
+        '4.5': '1.125rem', // 18px
+        '33': '8.25rem', // 132px
+      },
+      minHeight: {
+        '4.5': '1.125rem', // 18px
+        '33': '8.25rem', // 132px
+      },
       width: {
         '4.5': '1.125rem', // 18px
         '33': '8.25rem', // 132px
