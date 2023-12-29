@@ -25,6 +25,7 @@ export const StatisticsHighlight: React.FC<StatisticsHighlightProps> = ({
 }) => {
   const isNegative = percentage.includes('-');
 
+
   return (
     <div className='flex w-full flex-col gap-2 rounded-lg bg-base-dark-bg-2 p-4'>
       <div className='flex items-center gap-3'>
@@ -35,7 +36,7 @@ export const StatisticsHighlight: React.FC<StatisticsHighlightProps> = ({
           <p className='text-body-sm-medium text-accents-red group-data-[negative="false"]:text-accents-green'>
             {percentage}
           </p>
-          <div className='h-4.5 w-4.5 flex items-center justify-center rounded-full bg-accents-bg-red group-data-[negative="false"]:bg-accents-bg-green'>
+          <div className='flex h-4.5 w-4.5 items-center justify-center rounded-full bg-accents-bg-red group-data-[negative="false"]:bg-accents-bg-green'>
             <Arrow className='text-accents-red group-data-[negative="true"]:-rotate-180 group-data-[negative="false"]:text-accents-green' />
           </div>
         </div>

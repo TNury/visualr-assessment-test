@@ -1,10 +1,15 @@
 import _ from 'lodash';
 import { twMerge } from 'tailwind-merge';
 
+
+
 import { type ClassValue, clsx } from 'clsx';
+
+
 
 import { MediaProps } from '@vat/types/media.types';
 import { RawDashboardHighlightsByDateRangeResponse } from '@vat/types/order.types';
+
 
 /**
  * Merges class names using the `clsx` and `tailwind-merge` libraries.
@@ -180,7 +185,7 @@ export function calculatePercentageChange(
     if (yesterday.hasOwnProperty(key) && today.hasOwnProperty(key)) {
       let percentageChange: number;
       if (yesterday[key] === 0) {
-        percentageChange = 100;
+        percentageChange = 0;
       } else {
         percentageChange =
           ((today[key] - yesterday[key]) / yesterday[key]) * 100;
