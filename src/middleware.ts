@@ -3,6 +3,8 @@ import type { NextRequest } from 'next/server';
 
 import { getFeaturedMenuId } from '@vat/actions/menu.actions';
 
+import { OrderStateProps } from './types/order.types';
+
 /**
  * Redirects to a new URL with a specified menu ID.
  *
@@ -33,6 +35,9 @@ export async function middleware(request: NextRequest) {
     searchParams.get('openConfirmationDrawer') === 'true';
 
   const orderData = cookies.get('order')?.value;
+  const formattedOrderData: OrderStateProps = orderData
+    ? JSON.parse(orderData)
+    : null;
 
   if (
     !menuId &&
@@ -49,7 +54,11 @@ export async function middleware(request: NextRequest) {
   }
 
   // If you try to open the order confirmation drawer without orderData
-  if (pathname === '/' && isOrderConfirmationOpen && !orderData) {
+  if (
+    pathname === '/' &&
+    isOrderConfirmationOpen &&
+    formattedOrderData.itemsCount === 0
+  ) {
     return redirectWithMenuId('/', featuredMenuId, request);
   }
 

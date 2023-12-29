@@ -71,6 +71,10 @@ export function handleOrderItemRemoval(
     (orderItem) => orderItem.id !== id
   );
 
+  if (updatedOrderItems.length === 0) {
+    return handleOrderClear(currentState);
+  }
+
   const updatedOrderState = {
     ...currentState,
     items: updatedOrderItems,
