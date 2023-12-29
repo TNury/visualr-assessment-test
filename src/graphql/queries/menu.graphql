@@ -69,6 +69,14 @@ mutation createMenu($data: MenuInput!) {
   }
 }
 
+mutation deleteMenu($id: ID!) {
+  deleteMenu(id: $id) {
+    data {
+      id
+    }
+  }
+}
+
 query dishesBySearchString($searchString: String!) {
   dishes(
     filters: { title: { contains: $searchString } }

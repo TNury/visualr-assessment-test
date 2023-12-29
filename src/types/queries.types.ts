@@ -267,7 +267,6 @@ export type Menu = {
   createdAt?: Maybe<Scalars['DateTime']['output']>;
   dishes?: Maybe<DishRelationResponseCollection>;
   index?: Maybe<Scalars['Int']['output']>;
-  publishedAt?: Maybe<Scalars['DateTime']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -304,7 +303,6 @@ export type MenuFiltersInput = {
   index?: InputMaybe<IntFilterInput>;
   not?: InputMaybe<MenuFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<MenuFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
@@ -312,7 +310,6 @@ export type MenuFiltersInput = {
 export type MenuInput = {
   dishes?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   index?: InputMaybe<Scalars['Int']['input']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -611,11 +608,6 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']['input']>;
 };
 
-export enum PublicationState {
-  Live = 'LIVE',
-  Preview = 'PREVIEW'
-}
-
 export type Query = {
   __typename?: 'Query';
   dish?: Maybe<DishEntityResponse>;
@@ -670,7 +662,6 @@ export type QueryMenuArgs = {
 export type QueryMenusArgs = {
   filters?: InputMaybe<MenuFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
@@ -1166,6 +1157,13 @@ export type CreateMenuMutationVariables = Exact<{
 
 
 export type CreateMenuMutation = { __typename?: 'Mutation', createMenu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null } | null } | null };
+
+export type DeleteMenuMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type DeleteMenuMutation = { __typename?: 'Mutation', deleteMenu?: { __typename?: 'MenuEntityResponse', data?: { __typename?: 'MenuEntity', id?: string | null } | null } | null };
 
 export type DishesBySearchStringQueryVariables = Exact<{
   searchString: Scalars['String']['input'];

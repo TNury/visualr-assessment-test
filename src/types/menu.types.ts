@@ -13,6 +13,7 @@ import {
   MenusTitlesQuery,
   MutationCreateMenuArgs,
   MutationDeleteDishArgs,
+  MutationDeleteMenuArgs,
   UpdateDishMutation,
   UpdateDishMutationVariables,
 } from '@vat/types/queries.types';
@@ -31,6 +32,9 @@ export type GetMenusManagementDataResponse = {
   errors?: ErrorProps[];
   data: MenusManagementDataQuery | null;
 };
+
+export type GetMenusManagementDataResponseEntity =
+  GetMenusManagementDataResponse['data']['menus']['data'][0];
 
 export type GetMenuByIdArgs = MenuByIdQueryVariables;
 
@@ -51,6 +55,13 @@ export type CreateMenuFormProps = Omit<
 export type CreateMenuResponse = {
   errors?: ErrorProps[];
   data: CreateMenuMutation | null;
+};
+
+export type DeleteMenuArgs = MutationDeleteMenuArgs;
+
+export type DeleteMenuResponse = {
+  errors?: ErrorProps[];
+  data: MutationDeleteMenuArgs | null;
 };
 
 export type GetDishesBySearchStringArgs = DishesBySearchStringQueryVariables;

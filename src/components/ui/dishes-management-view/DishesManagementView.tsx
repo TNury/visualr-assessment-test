@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+
 import { AddQueryLink } from '@vat/components/ui/add-query-link/AddQueryLink';
 import { Button } from '@vat/components/ui/button/Button';
 import { DishManagementCard } from '@vat/components/ui/dish-management-card/DishManagementCard';
@@ -36,6 +38,10 @@ export const DishesManagementView: React.FC<
     results = searchResponse.data.dishes.data;
   } else {
     const menuResponse = await getMenuById({ id: activeMenu });
+
+    if (!menuResponse.data.menu.data) {
+      redirect('/settings/products-management');
+    }
 
     menuTitle = menuResponse.data.menu.data.attributes.title;
     results = menuResponse.data.menu.data.attributes.dishes.data;

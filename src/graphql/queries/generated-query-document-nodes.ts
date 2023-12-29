@@ -81,6 +81,15 @@ export const CreateMenu = gql`
   }
 }
     `;
+export const DeleteMenu = gql`
+    mutation deleteMenu($id: ID!) {
+  deleteMenu(id: $id) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const DishesBySearchString = gql`
     query dishesBySearchString($searchString: String!) {
   dishes(filters: {title: {contains: $searchString}}, sort: "createdAt:desc") {

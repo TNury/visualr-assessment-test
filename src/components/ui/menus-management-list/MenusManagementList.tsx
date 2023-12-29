@@ -6,6 +6,8 @@ import { returnFormattedNumber } from '@vat/lib/utils';
 
 import { GetMenusManagementDataResponse } from '@vat/types/menu.types';
 
+import { DeleteMenuButton } from '../delete-menu-button/DeleteMenuButton';
+
 type MenusManagementListProps = {
   menusProps: GetMenusManagementDataResponse;
 };
@@ -34,9 +36,7 @@ export const MenusManagementList: React.FC<MenusManagementListProps> = ({
             <Edit className='h-5 w-5' />
           </Button>
 
-          <Button variant='outlined' size='icon-1' layout='centered'>
-            <Trash className='h-5 w-5' />
-          </Button>
+          <DeleteMenuButton menuProps={entry} />
         </div>
       ))}
     </div>

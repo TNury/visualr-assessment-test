@@ -16,6 +16,8 @@ import {
   CreateMenuFormProps,
   CreateMenuResponse,
   DeleteDishResponse,
+  DeleteMenuArgs,
+  DeleteMenuResponse,
   GetDishByIdArgs,
   GetDishByIdResponse,
   GetDishesBySearchStringArgs,
@@ -86,6 +88,24 @@ export async function createMenu(
     'CreateMenu',
     {
       ...payload,
+    },
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  revalidatePath('/settings/products-management');
+
+  return response;
+}
+
+export async function deleteMenu(
+  args: DeleteMenuArgs
+): Promise<DeleteMenuResponse> {
+  const response: DeleteMenuResponse = await callAPI(
+    'DeleteMenu',
+    {
+      ...args,
     },
     {
       cache: 'no-cache',
