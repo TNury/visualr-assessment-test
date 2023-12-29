@@ -61,6 +61,14 @@ query menuById($id: ID!) {
   }
 }
 
+mutation createMenu($data: MenuInput!) {
+  createMenu(data: $data) {
+    data {
+      id
+    }
+  }
+}
+
 query dishesBySearchString($searchString: String!) {
   dishes(
     filters: { title: { contains: $searchString } }

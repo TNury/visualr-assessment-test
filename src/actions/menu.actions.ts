@@ -12,6 +12,9 @@ import {
   CreateDishArgs,
   CreateDishFormProps,
   CreateDishResponse,
+  CreateMenuArgs,
+  CreateMenuFormProps,
+  CreateMenuResponse,
   DeleteDishResponse,
   GetDishByIdArgs,
   GetDishByIdResponse,
@@ -65,6 +68,31 @@ export async function getMenuById(
   const response: GetMenuByIdResponse = await callAPI('MenuById', args, {
     cache: 'no-cache',
   });
+
+  return response;
+}
+
+export async function createMenu(
+  args: CreateMenuFormProps
+): Promise<CreateMenuResponse> {
+  const payload: CreateMenuArgs = {
+    data: {
+      ...args,
+      index: Number(args.index),
+    },
+  };
+
+  const response: CreateMenuResponse = await callAPI(
+    'CreateMenu',
+    {
+      ...payload,
+    },
+    {
+      cache: 'no-cache',
+    }
+  );
+
+  revalidatePath('/settings/products-management');
 
   return response;
 }

@@ -2,6 +2,7 @@ import { ErrorProps } from '@vat/types/error.types';
 import {
   CreateDishMutation,
   CreateDishMutationVariables,
+  CreateMenuMutation,
   DishByIdQuery,
   DishesBySearchStringQuery,
   DishesBySearchStringQueryVariables,
@@ -10,6 +11,7 @@ import {
   MenuByIdQueryVariables,
   MenusManagementDataQuery,
   MenusTitlesQuery,
+  MutationCreateMenuArgs,
   MutationDeleteDishArgs,
   UpdateDishMutation,
   UpdateDishMutationVariables,
@@ -35,6 +37,20 @@ export type GetMenuByIdArgs = MenuByIdQueryVariables;
 export type GetMenuByIdResponse = {
   errors?: ErrorProps[];
   data: MenuByIdQuery | null;
+};
+
+export type CreateMenuArgs = MutationCreateMenuArgs;
+
+export type CreateMenuFormProps = Omit<
+  MutationCreateMenuArgs['data'],
+  'index'
+> & {
+  index: string;
+};
+
+export type CreateMenuResponse = {
+  errors?: ErrorProps[];
+  data: CreateMenuMutation | null;
 };
 
 export type GetDishesBySearchStringArgs = DishesBySearchStringQueryVariables;

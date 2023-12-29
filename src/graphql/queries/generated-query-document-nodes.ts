@@ -72,6 +72,15 @@ export const MenuById = gql`
   }
 }
     ${MediaProps}`;
+export const CreateMenu = gql`
+    mutation createMenu($data: MenuInput!) {
+  createMenu(data: $data) {
+    data {
+      id
+    }
+  }
+}
+    `;
 export const DishesBySearchString = gql`
     query dishesBySearchString($searchString: String!) {
   dishes(filters: {title: {contains: $searchString}}, sort: "createdAt:desc") {
