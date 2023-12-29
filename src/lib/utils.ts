@@ -127,6 +127,14 @@ export function getTodayFormatted() {
 export function getCalculatedDashboardHighlights(
   ordersData: RawDashboardHighlightsByDateRangeResponse['data']['orders']['data']
 ) {
+  if (ordersData.length === 0) {
+    return {
+      totalOrdersRevenue: 0,
+      totalDishesOrdered: 0,
+      totalCustomers: 0,
+    };
+  }
+
   const totalOrdersRevenue: number = _.reduce(
     ordersData,
     (sum, order) => {
@@ -170,8 +178,13 @@ export function calculatePercentageChange(
 
   for (const key in yesterday) {
     if (yesterday.hasOwnProperty(key) && today.hasOwnProperty(key)) {
-      const percentageChange =
-        ((today[key] - yesterday[key]) / yesterday[key]) * 100;
+      let percentageChange: number;
+      if (yesterday[key] === 0) {
+        percentageChange = 100;
+      } else {
+        percentageChange =
+          ((today[key] - yesterday[key]) / yesterday[key]) * 100;
+      }
       const sign = percentageChange >= 0 ? '+' : '-';
       result[key] = `${sign}${Math.abs(percentageChange).toFixed(2)}%`;
     }
