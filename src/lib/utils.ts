@@ -16,6 +16,16 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
+ * Capitalizes the first letter of a string.
+ *
+ * @param string - The input string.
+ * @returns The input string with the first letter capitalized.
+ */
+export function capitalizeFirstLetter(string: string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+/**
  * Returns the media properties with the updated `src` attribute.
  * @param imageProps - The media properties object.
  * @returns The updated media properties object.

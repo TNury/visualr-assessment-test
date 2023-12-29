@@ -1,4 +1,4 @@
-import { cn } from '@vat/lib/utils';
+import { capitalizeFirstLetter, cn } from '@vat/lib/utils';
 
 import { PaginatedOrderReportByDateQueryEntityProps } from '@vat/types/order.types';
 
@@ -23,25 +23,20 @@ const orderReportItemStatusVariants = cva(
 );
 
 type OrderReportItemStatus = {
-  orderProps: PaginatedOrderReportByDateQueryEntityProps;
+  status: 'completed' | 'pending' | 'preparing';
 };
 
 export const OrderReportItemStatus: React.FC<OrderReportItemStatus> = ({
-  orderProps,
+  status,
 }) => {
-  const status = orderProps.attributes.status;
-
   return (
     <div
       className={cn(
         orderReportItemStatusVariants({
-          variant: status.toLowerCase() as
-            | 'completed'
-            | 'pending'
-            | 'preparing',
+          variant: status,
         })
       )}>
-      <p className='text-body-base-medium'>{status}</p>
+      <p className='text-body-base-medium'>{capitalizeFirstLetter(status)}</p>
     </div>
   );
 };

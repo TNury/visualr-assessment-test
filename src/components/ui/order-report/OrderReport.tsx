@@ -14,7 +14,7 @@ export const OrderReport: React.FC<OrderReportProps> = ({ orderReport }) => {
 
   return (
     <div className='flex flex-1 flex-col overflow-auto rounded-lg bg-base-dark-bg-2'>
-      <div className='flex flex-col gap-6 border-b border-base-dark-line p-6'>
+      <div className='flex flex-col gap-6 border-b border-base-dark-line p-6 pb-4'>
         <div className='flex'>
           <h2 className='text-heading-h2 text-white'>Order Report</h2>
         </div>
@@ -35,8 +35,8 @@ export const OrderReport: React.FC<OrderReportProps> = ({ orderReport }) => {
             bodySize='lg'
           />
         ) : (
-          orderReport.data.orders.data.map((entry) => (
-            <OrderReportItem key={entry.id} orderProps={entry} />
+          orderReport.data.orders.data.map((entry, index) => (
+            <OrderReportItem key={entry.id} orderProps={entry} index={index} />
           ))
         )}
       </div>
