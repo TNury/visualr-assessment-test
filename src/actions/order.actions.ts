@@ -142,6 +142,8 @@ export async function getMostOrderedDishesByPagination(
     }
   );
 
+  if (!response.data.orders.data.length) return [];
+
   const groupedDishes = _.groupBy(
     response.data.orders.data.flatMap(
       (order) => order.attributes.dishesQuantities
